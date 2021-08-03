@@ -11,17 +11,18 @@
 
 <body>
 
-    <div id="img-container">
+    <header>
         <a href="index.html">
             <img src="../public/img/UNIP_LOGO_PNG.png" width="200px" height="100" draggable="false">
         </a>
-    </div>
+    </header>
+
 
     <div id="form-container">
 
-        <h2>Faça o login para acessar a área de cliente</h2>
+        <form>
 
-        <form action="" method="GET">
+            <h2>Faça o login para acessar a área de cliente</h2>
 
             <label for="email">Email</label>
             <input type="email" name="email" id="email" placeholder="Digite seu email">
@@ -32,8 +33,6 @@
 
             <button type="submit" id="btn-entrar" onclick="window.open('areaCliente.html')">Entrar</button>
 
-            <br>
-
             <p>Ainda não tem uma conta? <a href="cadastro.html">Cadastre-se agora!</a></p>
 
         </form>
@@ -41,5 +40,4 @@
     </div>
 
 </body>
-
 </html>
