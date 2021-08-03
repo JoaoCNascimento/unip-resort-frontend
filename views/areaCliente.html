@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../public/css/styleClientePage.css">
+    <link rel="stylesheet" href="../public/fontawesome-free-5.15.3-web/css/all.css">
     <title>UNIP Resort - Área do Cliente</title>
 </head>
 
@@ -13,32 +14,25 @@
 
     <header>
 
-        <div>
-            <img src="../public/img/UNIP_LOGO_PNG.png" alt="Logo" width="210" height="110">
-        </div>
+        <img src="../public/img/UNIP_LOGO_PNG.png" alt="Logo" width="200" height="100">
 
-        <div id="link-container">
-
-            <a href="minhasRerservas.html">Minhas Reservas</a>
-            <a href="editarCadastro.html">Meu perfil</a>
-            <a href="">Sair</a>
-
+        <div id="menu">
+            <a href="minhasRerservas.html"><i class="fa fa-table"></i> Reservas</a>
+            <a href="editarCadastro.html"><i class="fa fa-user"></i> Meu perfil</a>
+            <a href="index.html"><i class="fas fa-door-open"></i> Sair</a>
         </div>
 
     </header>
 
-    <h1>Olá João. Seja bem-vindo novamente!</h1>
+    <h2>Olá João. Seja bem-vindo novamente!</h2>
 
     <div id="container">
 
         <div class="contentbox">
 
-            <div class="img-container">
-
-                <img src="../public/img/quartohotel.jpg" alt="">
-
+            <div class="img">
+                <img src="../public/img/quartohotel.jpg" alt="Imagem do quarto do hotel">
             </div>
-
 
             <div class="descricao">
 
@@ -50,22 +44,18 @@
 
             </div>
 
-            <div class="preco">
-
+            <div class="valor">
                 <h3>Oferta</h3>
-
-                <p><strong>R$</strong>280,00</p>
-
+                <p>R$280,00</p>
                 <button type="menu" onclick="window.open('reservas.html')">Reservar</button>
-
             </div>
 
 
         </div>
-
+        
         <div class="contentbox">
 
-            <div class="img-container">
+            <div class="img">
 
                 <img src="../public/img/lazerhotel.jpg" alt="">
 
@@ -82,7 +72,7 @@
 
             </div>
 
-            <div class="preco">
+            <div class="valor">
 
                 <h3>Oferta</h3>
 
@@ -97,7 +87,7 @@
 
         <div class="contentbox">
 
-            <div class="img-container">
+            <div class="img">
 
                 <img src="../public/img/quartohotel2.jpg" alt="">
 
@@ -114,7 +104,7 @@
 
             </div>
 
-            <div class="preco">
+            <div class="valor">
 
                 <h3>Oferta</h3>
 
@@ -128,7 +118,7 @@
 
         <div class="contentbox">
 
-            <div class="img-container">
+            <div class="img">
 
                 <img src="../public/img/quartohotel.jpg" alt="">
 
@@ -150,7 +140,7 @@
 
             </div>
 
-            <div class="preco">
+            <div class="valor">
 
                 <h3>Oferta</h3>
 
@@ -159,84 +149,15 @@
                 <button type="menu">Reservar</button>
 
             </div>
-
-
         </div>
-
     </div>
 
     <!-- chatbox -->
-    <div class="chatbox">
-
-        <div id="chat-content">
-            <img src="../public/img/iconechat/chatbox.png" alt="" width="45px">
-
-            <p>Precisando de ajuda? Clique aqui</p>
-        </div>
-
-        <div id="chat">
-
-
-            <div id="conversa">
-
-                <center>
-                    <p class="pholder">Clique no botão e aguarde enquanto um dos nossos atendentes se conecta.</p>
-                </center>
-
-                <div class="message-sent">
-
-                    <p>
-                        Olá, Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed veritatis
-                        quos earum dignissimos rerum libero molestias repellat atque, cupiditate,
-
-                    </p>
-
-                </div>
-
-                <div class="message-received">
-                    <p>
-
-                        animi deserunt
-                        provident, saepe rem! Deleniti autem adipisci quaerat dolorum animi.
-
-                    </p>
-                </div>
-
-                <div class="message-sent">
-
-                    <p>
-                        Olá, Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed veritatis
-                        quos earum dignissimos rerum libero molestias repellat atque, cupiditate,
-
-                    </p>
-
-                </div>
-
-                <div class="message-received">
-                    <p>
-
-                        animi deserunt
-                        provident, saepe rem! Deleniti autem adipisci quaerat dolorum animi.
-
-                    </p>
-                </div>
-
-            </div>
-
-            <div class="chatcontrols">
-
-                <textarea name="" id="" cols="30" placeholder="Digite sua mensagem aqui."></textarea>
-                <button></button>
-
-            </div>
-        </div>
-
+    <div id="chatbox">
+        <i class="fas fa-question"></i>
+        <p>Para acessar a central de ajuda, clique aqui!</p>
     </div>
-    <!-------------------->
 
 </body>
-
-<script type="text/javascript" src="../public/js/chat_config.js"></script>
-<script type="text/javascript" src="../public/js/contentbox_overflow.js"></script>
 
 </html>
