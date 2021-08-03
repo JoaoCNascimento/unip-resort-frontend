@@ -1,0 +1,202 @@
+* {
+
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI',sans-serif;
+
+}
+
+:root{
+
+    --bg-color: #033F73;
+
+}
+
+body {
+
+    background-color: #1C1C1C;
+
+}
+
+#img-container {
+
+    background-color: #1C1C1C;
+
+}
+
+#img-container img{
+
+    margin: 5px auto;
+
+}
+
+/* form section */
+
+#form-container {
+
+    margin: 30px auto;
+
+}
+
+#form-container h2 {
+
+    margin: 30px auto;
+    text-align: center;
+    font-family: sans-serif, 'Segoe UI';
+    font-weight: bold;
+    color: white;
+
+}
+
+form {
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+label {
+
+    margin: 15px 5px 5px 25px;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+
+}
+
+input {
+
+    padding: 10px;
+    width: 70%;
+    margin: 10px auto;
+
+    border: none;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    
+    font-size: 15px;
+
+}
+
+input:focus {
+
+    outline: none;
+    border-color: royalblue;
+    border: 1px solid rgb(86, 207, 255);
+
+}
+
+input::placeholder {
+
+    color: #1C1C1C;
+    opacity: 0.8;
+
+}
+
+#btn-entrar {
+
+    padding: 10px;
+    width: 160px;
+    margin: 40px auto;
+
+    color: white;
+    background-color: #3991f5;
+    
+    border: none;
+    border-radius: 3px;
+    
+    transition: 0.2s;
+    
+    font-size: 25px;
+
+}
+
+#btn-entrar:hover {
+
+    background-color: #3e94f7b7;
+    transition: 0.2s;
+
+}
+
+#btn-entrar:focus {
+
+    background-color: #1e62af;
+    outline: none;
+
+}
+
+p {
+
+    text-align: center;
+    color: white;
+
+}
+
+a {
+
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+
+}
+
+a:hover {
+
+    text-decoration:underline;
+
+}
+
+
+
+
+
+@media screen and (min-width: 720px) {
+
+
+    /* Form Section */
+
+    #form-container {
+
+        width: 500px;
+        margin: 150px auto;
+
+    }
+
+    label {
+
+        margin: 30px 5px 2px 55px;
+        color: white;
+        font-size: 18px;
+        font-weight: 600;
+
+    }
+
+    input {
+
+        margin: 2px auto;
+        width: 370px;
+        padding: 10px;
+        
+        font-size: 16px;
+        
+    }
+
+    #btn-entrar {
+
+        padding: 5px;
+        width: 200px;
+        margin: 35px auto;
+        
+        color: white;
+        background-color: #3991f5;
+        
+        border: none;
+        border-radius: 3px;
+
+        transition: 0.2s;
+
+        font-size: 25px;
+    }
+    
+    
+}

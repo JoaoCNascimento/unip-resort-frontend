@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../public/css/styleAltExcCadastroPage.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <header>
+
+        <a href="index.html">
+            <img src="../../public/img/UNIP_LOGO_PNG.png" alt="" width="200">
+        </a>
+    </header>
+
+    <div id="search">
+        <input type="search" placeholder="CPF ou RG do cliente.">
+        <button>Pesquisar Cadastro</button>
+    </div>
+
+
+    <div id="form-container">
+
+        <div class="form">
+
+            <h2>Meu Cadastro</h2>
+
+            <div class=" fullbox">
+                <label for="nome">Nome</label>
+                <input disabled type="text" name="nome" id="nome" placeholder="Digite o seu nome completo"
+                    value="Mirinho Delmar Cirisneto">
+            </div>
+
+            <div class="double-box">
+
+                <div class="halfbox">
+                    <label for="cpf">CPF/CNPJ</label>
+                    <input disabled type="text" name="cpf" id="cpf" placeholder="Digite seu CPF ou CNPJ"
+                        value="414.567.294-56">
+                </div>
+
+                <div class="halfbox">
+                    <label for="rg">RG</label>
+                    <input disabled type="text" name="rg" id="rg" placeholder="Digite seu RG" value="12.456.466-4">
+                </div>
+
+            </div>
+
+            <div class="double-box">
+
+                <div class="halfbox">
+
+                    <label for="sexo">Sexo</label>
+                    <select name="sexo" id="sexo" disabled>
+                        <option value="M">Masculino</option>
+                        <option value="F">Feminino</option>
+                    </select>
+
+                </div>
+
+                <div class="halfbox">
+
+                    <label for="nascimento">Data de nascimento</label>
+                    <input type="date" name="nascimento" id="nascimento" disabled>
+
+                </div>
+
+            </div>
+
+            <!-- Fim da div MIDDLE -->
+
+            <div class="fullbox">
+                <label for="email">Email</label>
+                <input disabled type="email" name="email" id="email" placeholder="Digite o seu email"
+                    value="mirinhodelmar@yahoo.com">
+            </div>
+
+            <!--
+            <div class="fullbox">
+                <label for="emailConfirm">Confirme seu email</label>
+                <input type="email" name="email" id="emailConfirm" placeholder="Digite novamente o seu email">
+            </div>
+            -->
+
+            <div class="double-box">
+
+                <div class="halfbox">
+                    <label for="password">Senha</label>
+                    <input disabled type="password" name="password" id="password" placeholder="Digite a sua senha"
+                        value="**********">
+                </div>
+
+                <!--
+                <div class="halfbox">
+                    <label for="passwordConfirm">Confirme sua senha</label>
+                    <input type="password" name="passwordConfirm" id="passwordConfirm"
+                        placeholder="Digite novamente a sua senha">
+                </div>
+            -->
+            </div>
+
+            <!---------------------------------->
+
+            <div class="button-container">
+
+                <button id="cometerAlteracao"> Editar Cadastro </button>
+                <button id="cancelarReserva">Excluir Cadastro</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

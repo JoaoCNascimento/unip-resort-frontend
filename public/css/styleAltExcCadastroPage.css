@@ -1,0 +1,371 @@
+* {
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif, Arial;
+
+}
+
+:root {
+
+    --bg-color: #1c1c1c;
+
+}
+
+body {
+
+    background-color: var(--bg-color);
+
+}
+
+header {
+
+    margin-bottom: 5vh;
+    display: flex;
+    flex-direction: row;
+
+}
+
+h2 {
+
+    color: black;
+    font-size: 1.5em;
+    font-weight: 560;
+    text-align: center;
+    margin: 20px auto 30px;
+
+}
+
+#search {
+
+    background-color: white;
+    width: 42.5%;
+    margin: 20px auto;
+    height: 10vh;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#search input {
+
+    width: 50%;
+    font-size: 1.1rem;
+    padding: 5px;
+}
+
+#search button {
+
+    padding: 5px;
+    border: 1px solid rgba(160, 159, 159, 0.568);
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+#search button:hover {
+    background-color: rgb(211, 211, 211);
+}
+
+#search button:focus {
+    background-color: rgb(228, 228, 228);
+}
+
+#form-container {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    height: auto;
+    background-color: transparent;
+    margin: auto;
+
+}
+
+label {
+
+    font-weight: 600;
+    color: black
+}
+
+input {
+
+    outline: none;
+
+}
+
+.form {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 85%;
+    height: fit-content;
+    border: 1px solid white;
+    background-color: white;
+    padding: 0vh 5vh 0vh 5vh;
+    border-color: 20px;
+    border-radius: 5px;
+
+}
+
+.fullbox {
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+}
+
+.fullbox label {
+
+    font-size: 1rem;
+
+}
+
+.fullbox input {
+
+    width: 95%;
+    margin: 1.5vh;
+    padding: 1.5%;
+    font-size: 1rem
+}
+
+.double-box {
+
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+}
+
+.halfbox {
+
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 50%;
+    margin: 1vh 0vh 2vh 0vh;
+
+}
+
+.halfbox:nth-child(2) {
+
+    margin-left: auto;
+    margin-right: 0;
+
+}
+
+.halfbox label {
+
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.halfbox input {
+
+    width: 90%;
+    margin: 1.5vh;
+    padding: 3%;
+    font-size: 1rem
+}
+
+.halfbox select {
+
+    cursor: pointer;
+    width: 90%;
+    margin: 1.5vh;
+    padding: 3.4%;
+    font-size: 1rem;
+    border: none;
+    border-bottom: 1px solid rgb(160, 159, 159);
+
+}
+
+input:default:empty {
+
+    border-color: #CCC;
+
+
+}
+
+input:valid {
+
+    border: none;
+    border-bottom: 1px solid;
+    border-color: rgb(160, 159, 159);
+
+}
+
+input:invalid {
+
+    border-color: rgb(255, 77, 77);
+
+}
+
+/*-------------------------------*/
+
+.button-container {
+
+    margin-top: 25px;
+    padding-bottom: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.button-container button {
+
+    outline: none;
+    border: none;
+    border: 1px solid #ccc;
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 35px;
+    height: 45px;
+    width: 45%;
+    margin: auto;
+    padding: 3px;
+    cursor: pointer;
+    font-weight: 600;
+
+}
+
+.button-container button:hover {
+
+    background-color: #CCC
+}
+
+.button-container #cometerAlteracao {
+
+    background-image: url('../img/IconesFuncionario/Alterar.png');
+
+}
+
+.button-container #cancelarReserva {
+
+    background-image: url('../img/IconesFuncionario/Cancelar.png');
+
+}
+
+
+@media screen and (max-width: 1280px) {
+
+    #form-container,
+    #search {
+
+        width: 70vw;
+
+    }
+
+}
+
+@media screen and (max-width: 920px) {
+
+    #form-container {
+
+        width: 100%;
+
+    }
+
+    .form,
+    #search {
+
+        width: 75%;
+
+    }
+
+}
+
+
+@media screen and (max-width: 720px) {
+
+    header {
+
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .form,
+    #search {
+        width: 90%;
+    }
+
+    .fullbox {
+
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .fullbox:nth-child(5) {
+
+        margin-top: 20px;
+
+    }
+
+    .fullbox:nth-child(6) {
+
+        margin-top: 10px;
+
+    }
+
+    .double-box {
+
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .halfbox {
+
+        width: 100%;
+        margin: auto;
+
+    }
+
+    .halfbox label {
+
+        margin: 10px 0px 0px;
+
+    }
+
+    .halfbox input {
+
+        margin-bottom: 1vh;
+
+    }
+
+    #agreement {
+
+        margin-top: 25px;
+        text-align: center;
+
+    }
+
+    #btn-registrar {
+
+        width: 70%
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+
+    #cometerAlteracao {
+
+        text-align: right;
+
+    }
+
+    #cancelarReserva {
+
+        text-align: right;
+
+    }
+
+}

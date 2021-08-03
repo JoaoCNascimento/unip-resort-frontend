@@ -1,0 +1,429 @@
+* {
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif, Arial;
+
+}
+
+body {
+
+    background-color: #1c1c1c;
+
+}
+
+#link-container {
+
+    float: right;
+    margin-top: -65px;
+    margin-right: 17px;
+}
+
+#link-container a {
+
+    padding: 9px 20px;
+    margin: 10px;
+    text-decoration: none;
+    color: white;
+    background-color: rgb(77, 76, 76);
+    border-radius: 2px;
+
+}
+
+h1 {
+
+    margin-left: 30px;
+    color: white;
+    font-weight: 450;
+
+}
+
+/*---------------------------*/
+
+/* divs content */
+
+#container {
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 940px;
+    height: auto;
+    margin: auto;
+
+}
+
+.contentbox {
+
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    margin: 45px auto;
+    width: 100%;
+    height: 220px;
+    border-radius: 5px;
+    padding: 5px;
+
+}
+
+h3 {
+
+    font-size: 20px;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-weight: 700
+}
+
+.img-container {
+
+    border-right: 1px solid rgba(128, 128, 128, 0.281);
+    margin: auto;
+    width: 35%;
+    padding: 10px;
+
+}
+
+.img-container img {
+
+    display: flex;
+    margin: auto;
+    width: 100%;
+    border-radius: 5px;
+    margin: auto;
+
+}
+
+.descricao {
+
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    padding: 10px;
+    margin: auto;
+    overflow-y: auto;
+
+}
+
+.descricao h3 {
+
+    width: 100%;
+    margin: 5px auto;
+    text-align: center;
+    background-color: rgb(46, 46, 46);
+    color: white;
+    padding: 5px;
+
+}
+
+.descricao p {
+
+    margin: 10px;
+    text-align: justify;
+
+}
+
+.preco {
+
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    height: 100%;
+    padding: 10px;
+    margin: auto;
+    border-left: 1px solid rgba(128, 128, 128, 0.281);
+    text-align: center;
+
+}
+
+.preco h3 {
+
+    width: 100%;
+    margin: 5px auto;
+    text-align: center;
+    background-color: rgb(46, 46, 46);
+    color: white;
+    padding: 5px;
+
+}
+
+.preco p {
+
+    font-size: 20px;
+    margin: auto;
+    font-family: 'Segoe UI', sans-serif
+}
+
+button {
+
+    text-align: center;
+    border: none;
+    font-size: 18px;
+    width: 100%;
+    height: 25%;
+    background-color: rgb(46, 46, 46);
+    color: white;
+    outline: none;
+    border-radius: 5px;
+    margin: auto;
+
+}
+
+button:hover {
+
+    cursor: pointer;
+    background-color: rgba(49, 47, 47, 0.932);
+
+}
+
+button:focus {
+
+    background-color: rgb(41, 37, 37);
+
+}
+
+/*-----------------------------------------*/
+
+/*CHAT*/
+
+.chatbox {
+
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 20px 20px;
+    width: 350px;
+
+}
+
+#chat-content {
+
+    display: flex;
+    flex-direction: row;
+    background-color: #0f6fff;
+    color: white;
+    padding: 3px;
+    border-radius: 5px;
+    align-items: center;
+    cursor: pointer;
+
+}
+
+#chat-content:hover {
+
+    background-color: #0657d1;
+
+}
+
+#chat-content img {
+
+    margin: auto -30px auto 15px;
+
+}
+
+#chat-content p {
+
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin: auto;
+
+}
+
+#chat {
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: #2c2c2c;
+    height: 50vh;
+
+}
+
+#chat .pholder {
+
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    color: rgb(131, 130, 130)
+}
+
+#conversa {
+
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    background-color: white;
+    margin-top: 17px;
+    height: 80%;
+    width: 90%;
+    overflow: auto;
+    border-radius: 5px;
+    border: solid 1px rgba(201, 200, 200, 0.932);
+
+}
+
+#conversa ::-webkit-scrollbar {
+
+    width: 3px;
+
+}
+
+#conversa ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+#chat p {
+
+    font-size: 0.9rem;
+
+}
+
+.message-received,
+.message-sent {
+
+    border-radius: 5px;
+    width: 70%;
+
+}
+
+.message-sent {
+
+    background-color: #e2e2e2;
+    margin: 3px 3px 3px auto;
+
+}
+
+.message-received {
+
+    background-color: #85b6ff;
+    margin: 3px;
+
+}
+
+.message-received p,
+.message-sent p {
+
+    margin: 4px;
+
+}
+
+.chatcontrols {
+
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    align-items: center;
+    height: 20%;
+    width: 90%;
+
+}
+
+.chatcontrols textarea {
+
+    font-size: 0.9rem;
+    width: 80%;
+    height: 60%;
+    padding: 5px;
+    text-align: left;
+    resize: none;
+    border-radius: 5px;
+    border: solid 1px rgba(201, 200, 200, 0.932);
+    outline: none;
+
+}
+
+.chatcontrols::-webkit-scrollbar {
+
+    border-radius: 20px;
+
+}
+
+.chatcontrols button {
+
+    margin: auto 0px auto auto;
+    width: 8%;
+    height: 60%;
+    padding: 1.5rem;
+    border: none;
+    background-image: url('../img/iconechat/send.png');
+    background-size: 40px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgb(238, 232, 232);
+    border-radius: 5px;
+}
+
+.chatcontrols button:hover {
+
+    background-color: rgb(170, 170, 170);
+
+}
+
+@media screen and (max-width: 1000px) {
+
+    #container {
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        align-items: center;
+
+    }
+
+    .contentbox {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 300px;
+        height: 500px;
+        margin: 30px auto;
+        border-radius: 2px;
+    }
+
+    .img-container {
+
+        display: flex;
+        align-items: center;
+        border: none;
+        border-bottom: 1px solid gray;
+        width: 90%;
+        margin: auto;
+
+    }
+
+    .img-container img {
+
+        width: 90%;
+        margin: 0px auto 10px;
+
+    }
+
+    .descricao {
+
+        width: 90%;
+        border-bottom: 1px solid gray;
+
+    }
+
+    .preco {
+
+        border: none;
+        width: 90%;
+
+    }
+
+    .preco button {
+
+        margin: auto;
+
+    }
+
+}

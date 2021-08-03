@@ -1,0 +1,251 @@
+* {
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif, Verdana;
+
+}
+
+body {
+
+    background-color: #1C1C1C;
+
+}
+
+*::selection {
+
+    background-color: rgb(226, 226, 226);
+    color: black;
+
+}
+
+.searchBox {
+
+    padding: 25px;
+    background-color: white;
+    width: 70%;
+    border-radius: 5px;
+    margin: 20px auto;
+
+}
+
+.searchBox h2 {
+
+    font-weight: 560;
+
+}
+
+.searchBox input {
+
+    display: flex;
+    flex-direction: column;
+    font-size: 1.1rem;
+    width: 85%;
+    height: 38px;
+    padding: 5px;
+    margin-top: 15px;
+    border: none;
+    outline: none;
+    border-bottom: 1.5px solid rgb(80, 80, 80);
+
+}
+
+.searchBox button {
+
+    background-image: url('../img/icones/pesquisar.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 35px 35px;
+    border: none;
+    background-color: transparent;
+    width: 15%;
+    height: 38px;
+    margin-top: 15px;
+    outline: none;
+}
+
+.searchBox button:hover {
+
+    cursor: pointer;
+    background-color: #CCC;
+
+}
+
+.searchBar {
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+/*------------------------------------*/
+
+.resultado {
+
+    background-color: white;
+    width: 70%;
+    padding: 20px;
+    margin: 50px auto;
+    border-radius: 5px;
+
+}
+
+.resultado h3 {
+
+    background-color: #0099ff;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: 600;
+    color: white;
+    text-align: center;
+
+}
+
+.resultado span {
+
+    font-weight: 560
+
+}
+
+.resultado p {
+
+    margin: 15px;
+
+}
+
+/*----------------------------*/
+
+.form {
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+.form label {
+
+    margin: 15px auto;
+
+}
+
+.form input {
+
+    font-size: 1rem;
+    padding: 5px;
+    margin: 0px auto 10px;
+    width: 60%;
+
+}
+
+.form select {
+
+    font-size: 1rem;
+    padding: 5px;
+    margin: 0px auto 10px;
+    width: 60%;
+
+}
+
+.button-container {
+
+    margin-top: 25px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.button-container button {
+
+    outline: none;
+    border: none;
+    border: 1px solid #ccc;
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 35px;
+    height: 45px;
+    width: 45%;
+    margin: auto;
+    padding: 3px;
+    cursor: pointer;
+    font-weight: 600;
+
+}
+
+.button-container button:hover {
+
+    background-color: #CCC
+
+}
+
+.button-container #cometerAlteracao {
+
+    background-image: url('../img/IconesFuncionario/Alterar.png');
+
+}
+
+.button-container #cancelarReserva {
+
+    background-image: url('../img/IconesFuncionario/Cancelar.png');
+
+}
+
+@media screen and (min-width: 1024px) {
+
+    .searchBox {
+
+        width: 680px
+
+    }
+
+    .resultado {
+
+        width: 680px;
+
+    }
+    
+}
+
+@media screen and (max-width: 600px) {
+
+    .searchBox {
+
+        width: 80%;
+
+    }
+
+    .resultado {
+
+        width: 80%;
+
+    }
+
+    .form select {
+
+        width: 70%;
+
+    }
+
+    .form input{
+
+        width: 70%;
+
+    }
+
+    #cometerAlteracao {
+
+        text-align: right;
+
+    }
+
+    #cancelarReserva {
+
+        text-align: right;
+
+    }
+    
+}

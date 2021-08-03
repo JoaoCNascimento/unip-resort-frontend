@@ -1,0 +1,252 @@
+* {
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+
+}
+
+body {
+
+    background-color: #1c1c1c;
+
+}
+
+#main-container {
+
+    display: flex;
+    flex-direction: column;
+    width: 85vh;
+    height: auto;
+    margin: 50px auto;
+    background-color: white;
+    border-radius: 5px;
+    justify-content: space-around;
+
+}
+
+#check, #checkSemCadastro {
+
+    display: flex;
+    background-color: white;
+    width: 85vh;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid black;
+    margin: 30px auto;
+
+}
+
+#check:hover , #checkSemCadastro:hover {
+
+    cursor: pointer;
+    background-color: #CCC;
+
+}
+
+
+#check h2, #checkSemCadastro h2 {
+
+    margin: auto;
+
+}
+
+/*FORMULÁRIO DE RESERVA*/
+
+#container {
+
+    display: flex;
+    flex-direction: column;
+    width: 85vh;
+    height: auto;
+    margin: 50px auto;
+    background-color: white;
+    border-radius: 5px;
+
+}
+
+h1 {
+
+    font-size: 1.6em;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 15px;
+    background-color: #1c9ff7;
+    color: white;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.content {
+
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.596);
+    margin: 10px 10px 15px 10px;
+    padding-bottom: 5px;
+
+}
+
+.img-container {
+
+    margin: 10px;
+
+}
+
+.img-container img {
+
+    border-radius: 3px;
+
+}
+
+.contentbox {
+
+    margin: 10px;
+
+}
+
+.contentbox h3 {
+
+    font-family: sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 10px;
+
+}
+
+.contentbox p {
+
+    text-align: justify;
+    margin: 10px;
+
+}
+
+#form-container {
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+/*COMPONENTES DO FORMULÁRIO*/
+
+#form-container form {
+
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+form input {
+
+    width: 60%;
+    margin: 20px;
+    padding: 5px;
+
+}
+
+form select {
+
+    width: 60%;
+    margin: 20px;
+    padding: 5px;
+
+}
+
+button {
+
+    padding: 10px 20px;
+    font-weight: 600;
+    font-size: 1.4rem;
+    color: white;
+    background-color: #0495f6;
+    border: 1px solid transparent;
+    outline: none;
+    cursor: pointer;
+    width: 170px;
+
+}
+
+button:hover {
+
+    background-color: #0386dd;
+
+}
+
+/*AJUSTES RESPONSIVOS*/
+
+@media screen and (max-width: 920px) {
+    
+    #main-container {
+
+        width: 90%;
+
+    }
+
+    #check, #checkSemCadastro {
+
+        width: 90%;
+
+    }
+
+    .content {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+}
+
+@media screen and (max-width: 650px) {
+
+    header {
+
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    header div {
+
+        display: flex;
+
+    }
+
+    header img {
+
+        margin: auto;
+
+    }
+
+    #link-container {
+
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        margin: 20px auto;
+
+    }
+    
+    #link-container a {
+        
+        text-align: center;
+        text-decoration: none;
+        color: white;
+        background-color: rgb(77, 76, 76);
+        border-radius: 2px;
+    
+    }
+
+    .img-container img {
+    
+        width: 100%;
+        height: auto;
+
+    }
+
+}

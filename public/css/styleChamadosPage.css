@@ -1,0 +1,149 @@
+* {
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif, Verdana;
+
+}
+
+body {
+
+    background-color: #1C1C1C;
+
+}
+
+#main-container {
+
+    padding: 20px;
+    width: 800px;
+    margin: auto;
+
+}
+
+#main-container h2 {
+
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #03b0f4;
+    text-transform: uppercase;
+    text-align: center;
+    color: white;
+    padding: 5px;
+    width: 100%;
+
+}
+
+.chamadosPendentes {
+
+    margin: 40px auto;
+    border-radius: 5px;
+    background-color: white;
+    padding-bottom: 5px;
+    width: 100%;
+
+}
+
+.chamadosPendentes p {
+
+    margin: 20px;
+
+}
+
+.nome {
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 5px;
+    margin: 20px auto;
+    width: 40%;
+    height: 40px;
+    background-color: rgb(51, 51, 51);
+
+}
+
+.nome:hover {
+
+    background-color: rgb(42, 42, 42);
+    cursor: pointer;
+
+}
+
+.nome img {
+
+    height: 35px;
+    width: 36px;
+
+}
+
+.nome p {
+
+    margin: auto;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+
+}
+
+.chamadosPendentes small {
+
+    margin: 20px;
+
+}
+
+.chamadosAtendidos {
+
+    border-radius: 5px;
+    margin: 40px auto;
+    padding-bottom: 5px;
+    width: 100%;
+    background-color: white;
+
+}
+
+table {
+
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    border: 1px solid rgb(153, 153, 153);
+    border-bottom: 5px solid rgb(153, 153, 153);
+
+}
+
+thead {
+
+    background-color: rgb(43, 43, 43);
+    text-shadow: rgb(80, 79, 79) 0.1em 0.1em 0.2em
+
+}
+
+th {
+    
+    padding: 10px;
+    color: white;
+
+}
+
+td {
+
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid rgb(153, 153, 153);
+
+}
+
+tr:hover {
+
+    background-color: rgb(70, 70, 70);
+    color: white;
+
+}
+
+#rodape {
+
+    background-color: rgb(42, 42, 42);
+    padding: 5px;
+
+}
