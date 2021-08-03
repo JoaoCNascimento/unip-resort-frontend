@@ -21,20 +21,6 @@
     --light-text-weight: 300;
 }
 
-/*
-:root {
-
-    --back-color: #1c1c1c;
-    --standard: #1c1c1c;
-    --secondary: rgb(80,80,80);
-    --font-color: white;
-
-    
-    --light-text-font: "gotham";
-    --light-text-weight: 300;
-}
-*/
-
 *::selection {
 
     background-color: rgb(226, 226, 226);
@@ -42,9 +28,7 @@
 
 }
 
-/*-------------------*/
-
-/* Body, header, nav */
+/* body, header, nav */
 
 
 body {
@@ -88,7 +72,7 @@ header p {
     text-align: center;
     color: var(--font-color);
     font-family: var(--light-text-font);
-    font-weight: 300;
+    font-weight: var(--light-text-weight);
     transition: 0.10s;
 }
 
@@ -99,7 +83,6 @@ header p {
 
 nav a {
     width: 25%;
-    background-color: white;
     font-family: var(--light-text-font);
     font-weight: var(--light-text-weight);
     padding: 10px;
@@ -140,6 +123,8 @@ p {
     padding: 20px;
     flex-direction: column;
 }
+
+/* bloco de "Nossos Serviços" */
 
 .last-block {
     flex-direction: column;
@@ -187,6 +172,8 @@ p {
     font-weight: var(--light-text-weight);
 }
 
+/* rodapé */
+
 footer {
     flex-direction: column;
     padding: 20px;
@@ -202,6 +189,7 @@ footer {
     width: 50%;
 }
 
+/* cor dos ícones do footer */
 .green {
     color: green;
 }
@@ -222,6 +210,8 @@ footer {
     color: #c28e00;
 }
 
+/* rodapé de copyright */
+
 small {
     text-align: center;
     font-family: var(--light-text-font);
@@ -232,6 +222,7 @@ small {
     margin: 10px -20px -20px;
 }
 
+/* ajustes para responsividade */
 @media screen and (min-width: 1280px) {
     .content-block img {
         margin: auto;
