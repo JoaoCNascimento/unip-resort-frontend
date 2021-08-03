@@ -9,6 +9,7 @@
     --back-color: white;
     --standard: #0c090D;
     --secondary: #F9C22E;
+    --secondary-light: #f5d06c;
     --terciary: #53B3CB;
     --terciary-light:#7fcde0;
     --quartenary: #e01a4f;
@@ -103,7 +104,7 @@ button {
 }
 
 button:hover {
-    background-color: #f5d06c;
+    background-color: var(--secondary-light);
 }
 
 p {
