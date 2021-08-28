@@ -1,0 +1,29 @@
+<header>
+  <a routerLink="/">
+    <img src="/assets/img/logo/unip-resort-logo.png" alt="Logo" width="200" height="100">
+  </a>
+
+  <span class="hamburguer" (click)="revelarMenu()">
+    <fa-icon [icon]="faBars"></fa-icon>
+  </span>
+
+  <div id="menu" class="sidenav">
+
+    <p class="close-btn" (click)="esconderMenu()">&times;</p>
+
+    <a routerLink="./" routerLinkActive="selected" [routerLinkActiveOptions]="{exact: true}">
+      <fa-icon [icon]=" faHotel"></fa-icon> Reservas
+    </a>
+    <a routerLink="minhas-reservas" routerLinkActive="selected">
+      <fa-icon [icon]="faTable"></fa-icon> Minhas Reservas
+    </a>
+    <a routerLink="meu-perfil" routerLinkActive="selected">
+      <fa-icon [icon]="faUser"></fa-icon> Meu perfil
+    </a>
+    <a href="index.html" routerLinkActive="selected">
+      <fa-icon [icon]="faDoor"></fa-icon> Sair
+    </a>
+  </div>
+</header>
+
+<router-outlet></router-outlet>

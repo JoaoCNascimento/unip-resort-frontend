@@ -1,0 +1,169 @@
+/*display flex*/
+
+body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+header,
+#menu {
+  display: flex;
+}
+
+header {
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--standard);
+}
+
+.hamburguer {
+  display: none;
+  position: absolute;
+  right: 0;
+  margin-right: 15px;
+  font-size: 2.4rem;
+  color: var(--secondary);
+  cursor: pointer;
+}
+
+.close-btn {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 15px;
+  margin-top: -5px;
+  color: var(--standard);
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.hamburguer:hover {
+  color: var(--secondary-light);
+}
+
+#menu {
+  width: 800px;
+  justify-content: space-between;
+}
+
+#menu .selected {
+  border: 2px solid var(--secondary);
+  background-color: var(--standard);
+  color: var(--secondary);
+}
+
+#menu a {
+
+  border: 2px solid transparent;
+  background-color: var(--secondary);
+  border-radius: 5px;
+  text-align: center;
+
+  font-weight: var(--light-text-weight);
+  color: var(--standard);
+
+  padding: 10px;
+  width: 25%;
+  margin: 5px;
+
+  transition: 0.15s;
+  font-size: 1rem;
+}
+
+#menu a:hover {
+  background-color: var(--secondary-light);
+  color: var(--standard);
+}
+
+@media screen and (max-width: 930px) {
+
+  .hamburguer {
+    display: inline;
+  }
+
+  .close-btn {
+    margin-top: 5px;
+    display: inline;
+  }
+
+  #menu {
+    background-color: var(--secondary);
+    padding: 15px;
+    align-items: center;
+    margin: auto;
+    width: 95%;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 300px;
+  }
+
+  #menu a {
+    margin-top: 30px;
+    margin-bottom: -15px;
+    width: 100%;
+  }
+
+  .sidenav {
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: -300px;
+    overflow-x: hidden;
+  }
+
+  header {
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+/*
+
+  #menu {
+  padding: 15px;
+  align-items: center;
+  margin: 10px auto;
+  width: 95%;
+  flex-direction: column;
+  width: 300px;
+  background-color: var(--standard);
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.hamburguer {
+  position: absolute;
+  right: 0;
+  margin-right: 15px;
+  font-size: 2.4rem;
+  color: #FFF;
+  cursor: pointer;
+}
+
+.close-btn {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 15px;
+  margin-top: -5px;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+*/

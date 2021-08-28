@@ -1,0 +1,31 @@
+<h2>Olá, João. Aqui estão as suas reservas</h2>
+
+<div id="table-container">
+  <table>
+    <thead>
+      <th>#</th>
+      <th>Categoria</th>
+      <th>Data de CheckIN</th>
+      <th>Data de CheckOut</th>
+      <th>Valor</th>
+      <th>Status</th>
+      <th>Ações</th>
+    </thead>
+
+    <tbody *ngIf="reservas">
+      <tr *ngFor="let reserva of reservas">
+        <td>{{ reserva.id }}</td>
+        <td>{{ reserva.categoria }}</td>
+        <td>{{ reserva.dataCheckIn }}</td>
+        <td>{{ reserva.dataCheckOut }}</td>
+        <td>{{ reserva.valor | currency:'BRL'}}</td>
+        <td>{{ reserva.status }}</td>
+        <td>
+          <fa-icon [icon]="faEdit" class="fa fa-edit"></fa-icon>
+          <fa-icon [icon]="faTrash" class="fa fa-trash"></fa-icon>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p *ngIf="reservas.length == 0">Você não possui nenhuma reserva.</p>
+</div>

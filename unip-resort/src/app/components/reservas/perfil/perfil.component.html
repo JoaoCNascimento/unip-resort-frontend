@@ -1,0 +1,72 @@
+<div id="container">
+  <div id="form-container">
+
+    <form [formGroup]="form">
+
+      <h2>Meu Cadastro</h2>
+
+      <div class=" fullbox">
+        <label for="nome">Nome</label>
+        <input type="text" name="nome" id="nome" placeholder="Digite o seu nome completo" formControlName="nome">
+      </div>
+
+      <div class="double-box">
+
+        <div class="halfbox">
+          <label for="cpf">CPF/CNPJ</label>
+          <input type="text" name="cpf" id="cpf" placeholder="Digite seu CPF ou CNPJ" formControlName="cpf">
+        </div>
+
+        <div class="halfbox">
+          <label for="rg">RG</label>
+          <input type="text" name="rg" id="rg" placeholder="Digite seu RG" formControlName="rg">
+        </div>
+
+      </div>
+
+      <div class="double-box">
+
+        <div class="halfbox">
+
+          <label for="sexo">Sexo</label>
+          <select formControlName="sexo" name="sexo" id="sexo">
+            <option value="M">Masculino</option>
+            <option value="F">Feminino</option>
+          </select>
+
+        </div>
+
+        <div class="halfbox">
+
+          <label for="nascimento">Data de nascimento</label>
+          <input formControlName="nascimento" type="date" name="nascimento" id="nascimento">
+
+        </div>
+
+      </div>
+
+      <!-- Fim da div MIDDLE -->
+
+      <div class="fullbox">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" placeholder="Digite o seu email" formControlName="email">
+      </div>
+
+
+      <!---------------------------------->
+
+      <div class="button-container">
+
+        <button id="cometerAlteracao" (click)="ativarEdicao()">
+          <fa-icon [icon]="faEdit"></fa-icon> Editar Cadastro
+        </button>
+        <button id="cancelarReserva">
+          <fa-icon [icon]="faTrash"></fa-icon> Excluir Minha Conta
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div id="container">   
+    <header>
+        <a routerLink="/">
+            <img src="/assets/img/logo/unip-resort-logo.png" width="200" height="100" alt="logo unip resort" draggable="false">
+        </a>
+    </header>
+    
+    <div id="form-container">
+    
+        <form>
+    
+            <h2>Faça o login para acessar a área de cliente</h2>
+    
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="Digite seu email">
+    
+            <label for="senha">Senha</label>
+            <input type="password" name="senha" id="password" placeholder="Digite sua senha">
+    
+    
+            <button type="submit" id="btn-entrar" onclick="window.open('areaCliente.html')">Entrar</button>
+    
+            <p>Ainda não tem uma conta? <a routerLink="/cadastrar">Cadastre-se agora!</a></p>
+    
+        </form>
+    </div>
+</div>
