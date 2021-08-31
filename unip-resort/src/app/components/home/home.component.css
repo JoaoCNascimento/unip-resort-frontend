@@ -144,17 +144,17 @@ p {
   border-radius: 50px;
   padding: 20px;
 
-  background-color: var(--blue);
-  color: var(--black);
-
+  font-weight: bold;
   text-align: center;
-  font-weight: var(--light-text-weight);
-  transition: 0.15s;
+
+  background: linear-gradient(to left, var(--blue) 50%, var(--blue-dark) 50%) right;
+  background-size: 200%;
+  transition: .5s ease-out;
+  color: var(--black);
 }
 
 .last-block a:hover {
-  font-weight: bold;
-  transform: scale(1.2, 1.2);
+  background-position: left;
 }
 
 /* rodapé */
