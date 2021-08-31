@@ -19,11 +19,24 @@ export class ReservasComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.redimemsionarJanela();
+    this.ajustarNavbar();
   }
 
 
-  redimemsionarJanela() {
+  /*
+    ________________________________
+    **********  JQUERY *************
+
+    As funções abaixo servem apenas para estilização da página.
+
+    ** ajustarNavbar **
+    Serve para ajustar a navbar de acordo com o tamanho da janela.
+
+    **esconderMenu / revelarMenu**
+    Exatamente o que está descrito.
+  */
+
+  ajustarNavbar() {
     $(window).resize(() => {
       if ($(window).width() > 900) {
         let menu = $("#menu");
@@ -51,7 +64,6 @@ export class ReservasComponent implements OnInit {
         let closebtn = $(".close-btn");
 
         menu.animate({ right: 0 }, 'fast')
-
         closebtn.show();
         menu.css("display", "flex");
       })
