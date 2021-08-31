@@ -34,6 +34,12 @@ const routes: Routes = [
   },
 
   {
+    path: 'funcionario',
+    loadChildren: () => import('./modules/funcionario/funcionario.module')
+      .then(m => m.FuncionarioModule)
+  },
+
+  {
     path: '**',
     redirectTo: ''
   }
