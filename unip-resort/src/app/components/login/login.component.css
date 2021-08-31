@@ -29,7 +29,7 @@ form,
 }
 
 h2 {
-  color: var(--back-color);
+  color: var(--white);
   font-weight: 500;
   text-align: center;
   margin-bottom: 30px;
@@ -41,20 +41,20 @@ form {
 }
 
 label {
-  color: var(--back-color);
+  color: var(--white);
   margin-bottom: 5px;
 }
 
 input {
   border: none;
-  border-bottom: 2px solid var(--back-color);
+  border-bottom: 2px solid var(--white);
   outline: none;
   background-color: transparent;
 
   margin-bottom: 25px;
   padding: 5px;
 
-  color: var(--back-color);
+  color: var(--white);
   font-size: 1rem;
   font-weight: var(--light-text-weight);
 
@@ -62,11 +62,11 @@ input {
 }
 
 input::placeholder {
-  color: var(--back-color);
+  color: var(--white);
 }
 
 input:focus {
-  border-color: #e01a4f;
+  border-color: var(--pink);
 }
 
 button {
@@ -74,23 +74,23 @@ button {
   border: none;
   padding: 10px;
   font-size: 1rem;
-  background-color: var(--secondary);
+  background-color: var(--golden);
   font-weight: var(--light-text-weight);
 }
 
 button:hover {
-  background-color: var(--secondary-light);
+  background-color: var(--golden-light);
 }
 
 p {
   text-align: center;
   margin: 50px auto;
-  color: var(--back-color);
+  color: var(--white);
   font-weight: var(--light-text-weight);
 }
 
 a {
-  color: var(--secondary);
+  color: var(--golden);
   font-weight: 500;
 }
 

@@ -1,10 +1,10 @@
 *::selection {
-  background-color: var(--secondary);
+  background-color: var(--golden);
 }
 
 /* body, header, nav */
 body {
-  background-color: var(--back-color);
+  background-color: var(--black);
 }
 
 /* display flex */
@@ -28,7 +28,7 @@ header {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  background-color: #0c090D;
+  background-color: var(--black);
 }
 
 header img {
@@ -36,7 +36,7 @@ header img {
 }
 
 header p {
-  color: white;
+  color: var(--white);
 }
 
 .header-buttons {
@@ -52,17 +52,16 @@ header p {
 .header-buttons a {
   width: 48%;
   padding: 10px 15px;
-  background-color: var(--secondary);
+  background-color: var(--golden);
   border-radius: 5px;
   text-align: center;
-  color: var(--font-color);
+  color: var(--black);
   font-weight: var(--light-text-weight);
   transition: 0.10s;
 }
 
 .header-buttons a:hover {
-  background-color: white;
-  color: var(--standard);
+  background-color: var(--golden-light);
 }
 
 nav a {
@@ -70,19 +69,19 @@ nav a {
   font-weight: var(--light-text-weight);
   padding: 10px;
   text-align: center;
-  background-color: var(--terciary);
-  color: var(--standard);
+  background-color: var(--blue);
+  color: var(--black);
   transition: 0.15s;
 }
 
 nav a:hover {
-  background-color: var(--terciary-light);
-  color: var(--font-color);
+  background-color: var(--blue-light);
+  color: var(--black);
 }
 
 h2 {
   text-align: center;
-  background-color: var(--secondary);
+  background-color: var(--golden);
   padding: 10px;
   font-weight: 500;
 }
@@ -90,7 +89,7 @@ h2 {
 p {
   padding: 10px 0px;
   font-weight: var(--light-text-weight);
-  color: var(--font-color);
+  color: var(--black);
   text-align: justify;
 }
 
@@ -123,7 +122,7 @@ p {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  color: var(--font-color);
+  color: var(--black);
   font-weight: var(--light-text-weight);
 
 
@@ -136,7 +135,7 @@ p {
 }
 
 .row fa-icon {
-  color: var(--standard);
+  color: var(--black);
   font-size: 1.6rem;
 }
 
@@ -145,8 +144,8 @@ p {
   border-radius: 50px;
   padding: 20px;
 
-  background-color: var(--terciary);
-  color: var(--standard);
+  background-color: var(--blue);
+  color: var(--black);
 
   text-align: center;
   font-weight: var(--light-text-weight);
@@ -184,12 +183,8 @@ footer {
   color: rgb(255, 32, 32);
 }
 
-.pink {
-  color: var(--quartenary);
-}
-
 .blue {
-  color: rgb(21, 44, 255);
+  color: rgb(21, 122, 255);
 }
 
 .yellow {
@@ -203,7 +198,7 @@ small {
   font-weight: var(--light-text-weight);
   color: white;
   padding: 10px;
-  background-color: var(--standard);
+  background-color: var(--black);
   margin: 10px -20px -20px;
 }
 

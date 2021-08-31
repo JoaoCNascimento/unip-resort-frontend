@@ -1,95 +1,113 @@
 <header>
 
-    <a>
-        <img src="/assets/img/logo/unip-resort-logo.png" width="200" height="100">
-    </a>
+  <a>
+    <img src="/assets/img/logo/unip-resort-logo.png" width="200" height="100">
+  </a>
 
-    <div class="header-buttons">
+  <div class="header-buttons">
 
-        <p>Entrar como:</p>
+    <p>Entrar como:</p>
 
-        <div class="buttons">
-            <a routerLink="/login"> Cliente </a>
+    <div class="buttons">
+      <a routerLink="/login"> Cliente </a>
 
-            <a routerLink="/login-funcionario"> Funcionário </a>
-        </div>
+      <a routerLink="/login-funcionario"> Funcionário </a>
     </div>
+  </div>
 
 </header>
 
 <nav>
-    <a routerLink="/reservas">Reservas</a>        
-    <a href="#services">Nossos Serviços</a>
-    <a href="#contato">Fale Conosco</a>
-    <a routerLink="/cadastrar">Cadastrar-se</a>
+  <a routerLink="/reservas">Reservas</a>
+  <a href="#services">Nossos Serviços</a>
+  <a href="#contato">Fale Conosco</a>
+  <a routerLink="/cadastrar">Cadastrar-se</a>
 </nav>
 
 <!-- first-content -->
 <div class="content">
 
-    <div class="content-block">
-        <h2>Quem somos nós?</h2>
-        <p>Nós da UNIP Resort temos orgulho de representar, há mais de 90 anos, tradição e destaque na baixada santista.
-            Tendo sido desde sempre um referencial de hospitalidade e cordialidade para todos!
-        </p>
-    </div>
+  <div class="content-block">
+    <h2>Quem somos nós?</h2>
+    <p>Nós da UNIP Resort temos orgulho de representar, há mais de 90 anos, tradição e destaque na baixada santista.
+      Tendo sido desde sempre um referencial de hospitalidade e cordialidade para todos!
+    </p>
+  </div>
 
-    <div class="content-block">
-        <img src="assets/img/slider/slide1.jpg" alt="Imagem de um dos locais do hotel." id="slider">
-    </div>
+  <div class="content-block">
+    <img src="assets/img/slider/slide1.jpg" alt="Imagem de um dos locais do hotel." id="slider">
+  </div>
 
 </div>
 
 <!-- second-content -->
 <div class="content">
 
-    <div class="content-block last">
-        <img src="assets/img/logo/vaultboyUR.png" alt="Imagem contendo 'mascote' do hotel.">
-    </div>
+  <div class="content-block last">
+    <img src="assets/img/logo/vaultboyUR.png" alt="Imagem contendo 'mascote' do hotel.">
+  </div>
 
-    <div class="content-block">
-        <h2>O que fazemos?</h2>
-        <p> Oferecemos a melhor hospedagem de toda a baixada santista!</p>
-    </div>
+  <div class="content-block">
+    <h2>O que fazemos?</h2>
+    <p> Oferecemos a melhor hospedagem de toda a baixada santista!</p>
+  </div>
 
 </div>
 
 <div class="last-block">
 
-    <h2 id="services">Nossos Serviços</h2>
+  <h2 id="services">Nossos Serviços</h2>
 
-    <div class="list">
-            
-        <div class="row"> <fa-icon [icon]="faBed"></fa-icon> Quartos arejados e aconchegantes.</div>
-        <div class="row"> <fa-icon [icon]="faPool"></fa-icon> Áreas de lazer espaçosas.</div>
-        <div class="row"> <fa-icon [icon]="faWifi"></fa-icon> Acesso livre e gratuito à internet.</div>
-        <div class="row"> <fa-icon [icon]="faGamepad"></fa-icon> Opções variadas de diversão.</div>
-        <div class="row"> <fa-icon [icon]="faClock"></fa-icon> Serviço de quarto 24 horas.</div>
-        <div class="row"> <fa-icon [icon]="faPlus"></fa-icon> E muito mais!</div>
-            
+  <div class="list">
+
+    <div class="row">
+      <fa-icon [icon]="faBed"></fa-icon> Quartos arejados e aconchegantes.
+    </div>
+    <div class="row">
+      <fa-icon [icon]="faPool"></fa-icon> Áreas de lazer espaçosas.
+    </div>
+    <div class="row">
+      <fa-icon [icon]="faWifi"></fa-icon> Acesso livre e gratuito à internet.
+    </div>
+    <div class="row">
+      <fa-icon [icon]="faGamepad"></fa-icon> Opções variadas de diversão.
+    </div>
+    <div class="row">
+      <fa-icon [icon]="faClock"></fa-icon> Serviço de quarto 24 horas.
+    </div>
+    <div class="row">
+      <fa-icon [icon]="faPlus"></fa-icon> E muito mais!
     </div>
 
-    <a routerLink="/reservas">Clique aqui e faça sua reserva agora!</a>
+  </div>
+
+  <a routerLink="/reservas">Clique aqui e faça sua reserva agora!</a>
 
 </div>
 
 <footer>
 
-    <h2>Fale Conosco</h2>
+  <h2>Fale Conosco</h2>
 
-    <div id="contato" class="footer-content">
-        <div>
-            <p> <fa-icon [icon]="faPhone" class="blue"></fa-icon> (13) 3488-5565</p>
-            <p> <fa-icon [icon]="faMark" class="red"></fa-icon> Rua Francisco de Assis 14094, Vila Antártica, Santos, SP</p>
-            <p> <fa-icon [icon]="faEnvelope" class="yellow"></fa-icon> unipresort@gmail.com</p>
-        </div>
-
-        <div>
-            <p> <img src="/assets/img/icons/icon-whatsApp.png" width="16"> (13) 99184-5535</p>
-            <p> <img src="/assets/img/icons/icon-facebook.png" width="16"> @unipresort</p>
-            <p> <img src="/assets/img/icons/icon-instagram.png" width="16"> @unipresortoficial</p>
-        </div>
+  <div id="contato" class="footer-content">
+    <div>
+      <p>
+        <fa-icon [icon]="faPhone" class="blue"></fa-icon> (13) 3488-5565
+      </p>
+      <p>
+        <fa-icon [icon]="faMark" class="red"></fa-icon> Rua Francisco de Assis 14094, Vila Antártica, Santos, SP
+      </p>
+      <p>
+        <fa-icon [icon]="faEnvelope" class="yellow"></fa-icon> unipresort@gmail.com
+      </p>
     </div>
 
-    <small>UNIP Resort 2021 © Todos os direitos reservados.</small>
+    <div>
+      <p> <img src="/assets/img/icons/icon-whatsApp.png" width="16"> (13) 99184-5535</p>
+      <p> <img src="/assets/img/icons/icon-facebook.png" width="16"> @unipresort</p>
+      <p> <img src="/assets/img/icons/icon-instagram.png" width="16"> @unipresortoficial</p>
+    </div>
+  </div>
+
+  <small>UNIP Resort 2021 &copy; Todos os direitos reservados.</small>
 </footer>

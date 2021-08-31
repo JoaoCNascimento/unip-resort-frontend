@@ -33,7 +33,7 @@ form {
 
 h2 {
   text-align: center;
-  color: var(--back-color);
+  color: var(--white);
   font-weight: 500;
   margin-bottom: 15px;
 }
@@ -59,7 +59,7 @@ h2 {
 label,
 input,
 select {
-  color: var(--back-color);
+  color: var(--white);
 }
 
 label {
@@ -68,7 +68,7 @@ label {
 
 input,
 select {
-  border-bottom: 2px solid var(--back-color);
+  border-bottom: 2px solid var(--white);
   font-weight: var(--light-text-weight);
   font-size: 1rem;
   padding: 5px;
@@ -79,7 +79,7 @@ select {
 
 input:focus,
 select:focus {
-  border-color: var(--quartenary);
+  border-color: var(--pink);
 }
 
 #checkbox:hover {
@@ -94,7 +94,7 @@ select:focus {
 }
 
 a {
-  color: var(--secondary);
+  color: var(--golden);
   font-weight: 500;
 }
 
@@ -106,7 +106,7 @@ button {
   cursor: pointer;
   padding: 10px;
 
-  background-color: var(--secondary);
+  background-color: var(--golden);
 
   font-weight: var(--light-text-weight);
   font-size: 1rem;
@@ -115,7 +115,7 @@ button {
 }
 
 button:hover {
-  background-color: var(--secondary-light);
+  background-color: var(--golden-light);
 }
 
 @media screen and (max-width: 700px) {

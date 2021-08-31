@@ -14,7 +14,7 @@ header,
 header {
   align-items: center;
   justify-content: space-between;
-  background-color: var(--standard);
+  background-color: var(--black);
 }
 
 .hamburguer {
@@ -23,7 +23,7 @@ header {
   right: 0;
   margin-right: 15px;
   font-size: 2.4rem;
-  color: var(--secondary);
+  color: var(--golden);
   cursor: pointer;
 }
 
@@ -34,14 +34,14 @@ header {
   right: 0;
   margin-right: 15px;
   margin-top: -5px;
-  color: var(--standard);
+  color: var(--black);
   font-size: 2rem;
   font-weight: bold;
   cursor: pointer;
 }
 
 .hamburguer:hover {
-  color: var(--secondary-light);
+  color: var(--golden-light);
 }
 
 #menu {
@@ -50,20 +50,25 @@ header {
 }
 
 #menu .selected {
-  border: 2px solid var(--secondary);
-  background-color: var(--standard);
-  color: var(--secondary);
+  border: 2px solid var(--golden);
+  background-color: var(--black);
+  color: var(--golden);
+}
+
+#menu .selected:hover {
+  background-color: var(--black);
+  color: var(--golden)
 }
 
 #menu a {
 
   border: 2px solid transparent;
-  background-color: var(--secondary);
+  background-color: var(--golden);
   border-radius: 5px;
   text-align: center;
 
   font-weight: var(--light-text-weight);
-  color: var(--standard);
+  color: var(--black);
 
   padding: 10px;
   width: 25%;
@@ -74,8 +79,8 @@ header {
 }
 
 #menu a:hover {
-  background-color: var(--secondary-light);
-  color: var(--standard);
+  background-color: var(--golden-light);
+  color: var(--black);
 }
 
 @media screen and (max-width: 930px) {
@@ -90,7 +95,7 @@ header {
   }
 
   #menu {
-    background-color: var(--secondary);
+    background-color: var(--golden);
     padding: 15px;
     align-items: center;
     margin: auto;
