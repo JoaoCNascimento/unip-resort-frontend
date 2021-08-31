@@ -1,0 +1,61 @@
+<header>
+  <img src="assets/img/logo/unip-resort-logo.png" alt="Logo da empresa" width="200" height="100">
+
+  <span class="hamburguer" (click)="revelarMenu()">
+    <fa-icon [icon]="faBars"></fa-icon>
+  </span>
+
+
+</header>
+<nav>
+
+  <p class="close-btn" (click)="esconderMenu()">&times;</p>
+
+  <a>
+    <fa-icon [icon]="faPlus"></fa-icon>
+    <p>Nova Reserva</p>
+  </a>
+
+  <a>
+    <fa-icon [icon]="faEdit"></fa-icon>
+    <p>Alterar Reserva</p>
+  </a>
+
+  <a>
+    <fa-icon [icon]="faTrash"></fa-icon>
+    <p>Cancelar Reserva</p>
+  </a>
+
+  <a>
+    <fa-icon [icon]="faPhone"></fa-icon>
+    <p>Chamados</p>
+  </a>
+
+  <a>
+    <fa-icon [icon]="faTicket"></fa-icon>
+    <p>Check In</p>
+  </a>
+
+  <a>
+    <fa-icon [icon]="faCheckOut"></fa-icon>
+    <p>Check Out</p>
+  </a>
+
+  <a>
+    <fa-icon [icon]="faUserPlus"></fa-icon>
+    Cadastrar Cliente
+  </a>
+
+  <a>
+    <fa-icon [icon]="faUserEdit"></fa-icon>
+    Editar cliente
+  </a>
+
+
+  <a>
+    <fa-icon [icon]="faDoorOpen"></fa-icon>
+    Sair
+  </a>
+
+</nav>
+<router-outlet></router-outlet>

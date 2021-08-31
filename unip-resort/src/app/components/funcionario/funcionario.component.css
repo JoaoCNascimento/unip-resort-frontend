@@ -1,0 +1,88 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--black);
+}
+
+.hamburguer {
+  display: none;
+  right: 0;
+  margin-right: 15px;
+  color: var(--golden);
+  cursor: pointer;
+}
+
+.hamburguer fa-icon {
+  font-size: 2.4rem;
+}
+
+.close-btn {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 15px;
+  margin-top: -5px;
+  color: var(--black);
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.hamburguer:hover {
+  color: var(--golden-light);
+}
+
+nav {
+  display: flex;
+  width: 100%;
+  background-color: var(--golden);
+}
+
+nav a {
+  display: flex;
+  align-items: center;
+  width: 11.55555%;
+  justify-content: center;
+  text-align: center;
+  padding: 15px 20px;
+  cursor: pointer;
+}
+
+nav a:hover {
+  background-color: var(--golden-light);
+}
+
+fa-icon {
+  margin-right: 5px;
+  font-size: 1.2rem;
+}
+
+@media screen and (max-width: 1520px) {
+  .hamburguer {
+    display: inline;
+  }
+
+  .close-btn {
+    margin-top: 5px;
+    display: inline;
+  }
+
+  nav {
+    flex-direction: column;
+    height: 100%;
+    width: 300px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    overflow-x: hidden;
+  }
+
+  nav a {
+    width: 100%;
+    margin-top: 45px;
+    margin-bottom: -25px;
+  }
+}
