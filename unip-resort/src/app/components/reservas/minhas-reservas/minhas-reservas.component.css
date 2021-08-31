@@ -33,11 +33,11 @@ table {
 thead th {
   background-color: #e01a4f;
   padding: 15px;
-  color: var(--back-color);
+  color: var(--white);
 }
 
 tr:hover {
-  background-color: var(--terciary-light);
+  background-color: var(--blue-light);
 }
 
 td {
@@ -57,7 +57,7 @@ td+td+td+td+td+td+td .fa {
 }
 
 .fa-edit {
-  color: var(--blue-darker);
+  color: var(--blue);
 }
 
 .fa-trash {

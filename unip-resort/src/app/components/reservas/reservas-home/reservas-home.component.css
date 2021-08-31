@@ -43,7 +43,7 @@ button {
 }
 
 .descricao h3 {
-  background-color: var(--terciary);
+  background-color: var(--blue);
   margin-bottom: 10px;
 }
 
@@ -57,7 +57,7 @@ button {
 }
 
 .valor h3 {
-  background-color: var(--quartenary);
+  background-color: var(--pink);
 }
 
 .valor p {
@@ -68,7 +68,7 @@ button {
 
 .contentbox button {
   padding: 15px;
-  background-color: var(--secondary);
+  background-color: var(--golden);
   font-size: 1rem;
   font-weight: var(--light-text-weight);
   width: 100%;
@@ -77,7 +77,7 @@ button {
 }
 
 .contentbox button:hover {
-  background-color: var(--secondary-light);
+  background-color: var(--golden-light);
 }
 
 #chatbox {
@@ -93,6 +93,7 @@ button {
   width: 60px;
   background-color: #e01a4f;
   transition: 0.30s;
+  box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.623);
 }
 
 #chatbox:hover {
@@ -106,7 +107,7 @@ button {
 }
 
 #chatbox p {
-  color: var(--back-color);
+  color: var(--white);
   font-weight: var(--light-text-weight);
   display: none;
   text-align: center;
@@ -118,5 +119,5 @@ button {
 
 #chatbox fa-icon {
   font-size: 1.5rem;
-  color: var(--back-color);
+  color: var(--white);
 }
