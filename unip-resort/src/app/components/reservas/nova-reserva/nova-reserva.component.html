@@ -1,0 +1,59 @@
+<div id="container">
+
+  <div id="form-container">
+    <h2>Detalhes da reserva</h2>
+
+    <div class="content">
+
+      <div class="img">
+        <img src="assets/img/quartos_hotel/quarto(1).jpg" alt="Quarto do hotel">
+      </div>
+
+      <div class="contentbox">
+
+        <h3>Suíte master</h3>
+
+        <p> Cama de casal, Smart Tv 44", acesso liberado à internet, áreas de lazer e banheiras
+          climatizadas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi distinctio autem natus
+          similique nostrum. Asperiores sit, atque voluptatum quo dolor necessitatibus, fugit ipsa natus
+          tempora quaerat animi, libero obcaecati iste.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <form [formGroup]="form">
+
+      <label for="apartamento">Selecione a categoria do quarto </label>
+      <select name="apartamento" id="apartamento-selectbox">
+
+        <option value="Suíte Master">Suíte Master</option>
+        <option value="Suíte VIP">Suíte VIP</option>
+        <option value="Suíte de temporada">Suíte de temporada</option>
+
+      </select>
+
+      <label for="numeroHospedes">Quantidade de hóspedes: </label>
+      <input type="number" name="numeroHospedes" id="numeroHospedes" min="1" max="6">
+
+      <label for="checkIn">Data de check-in</label>
+      <input type="date" name="checkIn" id="checkIn">
+
+      <label for="checkOut">Data de check-out</label>
+      <input type="date" name="checkOut" id="checkOut">
+
+      <label for="cupom">Cupom de desconto</label>
+      <input type="text" name="cupom" id="cupom" placeholder="Digite o código do seu cupom">
+
+      <label for="valorTotal">Valor Total</label>
+      <input type="text" placeholder="R$" disabled>
+
+      <button onclick="window.open('pagamento.html')">Pagamento</button>
+
+    </form>
+
+  </div>
+
+</div>
