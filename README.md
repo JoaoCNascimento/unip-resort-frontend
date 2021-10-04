@@ -1,3 +1,3 @@
 # UNIP Resort - frontend
 
-Views e arquivos estáticos para o frontend do sistema do hotel unip resort.
+Views, arquivos estáticos para o frontend do sistema do hotel unip resort e frontend feito em angular 9.
