@@ -9,6 +9,10 @@ import { PerfilComponent } from 'src/app/components/reservas/perfil/perfil.compo
 import { MinhasReservasComponent } from 'src/app/components/reservas/minhas-reservas/minhas-reservas.component';
 import { ReservasHomeComponent } from 'src/app/components/reservas/reservas-home/reservas-home.component';
 import { NovaReservaComponent } from 'src/app/components/reservas/nova-reserva/nova-reserva.component';
+import { DetalhesNovaReservaComponent } from 'src/app/components/reservas/nova-reserva/detalhes-nova-reserva/detalhes-nova-reserva.component';
+import { PagamentoComponent } from 'src/app/components/reservas/nova-reserva/pagamento/pagamento.component';
+import { ReservaRealizadaComponent } from 'src/app/components/reservas/nova-reserva/reserva-realizada/reserva-realizada.component';
+import { QuartosApiService } from 'src/app/services/quartos-api.service';
 
 @NgModule({
   declarations: [
@@ -16,13 +20,19 @@ import { NovaReservaComponent } from 'src/app/components/reservas/nova-reserva/n
     PerfilComponent,
     MinhasReservasComponent,
     NovaReservaComponent,
-    ReservasHomeComponent
+    ReservasHomeComponent,
+    DetalhesNovaReservaComponent,
+    PagamentoComponent,
+    ReservaRealizadaComponent
   ],
   imports: [
     CommonModule,
     ReservasRoutingModule,
     FontAwesomeModule,
     ReactiveFormsModule,
+  ],
+  providers: [
+    QuartosApiService
   ]
 })
 export class ReservasModule { }

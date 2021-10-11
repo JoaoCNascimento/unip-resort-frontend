@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { faDoorOpen, faQuestion, faTable, faUser } from '@fortawesome/free-solid-svg-icons';
+import { Quarto } from 'src/app/models/Quarto';
+import { QuartosApiService } from 'src/app/services/quartos-api.service';
 
 @Component({
   selector: 'app-reservas-home',
@@ -8,21 +11,31 @@ import { faDoorOpen, faQuestion, faTable, faUser } from '@fortawesome/free-solid
 })
 export class ReservasHomeComponent implements OnInit {
 
+  imageSource;
   faTable = faTable
   faUser = faUser
   faDoor = faDoorOpen
   faQuestion = faQuestion
 
-  suite: any = {
-    "img": "F://projetos//unip resort//ext_src//quartos_hotel//quarto (1).jpg",
-    "categoria": "Suíte Master",
-    "valor": "280",
-    "descricao": "Cama de casal, banheira..."
-  }
+  quartos: Quarto[];
 
-  constructor() { }
+  constructor(
+    private quartoApiService: QuartosApiService,
+    private sanitizer: DomSanitizer
+  ) { }
 
   ngOnInit(): void {
+    this.quartoApiService.getQuartos().subscribe((res: any) => {
+      return;
+
+      res.map(e => {
+        console.log(e.id)
+        this.imageSource = this.sanitizer.bypassSecurityTrustResourceUrl(e.foto);
+        return e;
+      });
+
+      this.quartos = res;
+    })
   }
 
 }

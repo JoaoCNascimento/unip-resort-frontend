@@ -49,19 +49,18 @@ header {
   justify-content: space-between;
 }
 
-#menu .selected {
+#menu .active {
   border: 2px solid var(--golden);
   background-color: var(--black);
   color: var(--golden);
 }
 
-#menu .selected:hover {
+#menu .active:hover {
   background-color: var(--black);
   color: var(--golden)
 }
 
 #menu a {
-
   border: 2px solid transparent;
   background-color: var(--golden);
   border-radius: 5px;
@@ -95,7 +94,7 @@ header {
   }
 
   #menu {
-    background-color: var(--golden);
+    background-color: var(--golden-light);
     padding: 15px;
     align-items: center;
     margin: auto;
@@ -109,6 +108,21 @@ header {
     margin-top: 30px;
     margin-bottom: -15px;
     width: 100%;
+    background-color: var(--golden-light);
+  }
+
+  #menu a:hover {
+    background-color: var(--golden);
+  }
+
+  #menu .active {
+    background-color: var(--golden);
+    color: black;
+  }
+
+  #menu .active:hover {
+    background-color: var(--golden);
+    color: black;
   }
 
   .sidenav {

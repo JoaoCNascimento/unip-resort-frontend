@@ -122,7 +122,6 @@ p {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  color: var(--black);
   font-weight: var(--light-text-weight);
 
 
@@ -132,6 +131,7 @@ p {
   width: 130px;
   height: 120px;
   text-align: center;
+  transition: 0.15s;
 }
 
 .row fa-icon {
@@ -139,8 +139,12 @@ p {
   font-size: 1.6rem;
 }
 
-.last-block a {
+.row:hover {
+  transform: scale(1.5, 1.5);
+  cursor: default;
+}
 
+.last-block a {
   border-radius: 50px;
   padding: 20px;
 

@@ -11,16 +11,16 @@
 
     <p class="close-btn" (click)="esconderMenu()">&times;</p>
 
-    <a routerLink="./" routerLinkActive="selected" [routerLinkActiveOptions]="{exact: true}">
+    <a routerLink="./" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
       <fa-icon [icon]=" faHotel"></fa-icon> Reservas
     </a>
-    <a routerLink="minhas-reservas" routerLinkActive="selected">
+    <a routerLink="minhas-reservas" routerLinkActive="active">
       <fa-icon [icon]="faTable"></fa-icon> Minhas Reservas
     </a>
-    <a routerLink="meu-perfil" routerLinkActive="selected">
+    <a routerLink="meu-perfil" routerLinkActive="active">
       <fa-icon [icon]="faUser"></fa-icon> Meu perfil
     </a>
-    <a href="index.html" routerLinkActive="selected">
+    <a href="index.html" routerLinkActive="active">
       <fa-icon [icon]="faDoor"></fa-icon> Sair
     </a>
   </div>
