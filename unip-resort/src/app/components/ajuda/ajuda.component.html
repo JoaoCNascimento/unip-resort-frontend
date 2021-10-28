@@ -1,0 +1,52 @@
+<header>
+    <a (click)="back()">
+        <img src="/assets/img/logo/unip-resort-logo.png" width="200" height="100">
+    </a>
+
+    <p (click)="back()" onselectstart="return false">Voltar à página anterior.</p>
+</header>
+<div id="container">
+
+    <h1>Ajuda</h1>
+
+    <p>Olá, usuário! Bem vindo a página de ajuda. </p>
+    <p>Aqui você encontrará as respostas para suas dúvidas.</p>
+
+    <h2>Perguntas e respostas</h2>
+
+    <ol>
+        <li>Como faço uma reserva?</li>
+
+        <ul>
+            <li>Para fazer uma reserva basta Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam, nesciunt sunt quos soluta minima debitis doloribus nihil dolorem ratione iure repudiandae aliquid! Ipsum sunt minima error. Eos quaerat est veritatis.</li>
+        </ul>
+        <!-- fim de lista -->
+        
+        <li>Como consigo ajuda?</li>
+        <ul>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, deleniti labore exercitationem distinctio laudantium facilis.</li>
+        </ul>
+        <!-- fim de lista -->
+
+        <li>Como funcionam as reservas?</li>
+        <ul>
+            <li>Para confirmação da reserva, o pagamento deverá ser confirmado em até 3 dias após a sua realização.</li>
+            <!--  -->
+            <li>As reservas podem ser canceladas até 1 dia antes da data de Check In. 
+                Cancelamentos que excedam esse prazo serão <b>reembolsados parcialmente</b>, tendo o custo de prestação de serviço abatido do valor total.</li>
+        </ul>
+    </ol>
+
+    <div>
+        <h3>Não achou o que queria? Mande uma mensagem para o nosso suporte.</h3>
+        <hr>
+        <label for="email">Email</label>
+        <input type="email" name="email" placeholder="Digite seu email para contato">
+        <!--  -->
+        <label for="mensagem">Mensagem</label>
+        <textarea name="mensagem" placeholder="Digite aqui sua mensagem"></textarea>
+        <!--  -->
+        <button>Enviar Mensagem</button>
+    </div>
+
+</div>

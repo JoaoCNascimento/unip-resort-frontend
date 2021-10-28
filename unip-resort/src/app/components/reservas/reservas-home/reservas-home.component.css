@@ -15,9 +15,8 @@ h2 {
   border-radius: 20px;
   height: 435px;
   width: 260px;
-  padding: 15PX;
-  margin-bottom: 20px;
-  margin: 5px;
+  padding: 15px;
+  margin: 10px 10px 10px 10px;
 }
 
 .img {
@@ -81,10 +80,10 @@ button {
   background-color: var(--golden-light);
 }
 
-#chatbox {
+#help {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   border-radius: 50%;
   position: fixed;
   bottom: 0;
@@ -97,7 +96,7 @@ button {
   box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.623);
 }
 
-#chatbox:hover {
+#help:hover {
   padding-left: 20px;
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;
@@ -107,18 +106,20 @@ button {
   cursor: pointer;
 }
 
-#chatbox p {
-  color: var(--white);
+#help p {
+  display:none;
+  color: transparent;
   font-weight: var(--light-text-weight);
-  display: none;
   text-align: center;
 }
 
-#chatbox:hover p {
+#help:hover p {
   display: flex;
+  color: var(--white);
+  transition: 1.5s;
 }
 
-#chatbox fa-icon {
+#help fa-icon {
   font-size: 1.5rem;
   color: var(--white);
 }
