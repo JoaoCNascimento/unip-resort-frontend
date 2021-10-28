@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AjudaComponent } from './components/ajuda/ajuda.component';
 
 
 const routes: Routes = [
@@ -37,6 +38,11 @@ const routes: Routes = [
     path: 'funcionario',
     loadChildren: () => import('./modules/funcionario/funcionario.module')
       .then(m => m.FuncionarioModule)
+  },
+
+  {
+    path: 'ajuda',
+    component: AjudaComponent
   },
 
   {
