@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faBed, faClock, faEnvelope, faGamepad, faMapMarkerAlt, faPhone, faPlus, faSwimmingPool, faWifi } from '@fortawesome/free-solid-svg-icons';
+import { faBed, faClock, faEnvelope, faGamepad, faMapMarkerAlt, faPhone, faPlus, faQuestion, faSwimmingPool, faWifi } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +9,7 @@ import { faBed, faClock, faEnvelope, faGamepad, faMapMarkerAlt, faPhone, faPlus,
 export class HomeComponent implements OnInit {
 
   // FontAwesomeIcons
+  faQuestion = faQuestion;
   //// section 
   faBed = faBed
   faPool = faSwimmingPool
