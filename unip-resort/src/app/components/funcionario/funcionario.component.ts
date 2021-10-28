@@ -47,7 +47,7 @@ export class FuncionarioComponent implements OnInit {
 
         menu.css("display", "flex");
       }
-    })
+    });
   }
 
   esconderMenu() {

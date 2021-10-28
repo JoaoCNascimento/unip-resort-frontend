@@ -1,0 +1,28 @@
+<div class="container">
+
+    <div class="reserva-confirmada">
+        <fa-icon [icon]="faCheck"></fa-icon>
+
+        <p>Reserva feita com sucesso!</p>
+
+        <div class="codigo">
+            Código da reserva:
+            <span>42AFA4F</span>
+        </div>
+<!--  -->
+        <div class="opcoes">
+            <div>
+                <fa-icon [icon]="faDownload"></fa-icon>
+                Baixar
+            </div>
+            <!--  -->
+            <div>
+                <fa-icon [icon]="faPrint"></fa-icon>
+                Imprimir
+            </div>
+        </div>
+
+        <a routerLink="/reservas">Voltar para reservas.</a>
+    </div>
+
+</div>

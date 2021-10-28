@@ -4,58 +4,56 @@
   <span class="hamburguer" (click)="revelarMenu()">
     <fa-icon [icon]="faBars"></fa-icon>
   </span>
-
-
 </header>
+<!--  -->
 <nav>
 
   <p class="close-btn" (click)="esconderMenu()">&times;</p>
 
-  <a>
+  <a routerLink="nova-reserva">
     <fa-icon [icon]="faPlus"></fa-icon>
     <p>Nova Reserva</p>
   </a>
 
-  <a>
+  <a routerLink="alterar-reservas">
     <fa-icon [icon]="faEdit"></fa-icon>
     <p>Alterar Reserva</p>
   </a>
 
-  <a>
+  <a routerLink="cancelar-reserva">
     <fa-icon [icon]="faTrash"></fa-icon>
     <p>Cancelar Reserva</p>
   </a>
 
-  <a>
+  <a routerLink="chamados">
     <fa-icon [icon]="faPhone"></fa-icon>
     <p>Chamados</p>
   </a>
 
-  <a>
+  <a routerLink="checkInList">
     <fa-icon [icon]="faTicket"></fa-icon>
     <p>Check In</p>
   </a>
 
-  <a>
+  <a routerLink="checkOutList">
     <fa-icon [icon]="faCheckOut"></fa-icon>
     <p>Check Out</p>
   </a>
 
-  <a>
+  <a routerLink="cadastrar-cliente">
     <fa-icon [icon]="faUserPlus"></fa-icon>
     Cadastrar Cliente
   </a>
 
-  <a>
+  <a routerLink="editar-cliente">
     <fa-icon [icon]="faUserEdit"></fa-icon>
     Editar cliente
   </a>
 
-
-  <a>
+  <a routerLink="/">
     <fa-icon [icon]="faDoorOpen"></fa-icon>
     Sair
   </a>
-
 </nav>
+<!--  -->
 <router-outlet></router-outlet>

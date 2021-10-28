@@ -1,0 +1,141 @@
+form,
+#form-container,
+.img,
+.contentbox {
+  display: flex;
+}
+
+#form-container {
+  margin: 25px auto;
+  border-radius: 5px;
+  width: 700px;
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+  background-color: #FFF;
+}
+
+h2 {
+  background-color: var(--golden);
+  width: 100%;
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.img {
+  justify-content: center;
+  width: 100%;
+}
+
+.img img {
+  width: 500px;
+}
+
+.contentbox {
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+h3 {
+  margin: 10px 0px;
+  padding: 5px;
+  background-color: var(--blue);
+  text-align: center;
+}
+
+p {
+  padding: 10px;
+  font-weight: var(--light-text-weight);
+}
+
+form {
+  width: 100%;
+  flex-direction: column;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+label {
+  margin-bottom: 3px;
+}
+
+input,
+select {
+  margin-bottom: 25px;
+  padding: 5px;
+  font-size: 1rem;
+  font-weight: var(--light-text-weight);
+  border-bottom: 2px solid var(--blue);
+  background-color: transparent;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--pink);
+}
+
+button {
+  padding: 10px;
+  font-size: 1rem;
+  color: var(--black);
+  font-weight: var(--light-text-weight);
+  cursor: pointer;
+  background-color: var(--golden);
+}
+
+button:hover {
+  background-color: var(--golden-light);
+}
+
+.pesquisar {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+.pesquisar input {
+  width: 80%;
+  height: 100%;
+  margin: 0%;
+}
+
+.pesquisar button {
+  width: 19%;
+  margin-left: 5px;
+  border-radius: 0px 25px 25px 0px;
+}
+
+@media screen and (max-width: 750px) {
+
+  #container {
+    width: 100%;
+  }
+
+  #form-container {
+    width: 90%;
+  }
+
+  .img {
+    width: 100%;
+  }
+
+  .img img {
+    width: 100%;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  .pesquisar input {
+    width: 70%;
+  }
+
+  .pesquisar button {
+    margin: 0px;
+    width: 30%;
+  }
+
+}
