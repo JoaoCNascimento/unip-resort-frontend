@@ -6,19 +6,22 @@
     </header>
     
     <div id="form-container">
-    
-        <form>
+        <form class="form_standard">
     
             <h2>Faça o login para acessar a área de cliente</h2>
     
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" placeholder="Digite seu email">
+
+            <div class="fullbox">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="Digite seu email">    
+            </div>
+
+            <div class="fullbox">
+                <label for="senha">Senha</label>
+                <input type="password" name="senha" id="password" placeholder="Digite sua senha">    
+            </div>
     
-            <label for="senha">Senha</label>
-            <input type="password" name="senha" id="password" placeholder="Digite sua senha">
-    
-    
-            <button type="submit" id="btn-entrar" onclick="window.open('areaCliente.html')">Entrar</button>
+            <button>Entrar</button>
     
             <p>Ainda não tem uma conta? <a routerLink="/cadastrar">Cadastre-se agora!</a></p>
     

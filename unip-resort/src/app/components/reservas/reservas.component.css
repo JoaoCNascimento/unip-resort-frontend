@@ -50,14 +50,14 @@ header {
 }
 
 #menu .active {
-  border: 2px solid var(--golden);
-  background-color: var(--black);
-  color: var(--golden);
+  border: 2px solid #1c1c1c;
+  background-color: #cfa227;
+  color: #1c1c1c;
 }
 
 #menu .active:hover {
-  background-color: var(--black);
-  color: var(--golden)
+  background-color: #eec75d;
+  color: black;
 }
 
 #menu a {
@@ -83,7 +83,6 @@ header {
 }
 
 @media screen and (max-width: 930px) {
-
   .hamburguer {
     display: inline;
   }

@@ -12,7 +12,7 @@ form,
   padding: 20px;
   flex-direction: column;
   align-items: center;
-  background-color: #FFF;
+  background-color: #fff;
 }
 
 h2 {
@@ -36,7 +36,6 @@ h2 {
   flex-direction: column;
   justify-content: center;
 }
-
 
 h3 {
   margin: 10px 0px;
@@ -89,8 +88,21 @@ button:hover {
   background-color: var(--golden-light);
 }
 
-@media screen and (max-width: 750px) {
+.total {
+  width: 100%;
+}
 
+.total h4 {
+  font-size: 1.4rem;
+}
+
+.total p {
+  padding: 0px;
+  margin: 5px 0px 20px;
+  font-size: 1.3rem;
+}
+
+@media screen and (max-width: 750px) {
   #container {
     width: 100%;
   }
@@ -110,5 +122,4 @@ button:hover {
   form {
     width: 100%;
   }
-
 }

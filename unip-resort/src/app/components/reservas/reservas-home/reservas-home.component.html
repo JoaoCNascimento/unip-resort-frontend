@@ -3,287 +3,24 @@
 -->
 
 <div id="container">
-
-  <div class="quarto">
-
+  
+  <div *ngFor="let categoria of categorias" class="quarto">
     <div class="img">
-      <img src="assets/img/quartos_hotel/quarto (2).jpg" alt="Imagem do quarto do hotel">
+      <img src="{{ categoria.imagem }}" alt="Foto do quarto do hotel.">
     </div>
 
     <div class="descricao">
+      <h3>{{ categoria.nome }}</h3>
 
-      <h3>Suíte Master</h3>
-
-      <p> Cama de casal, Smart Tv 44", acesso liberado à internet, áreas de lazer e banheiras
-        climatizadas.
-      </p>
-
+      <p>{{ categoria.descricao }}</p>
     </div>
 
     <div class="valor">
       <h3>Oferta</h3>
-      <p>R$280,00</p>
+      <p>{{ categoria.precoDiaria | currency: 'BRL' }}</p>
       <button type="menu">Reservar</button>
     </div>
-
   </div>
-
-  <div class="quarto">
-
-    <div class="img">
-      <img src="assets/img/quartos_hotel/quarto (6).jpg" alt="Imagem do quarto do hotel">
-    </div>
-
-    <div class="descricao">
-
-      <h3>Suíte VIP</h3>
-
-      <p> Cama de casal, Smart Tv 44", acesso liberado à internet, áreas de lazer e banheiras
-        climatizadas.
-      </p>
-
-    </div>
-
-    <div class="valor">
-      <h3>Oferta</h3>
-      <p>R$280,00</p>
-      <button type="menu">Reservar</button>
-    </div>
-
-  </div>
-  <div class="quarto">
-
-    <div class="img">
-      <img src="assets/img/quartos_hotel/quarto (5).jpg" alt="Imagem do quarto do hotel">
-    </div>
-
-    <div class="descricao">
-
-      <h3>Suíte Casal</h3>
-
-      <p> Cama de casal, Smart Tv 44", acesso liberado à internet, áreas de lazer e banheiras
-        climatizadas.
-      </p>
-
-    </div>
-
-    <div class="valor">
-      <h3>Oferta</h3>
-      <p>R$280,00</p>
-      <button type="menu">Reservar</button>
-    </div>
-
-  </div>
-  <div class="quarto">
-
-    <div class="img">
-      <img src="assets/img/quartos_hotel/quarto (4).jpg" alt="Imagem do quarto do hotel">
-    </div>
-
-    <div class="descricao">
-
-      <h3>Suíte Convencional</h3>
-
-      <p> Cama de casal, Smart Tv 44", acesso liberado à internet, áreas de lazer e banheiras
-        climatizadas.
-      </p>
-
-    </div>
-
-    <div class="valor">
-      <h3>Oferta</h3>
-      <p>R$280,00</p>
-      <button type="menu">Reservar</button>
-    </div>
-
-  </div>
-  <div class="quarto">
-
-    <div class="img">
-      <img src="assets/img/quartos_hotel/quarto (3).jpg" alt="Imagem do quarto do hotel">
-    </div>
-
-    <div class="descricao">
-
-      <h3>Suíte Honeymoon</h3>
-
-      <p> Cama de casal, Smart Tv 44", acesso liberado à internet, áreas de lazer e banheiras
-        climatizadas.
-      </p>
-
-    </div>
-
-    <div class="valor">
-      <h3>Oferta</h3>
-      <p>R$280,00</p>
-      <button type="menu">Reservar</button>
-    </div>
-
-  </div>
-
-  <div class="quarto">
-
-    <div class="img">
-      <img src="assets/img/quartos_hotel/quarto (7).jpg" alt="Imagem do quarto do hotel">
-    </div>
-
-    <div class="descricao">
-
-      <h3>Suíte Classe A</h3>
-
-      <p> Cama de casal, Smart Tv 44", acesso liberado à internet, áreas de lazer e banheiras
-        climatizadas.
-      </p>
-
-    </div>
-
-    <div class="valor">
-      <h3>Oferta</h3>
-      <p>R$280,00</p>
-      <button type="menu">Reservar</button>
-    </div>
-
-  </div>
-  <!-- <div class="quarto">
-
-    <div class="img">
-      <img src="assets/img/quartos_hotel/quarto (2).jpg" alt="Imagem do quarto do hotel">
-    </div>
-
-    <div class="descricao">
-
-      <h3>Suíte Master</h3>
-
-      <p> Cama de casal, Smart Tv 44", acesso liberado à internet, áreas de lazer e banheiras
-        climatizadas.
-      </p>
-
-    </div>
-
-    <div class="valor">
-      <h3>Oferta</h3>
-      <p>R$280,00</p>
-      <button type="menu">Reservar</button>
-    </div>
-
-  </div>
-
-  <div class="quarto">
-
-    <div class="img">
-      <img src="assets/img/quartos_hotel/quarto (6).jpg" alt="Imagem do quarto do hotel">
-    </div>
-
-    <div class="descricao">
-
-      <h3>Suíte VIP</h3>
-
-      <p> Cama de casal, Smart Tv 44", acesso liberado à internet, áreas de lazer e banheiras
-        climatizadas.
-      </p>
-
-    </div>
-
-    <div class="valor">
-      <h3>Oferta</h3>
-      <p>R$280,00</p>
-      <button type="menu">Reservar</button>
-    </div>
-
-  </div>
-  <div class="quarto">
-
-    <div class="img">
-      <img src="assets/img/quartos_hotel/quarto (5).jpg" alt="Imagem do quarto do hotel">
-    </div>
-
-    <div class="descricao">
-
-      <h3>Suíte Casal</h3>
-
-      <p> Cama de casal, Smart Tv 44", acesso liberado à internet, áreas de lazer e banheiras
-        climatizadas.
-      </p>
-
-    </div>
-
-    <div class="valor">
-      <h3>Oferta</h3>
-      <p>R$280,00</p>
-      <button type="menu">Reservar</button>
-    </div>
-
-  </div>
-  <div class="quarto">
-
-    <div class="img">
-      <img src="assets/img/quartos_hotel/quarto (4).jpg" alt="Imagem do quarto do hotel">
-    </div>
-
-    <div class="descricao">
-
-      <h3>Suíte Convencional</h3>
-
-      <p> Cama de casal, Smart Tv 44", acesso liberado à internet, áreas de lazer e banheiras
-        climatizadas.
-      </p>
-
-    </div>
-
-    <div class="valor">
-      <h3>Oferta</h3>
-      <p>R$280,00</p>
-      <button type="menu">Reservar</button>
-    </div>
-
-  </div>
-  <div class="quarto">
-
-    <div class="img">
-      <img src="assets/img/quartos_hotel/quarto (3).jpg" alt="Imagem do quarto do hotel">
-    </div>
-
-    <div class="descricao">
-
-      <h3>Suíte Honeymoon</h3>
-
-      <p> Cama de casal, Smart Tv 44", acesso liberado à internet, áreas de lazer e banheiras
-        climatizadas.
-      </p>
-
-    </div>
-
-    <div class="valor">
-      <h3>Oferta</h3>
-      <p>R$280,00</p>
-      <button type="menu">Reservar</button>
-    </div>
-
-  </div>
-
-  <div class="quarto">
-
-    <div class="img">
-      <img src="assets/img/quartos_hotel/quarto (7).jpg" alt="Imagem do quarto do hotel">
-    </div>
-
-    <div class="descricao">
-
-      <h3>Suíte Classe A</h3>
-
-      <p> Cama de casal, Smart Tv 44", acesso liberado à internet, áreas de lazer e banheiras
-        climatizadas.
-      </p>
-
-    </div>
-
-    <div class="valor">
-      <h3>Oferta</h3>
-      <p>R$280,00</p>
-      <button type="menu">Reservar</button>
-    </div>
-
-  </div> -->
 
 </div>
 
@@ -292,3 +29,31 @@
   <fa-icon [icon]="faQuestion"></fa-icon>
   <p onselectstart="return false">Para acessar a central de ajuda, clique aqui!</p>
 </a>
+
+  <!--
+    ### Template ###
+
+    <div class="quarto">
+
+    <div class="img">
+      <img src="assets/img/quartos_hotel/quarto (2).jpg" alt="Imagem do quarto do hotel">
+    </div>
+
+    <div class="descricao">
+
+      <h3>Suíte Master</h3>
+
+      <p> Cama de casal, Smart Tv 44", acesso liberado à internet, áreas de lazer e banheiras
+        climatizadas.
+      </p>
+
+    </div>
+
+    <div class="precoDiaria">
+      <h3>Oferta</h3>
+      <p>R$280,00</p>
+      <button type="menu">Reservar</button>
+    </div>
+
+  </div>
+-->

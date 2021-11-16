@@ -1,9 +1,8 @@
+import { Categoria } from "./Categoria";
+
 export interface Quarto {
-    id: number;
-    foto: string;
-    categoria: string;
-    descricao: string;
-    andar: number;
-    numero: number;
-    valor: number;
+    id: Number;
+    andar: Number;
+    numero: Number;
+    categoria: Categoria;
 }
