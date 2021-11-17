@@ -6,7 +6,7 @@
   
   <div *ngFor="let categoria of categorias" class="quarto">
     <div class="img">
-      <img src="{{ categoria.imagem }}" alt="Foto do quarto do hotel.">
+      <img src="{{ categoria.imagem || '/assets/img-empty.png'}}" alt="Foto do quarto do hotel.">
     </div>
 
     <div class="descricao">
@@ -18,7 +18,7 @@
     <div class="valor">
       <h3>Oferta</h3>
       <p>{{ categoria.precoDiaria | currency: 'BRL' }}</p>
-      <button type="menu">Reservar</button>
+      <button [routerLink]="['nova-reserva', categoria.id]" type="menu">Reservar</button>
     </div>
   </div>
 

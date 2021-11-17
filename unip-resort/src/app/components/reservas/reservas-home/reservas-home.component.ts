@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { faDoorOpen, faQuestion, faTable, faUser } from '@fortawesome/free-solid-svg-icons';
 import { Categoria } from 'src/app/models/Categoria';
 import { Quarto } from 'src/app/models/Quarto';
+import { CategoriaService } from 'src/app/services/api/categoria.service';
 import { QuartosApiService } from 'src/app/services/quartos-api.service';
 
 @Component({
@@ -43,9 +45,18 @@ export class ReservasHomeComponent implements OnInit {
   ];
 
   constructor(
+    private cs: CategoriaService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
+    this.getCategorias();
+  }
+
+  getCategorias() {
+    this.cs.findAll().subscribe(
+      res => this.categorias = res
+    )
   }
 
 }

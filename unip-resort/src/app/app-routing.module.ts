@@ -45,10 +45,10 @@ const routes: Routes = [
     component: AjudaComponent
   },
 
-  {
-    path: '**',
-    redirectTo: ''
-  }
+  // {
+  //   path: '**',
+  //   redirectTo: ''
+  // }
 ];
 
 @NgModule({

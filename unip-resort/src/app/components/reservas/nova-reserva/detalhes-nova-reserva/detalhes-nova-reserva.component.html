@@ -4,17 +4,15 @@
   <div class="content">
 
     <div class="img">
-      <img src="{{ imageSource }}" alt="Quarto do hotel">
+      <img src="{{ categoria.imagem || 'assets/img-empty.png' }}" alt="Quarto do hotel">
     </div>
 
     <div class="contentbox">
 
-      <h3>Suíte master</h3>
+      <h3>{{ categoria.nome }}</h3>
 
-      <p> Cama de casal, Smart Tv 44", acesso liberado à internet, áreas de lazer e banheiras
-        climatizadas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi distinctio autem natus
-        similique nostrum. Asperiores sit, atque voluptatum quo dolor necessitatibus, fugit ipsa natus
-        tempora quaerat animi, libero obcaecati iste.
+      <p> 
+        {{ categoria.descricao }}
       </p>
 
     </div>
@@ -46,8 +44,66 @@
       <p>{{  valorTotal | currency: 'BRL' }}</p>
     </div>
 
-    <button onclick="window.open('pagamento.html')">Pagamento</button>
+    <button (click)="revealModal()">Pagamento</button>
 
   </form>
 
+</div>
+
+<div class="modal-container">
+  <div class="modal-body">
+    <span (click)="hideModal()" class="modal-close-button">&times;</span>
+    <div class="opcoes-pagamento-container">
+      <h2>Selecione uma forma de pagamento</h2>
+    
+      <a>
+        <div (click)="reservaRealizada()" class="formaPagamento">
+          <div class="img">
+            <img src="assets/img/íconesPagamento/cartão.png" alt="">
+          </div>
+    
+          <div class="nome">
+            Cartão de crédito
+          </div>
+        </div>
+      </a>
+    
+      <a (click)="reservaRealizada()">
+        <div class="formaPagamento">
+          <div class="img">
+            <img src="assets/img/íconesPagamento/boleto.png" alt="">
+          </div>
+    
+          <div class="nome">
+            Boleto
+          </div>
+        </div>
+      </a>
+    
+      <a (click)="reservaRealizada()">
+        <div class="formaPagamento">
+    
+          <div class="img">
+            <img src="assets/img/íconesPagamento/pix.png" alt="">
+          </div>
+    
+          <div class="nome">
+            PIX
+          </div>
+        </div>
+      </a>
+    
+      <a (click)="reservaRealizada()">
+        <div class="formaPagamento">
+          <div class="img">
+            <img src="assets/img/íconesPagamento/mp.png" alt="">
+          </div>
+    
+          <div class="nome">
+            Mercado Pago
+          </div>
+        </div>
+      </a>
+    </div>    
+  </div>
 </div>
