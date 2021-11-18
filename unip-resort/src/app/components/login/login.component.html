@@ -6,19 +6,19 @@
     </header>
     
     <div id="form-container">
-        <form class="form_standard">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form_standard">
     
             <h2>Faça o login para acessar a área de cliente</h2>
     
 
             <div class="fullbox">
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="Digite seu email">    
+                <input type="email" formControlName="email" name="email" id="email" placeholder="Digite seu email">    
             </div>
 
             <div class="fullbox">
                 <label for="senha">Senha</label>
-                <input type="password" name="senha" id="password" placeholder="Digite sua senha">    
+                <input type="password" formControlName="senha" name="senha" id="password" placeholder="Digite sua senha">    
             </div>
     
             <button>Entrar</button>

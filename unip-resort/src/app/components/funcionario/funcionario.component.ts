@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faBars, faCheckCircle, faDoorOpen, faEdit, faPhone, faPlus, faTicketAlt, faTrash, faTrashAlt, faUser, faUserCog, faUserEdit, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import * as $ from 'jquery';
+import { ReservasService } from 'src/app/services/api/reservas.service';
 
 @Component({
   selector: 'app-funcionario',
@@ -21,10 +22,17 @@ export class FuncionarioComponent implements OnInit {
   faBars = faBars
 
 
-  constructor() { }
+  constructor(
+    private rs: ReservasService
+  ) { }
 
   ngOnInit(): void {
+    this.rs.findAll().subscribe();
     this.ajustarNavbar();
+    let menu = $("nav");
+
+        $(".close-btn").hide();
+        menu.css({ right: -400 });
   }
 
   /*

@@ -6,22 +6,21 @@
     </header>
 
     <div id="form-container">
-
-        <form class="form_standard">
+        <form [formGroup]="form" method="post" (ngSubmit)="onSubmit()" class="form_standard">
 
             <h2>Faça o login para acessar a área de funcionário </h2>
 
             <div class="fullbox">
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="Digite seu email">
+                <input formControlName="email" type="email" name="email" placeholder="Digite seu email">
             </div>
 
             <div class="fullbox">
                 <label for="senha">Senha</label>
-                <input type="password" name="senha" id="password" placeholder="Digite sua senha">    
+                <input formControlName="senha" type="password" name="senha" placeholder="Digite sua senha">    
             </div>
 
-            <button type="submit" id="btn-entrar">Entrar</button>
+            <button>Entrar</button>
 
             <p>Em caso de erros, ou problemas, contate o administrador do sistema.</p>
 

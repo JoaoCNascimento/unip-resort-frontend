@@ -24,24 +24,24 @@
 
     <label for="apartamento">Selecione a categoria do quarto </label>
     <select formControlName="categoria" name="apartamento" id="apartamento-selectbox">
-      <option *ngFor="let categoria of categorias" (click)="changeCategoria(categoria.id)" value="{{categoria.nome}}">{{ categoria.nome }}</option>
+      <option *ngFor="let categoria of categorias" (click)="changeCategoria(categoria.id)" value="{{categoria.nome}}">{{ categoria.nome }} - Preço Diária {{ categoria.precoDiaria | currency: 'BRL' }}</option>
     </select>
 
     <label for="numeroHospedes">Quantidade de hóspedes: </label>
-    <input (change)="changeCategoria()" formControlName="qtdHospedes" type="number" name="numeroHospedes" id="numeroHospedes" min="1" max="6">
+    <input (change)="changeCategoria()" (change)="calcularValorDiaria()" formControlName="qtdHospedes" type="number" name="numeroHospedes" id="numeroHospedes" min="1" max="6">
 
     <label for="checkIn">Data de check-in</label>
     <input formControlName="dataCheckIn" type="date" name="checkIn" id="checkIn">
 
     <label for="checkOut">Data de check-out</label>
-    <input formControlName="dataCheckOut" type="date" name="checkOut" id="checkOut">
+    <input (change)="calcularValorDiaria()" formControlName="dataCheckOut" type="date" name="checkOut" id="checkOut">
 
     <label for="cupom">Cupom de desconto</label>
-    <input formControlName="cupom" type="text" name="cupom" id="cupom" placeholder="Digite o código do seu cupom">
+    <input (change)="calcularValorDiaria()" formControlName="cupom" type="text" name="cupom" id="cupom" placeholder="Digite o código do seu cupom">
 
     <div class="total">
       <h4>Valor Total: </h4>
-      <p>{{  valorTotal | currency: 'BRL' }}</p>
+      <p>{{ valorTotalDescricao }} {{ valorTotal }} {{ valorTaxa > 0 ? '+ R$ ' + valorTaxa + ' taxa de serviço (10% do preço da diária por hóspede.)' : '' }}</p>
     </div>
 
     <button (click)="revealModal()">Pagamento</button>

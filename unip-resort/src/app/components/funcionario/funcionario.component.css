@@ -36,6 +36,7 @@ header {
 
 nav {
   display: flex;
+  justify-content: space-between;
   width: 100%;
   background-color: var(--golden);
 }
@@ -72,6 +73,7 @@ fa-icon {
 
   nav {
     flex-direction: column;
+    justify-content: flex-start;
     height: 100%;
     width: 300px;
     position: fixed;

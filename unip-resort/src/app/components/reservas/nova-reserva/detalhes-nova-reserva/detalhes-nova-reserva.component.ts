@@ -1,6 +1,7 @@
 import { AfterContentInit, Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
+import * as moment from "moment";
 import { Categoria } from "src/app/models/Categoria";
 import { CategoriaService } from "src/app/services/api/categoria.service";
 
@@ -11,7 +12,9 @@ import { CategoriaService } from "src/app/services/api/categoria.service";
 })
 export class DetalhesNovaReservaComponent implements OnInit {
   form: FormGroup;
-  valorTotal: number = 0.0;
+  valorTotal: number = 0;
+  valorTotalDescricao: string = "R$ ";
+  valorTaxa: number = 0;
   imageSource: String = "";
 
   categoria: Categoria = {
@@ -30,13 +33,13 @@ export class DetalhesNovaReservaComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private cs: CategoriaService
-    ) {}
+  ) {}
 
   ngOnInit(): void {
     this.configurateForm();
-    this.cs.findAll().subscribe(res => {
+    this.cs.findAll().subscribe((res) => {
       this.categorias = res;
-      this.changeCategoria(this.route.snapshot.params['id']);
+      this.changeCategoria(this.route.snapshot.params["id"]);
     });
   }
 
@@ -54,44 +57,76 @@ export class DetalhesNovaReservaComponent implements OnInit {
   }
 
   reservaRealizada() {
-    this.router.navigate(['../','reserva-realizada']);
+    this.router.navigate(["reservas/nova-reserva/reserva-realizada"], {
+      relativeTo: this.route.root,
+    });
   }
 
-  changeCategoria(categoriaId?:Number) {
+  calcularValorDiaria() {
+    if (
+      this.form.get("dataCheckIn").value &&
+      this.form.get("dataCheckOut").value
+    ) {
+      let checkIn = moment(this.form.get("dataCheckIn").value);
+      let checkOut = moment(this.form.get("dataCheckOut").value);
+      let days = checkOut.diff(checkIn, "days") + 1;
+
+      if(!checkOut.isSameOrAfter(checkIn)) {
+        return alert('Datas inválidas.');
+      }
+
+      if (this.form.get("qtdHospedes").value) {
+        let qtdHospedes = this.form.get("qtdHospedes").value;
+        
+        if (qtdHospedes > 0) {
+          this.valorTaxa = (Number(this.categoria.precoDiaria) / 10) * qtdHospedes;
+        }
+      }
+
+      this.valorTotal = Number(this.categoria.precoDiaria) * days;
+    }
+  }
+
+  changeCategoria(categoriaId?: Number) {
     let categoria;
 
     if (categoriaId) {
-      categoria = this.categorias[this.categorias.findIndex((c) => c.id == categoriaId)];
+      categoria =
+        this.categorias[this.categorias.findIndex((c) => c.id == categoriaId)];
+      this.categoria = categoria;
+    } else {
+      categoria =
+        this.categorias[
+          this.categorias.findIndex(
+            (c) => c.nome == this.form.get("categoria").value
+          )
+        ];
       this.categoria = categoria;
     }
-    else {
-      categoria = this.categorias[this.categorias.findIndex(c => c.nome == this.form.get('categoria').value)];
-      this.categoria = categoria;
-    }
-
-    console.log(categoria);
 
     this.form.get("categoria").setValue(categoria.nome);
-
-    this.valorTotal =
-      Number.parseFloat(categoria.precoDiaria.toString()) *
-      Number.parseInt(this.form.get("qtdHospedes").value);
-    this.imageSource = categoria.imagem;
+    this.calcularValorDiaria();
   }
 
   revealModal() {
-    const modal: any = document.querySelectorAll('.modal-container')[0]
-    const modalBody: any = document.querySelectorAll('.modal-body')[0];
+    const modal: any = document.querySelectorAll(".modal-container")[0];
+    const modalBody: any = document.querySelectorAll(".modal-body")[0];
 
     modal.style.cssText = "display: flex";
-    setTimeout(() => { modalBody.style.cssText = "margin-top: 0%"; }, 150);
+    setTimeout(() => {
+      modalBody.style.cssText = "margin-top: 0%";
+    }, 150);
   }
 
   hideModal() {
-    const modal: any = document.querySelectorAll('.modal-container')[0]
-    const modalBody: any = document.querySelectorAll('.modal-body')[0];
+    const modal: any = document.querySelectorAll(".modal-container")[0];
+    const modalBody: any = document.querySelectorAll(".modal-body")[0];
 
-    setTimeout(()=>{ modalBody.style.cssText = "margin-top: -105%" }, 50)
-    setTimeout(()=>{ modal.style.cssText = "display: none"; }, 400)
+    setTimeout(() => {
+      modalBody.style.cssText = "margin-top: -105%";
+    }, 50);
+    setTimeout(() => {
+      modal.style.cssText = "display: none";
+    }, 400);
   }
 }

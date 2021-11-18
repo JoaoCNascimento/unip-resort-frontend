@@ -6,14 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nova-reserva.component.css']
 })
 export class NovaReservaComponent implements OnInit {
-
-  constructor(
-
-  ) { }
+  constructor() { }
 
   ngOnInit(): void {
-
   }
 
-
 }
+
