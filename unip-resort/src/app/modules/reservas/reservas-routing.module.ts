@@ -7,16 +7,17 @@ import { ReservaRealizadaComponent } from 'src/app/components/reservas/nova-rese
 import { PerfilComponent } from 'src/app/components/reservas/perfil/perfil.component';
 import { ReservasHomeComponent } from 'src/app/components/reservas/reservas-home/reservas-home.component';
 import { ReservasComponent } from 'src/app/components/reservas/reservas.component';
+import { AuthGuard } from 'src/app/guard/auth.guard';
 
 
 const routes: Routes = [
   {
     path: '', component: ReservasComponent, children: [
       { path: '', component: ReservasHomeComponent },
-      { path: 'minhas-reservas', component: MinhasReservasComponent },
-      { path: 'meu-perfil', component: PerfilComponent },
+      { path: 'minhas-reservas', canActivate: [AuthGuard], component: MinhasReservasComponent },
+      { path: 'meu-perfil', canActivate: [AuthGuard], component: PerfilComponent },
       {
-        path: 'nova-reserva', component: NovaReservaComponent, children: [
+        path: 'nova-reserva', canActivate: [AuthGuard], component: NovaReservaComponent, children: [
           { path: 'reserva-realizada', component: ReservaRealizadaComponent },
           { path: '', component: DetalhesNovaReservaComponent },
           { path: ':id', component: DetalhesNovaReservaComponent },
