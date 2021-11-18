@@ -42,6 +42,9 @@ export class ClienteService {
   }
 
   handleError(er:any) {
+    if(er.status === 400)
+      return this.errorMessage('Verifique se todos os campos foram preenchidos corretamente.');
+
     this.errorMessage('Verifique sua conexão, ou o estado do servidor, e tente novamente.');
   }
 
