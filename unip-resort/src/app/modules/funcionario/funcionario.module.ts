@@ -7,24 +7,26 @@ import { FuncionarioComponent } from 'src/app/components/funcionario/funcionario
 import { NovaReservaComponent } from 'src/app/components/funcionario/nova-reserva/nova-reserva.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DetalhesNovaReservaComponent } from 'src/app/components/funcionario/nova-reserva/detalhes-nova-reserva/detalhes-nova-reserva.component';
-import { PagamentoComponent } from 'src/app/components/funcionario/nova-reserva/pagamento/pagamento.component';
 import { ReservaRealizadaComponent } from 'src/app/components/funcionario/nova-reserva/reserva-realizada/reserva-realizada.component';
 import { CadastroComponent } from 'src/app/components/funcionario/cadastro/cadastro.component';
+import { AdministrarReservasComponent } from 'src/app/components/funcionario/administrar-reservas/administrar-reservas.component';
+import { PipesModule } from 'src/app/pipes/pipes/pipes.module';
 
 @NgModule({
   declarations: [
     FuncionarioComponent,
     NovaReservaComponent,
     DetalhesNovaReservaComponent,
-    PagamentoComponent,
     ReservaRealizadaComponent,
-    CadastroComponent
+    CadastroComponent,
+    AdministrarReservasComponent
   ],
   imports: [
     CommonModule,
     FuncionarioRoutingModule,
     ReactiveFormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    PipesModule
   ]
 })
 export class FuncionarioModule { }

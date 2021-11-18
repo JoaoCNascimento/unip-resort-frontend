@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AdministrarReservasComponent } from 'src/app/components/funcionario/administrar-reservas/administrar-reservas.component';
 import { CadastroComponent } from 'src/app/components/funcionario/cadastro/cadastro.component';
 import { FuncionarioComponent } from 'src/app/components/funcionario/funcionario.component';
 import { DetalhesNovaReservaComponent } from 'src/app/components/funcionario/nova-reserva/detalhes-nova-reserva/detalhes-nova-reserva.component';
 import { NovaReservaComponent } from 'src/app/components/funcionario/nova-reserva/nova-reserva.component';
-import { PagamentoComponent } from 'src/app/components/funcionario/nova-reserva/pagamento/pagamento.component';
 import { ReservaRealizadaComponent } from 'src/app/components/funcionario/nova-reserva/reserva-realizada/reserva-realizada.component';
 
 const routes: Routes = [
@@ -12,14 +12,17 @@ const routes: Routes = [
     path: '', component: FuncionarioComponent, children: [
       {
         path: 'nova-reserva', component: NovaReservaComponent, children: [
+          { path: 'reserva-realizada', component: ReservaRealizadaComponent },
           { path: '', component: DetalhesNovaReservaComponent },
-          { path: 'pagamento', component: PagamentoComponent },
-          { path: 'reserva-realizada', component: ReservaRealizadaComponent }
+          { path: ':id', component: DetalhesNovaReservaComponent}
         ],
       },
       {
         path: 'cadastrar-cliente', component: CadastroComponent
-      }
+      },
+      {
+        path: 'reservas', component: AdministrarReservasComponent
+      },
     ]
   },
   {

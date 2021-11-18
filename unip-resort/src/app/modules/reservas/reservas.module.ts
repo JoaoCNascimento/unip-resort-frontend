@@ -10,7 +10,7 @@ import { MinhasReservasComponent } from 'src/app/components/reservas/minhas-rese
 import { ReservasHomeComponent } from 'src/app/components/reservas/reservas-home/reservas-home.component';
 import { NovaReservaComponent } from 'src/app/components/reservas/nova-reserva/nova-reserva.component';
 import { DetalhesNovaReservaComponent } from 'src/app/components/reservas/nova-reserva/detalhes-nova-reserva/detalhes-nova-reserva.component';
-import { ReservaRealizadaComponent } from 'src/app/components/reservas/reserva-realizada/reserva-realizada.component';
+import { ReservaRealizadaComponent } from 'src/app/components/reservas/nova-reserva/reserva-realizada/reserva-realizada.component';
 
 @NgModule({
   declarations: [

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { LoginFuncionarioRoutingModule } from './login-funcionario-routing.module';
 import { LoginFuncionarioComponent } from 'src/app/components/login-funcionario/login-funcionario.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { LoginFuncionarioComponent } from 'src/app/components/login-funcionario/
   ],
   imports: [
     CommonModule,
-    LoginFuncionarioRoutingModule
+    LoginFuncionarioRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class LoginFuncionarioModule { }
