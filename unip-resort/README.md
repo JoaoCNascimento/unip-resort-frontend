@@ -6,7 +6,9 @@ Frontend da aplicação para o hotel Unip Resort, com funcionalidades que permit
 
 Para baixar o projeto:
  - `git clone https://github.com/JoaoCNascimento/unip-resort-frontend`
+ 
  - `cd unip-resort-frontend` (para entrar na pasta do projeto)
+ 
  - `git checkout dev` (para mudar para a branch de desenvolvimento)
 
 Para iniciar o projeto:
