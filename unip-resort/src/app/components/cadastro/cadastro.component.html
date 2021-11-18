@@ -1,87 +1,230 @@
 <div id="container">
   <header>
     <a routerLink="/">
-      <img src="/assets/img/logo/unip-resort-logo.png" width="200px" height="100">
+      <img
+        src="/assets/img/logo/unip-resort-logo.png"
+        width="200px"
+        height="100"
+      />
     </a>
   </header>
 
   <div id="form-container">
-
-    <form class="form_standard" [formGroup]="form">
+    <form class="form_standard" (ngSubmit)="onSubmit()" [formGroup]="form">
       <h2>Preencha os campos abaixo para realizar o seu cadastro.</h2>
 
       <div class="fullbox">
         <label for="nome">Nome</label>
         <input
+          formControlName="nome"
           type="text"
           name="nome"
           id="nome"
           placeholder="Digite o seu nome completo"
         />
+
+        <div
+          *ngIf="
+            form.get('nome').hasError('required') && form.get('nome').touched
+          "
+          class="invalid-feedback"
+        >
+          O nome é obrigatório.
+        </div>
       </div>
 
       <div class="double-box">
         <div class="halfbox">
           <label for="cpf">CPF/CNPJ</label>
           <input
+            formControlName="cpf"
             type="text"
             name="cpf"
             id="cpf"
             placeholder="Digite seu CPF ou CNPJ"
           />
+          <div
+            *ngIf="
+              form.get('cpf').hasError('required') && form.get('cpf').touched
+            "
+            class="invalid-feedback"
+          >
+            O cpf é obrigatório.
+          </div>
         </div>
 
         <div class="halfbox">
           <label for="rg">RG</label>
-          <input type="text" name="rg" id="rg" placeholder="Digite seu RG" />
+          <input
+            formControlName="rg"
+            type="text"
+            name="rg"
+            placeholder="Digite seu RG"
+          />
+
+          <div
+            *ngIf="
+              form.get('rg').hasError('required') && form.get('rg').touched
+            "
+            class="invalid-feedback"
+          >
+            O rg é obrigatório.
+          </div>
         </div>
       </div>
 
       <div class="double-box">
         <div class="halfbox">
           <label for="nascimento">Data de nascimento</label>
-          <input type="date" name="nascimento" />
+          <input formControlName="dataNasc" type="date" name="nascimento" />
+          <div
+            *ngIf="
+              form.get('dataNasc').hasError('required') &&
+              form.get('dataNasc').touched
+            "
+            class="invalid-feedback"
+          >
+            A data de nascimento é obrigatória.
+          </div>
         </div>
         <!--  -->
         <div class="halfbox">
           <label for="telefone">Telefone</label>
-          <input type="text" name="telefone" placeholder="Digite seu telefone"/>
+          <input
+            formControlName="telefone"
+            type="text"
+            name="telefone"
+            placeholder="Digite seu telefone"
+          />
+
+          <div
+            *ngIf="
+              form.get('telefone').hasError('required') &&
+              form.get('telefone').touched
+            "
+            class="invalid-feedback"
+          >
+            O telefone é obrigatório.
+          </div>
         </div>
       </div>
 
       <div class="double-box">
         <div class="halfbox">
           <label for="">CEP</label>
-          <input type="text" name="" placeholder="Digite seu CEP" />
+          <input
+            (change)="findCep()"
+            formControlName="cep"
+            type="text"
+            name=""
+            placeholder="Digite seu CEP"
+          />
+          <div
+            *ngIf="
+              form.get('cep').hasError('required') && form.get('cep').touched
+            "
+            class="invalid-feedback"
+          >
+            O cep é obrigatório.
+          </div>
         </div>
       </div>
 
       <div class="fullbox">
         <label for="">Rua</label>
-        <input type="text" name="" placeholder="Digite o nome rua"/>
+        <input
+          formControlName="rua"
+          type="text"
+          name=""
+          placeholder="Digite o nome rua"
+        />
+        <div
+          *ngIf="
+            form.get('rua').hasError('required') && form.get('rua').touched
+          "
+          class="invalid-feedback"
+        >
+          A rua é obrigatório.
+        </div>
       </div>
 
       <div class="double-box">
         <div class="halfbox">
           <label for="">Bairro</label>
-          <input type="text" name="" placeholder="Digite seu bairro" />
+          <input
+            formControlName="bairro"
+            type="text"
+            name=""
+            placeholder="Digite seu bairro"
+          />
+          <div
+            *ngIf="
+              form.get('bairro').hasError('required') &&
+              form.get('bairro').touched
+            "
+            class="invalid-feedback"
+          >
+            O bairro é obrigatório.
+          </div>
         </div>
         <!--  -->
         <div class="halfbox">
           <label for="">Número</label>
-          <input type="text" name="" placeholder="Digite seu número" />
+          <input
+            formControlName="numero"
+            type="text"
+            name=""
+            placeholder="Digite seu número"
+          />
+          <div
+            *ngIf="
+              form.get('numero').hasError('required') &&
+              form.get('numero').touched
+            "
+            class="invalid-feedback"
+          >
+            O numero é obrigatório.
+          </div>
         </div>
       </div>
 
       <div class="double-box">
         <div class="halfbox">
           <label for="">Cidade</label>
-          <input type="text" name="" placeholder="Digite sua cidade" />
+          <input
+            formControlName="cidade"
+            type="text"
+            name=""
+            placeholder="Digite sua cidade"
+          />
+          <div
+            *ngIf="
+              form.get('cidade').hasError('required') &&
+              form.get('cidade').touched
+            "
+            class="invalid-feedback"
+          >
+            A cidade é obrigatória.
+          </div>
         </div>
         <!--  -->
         <div class="halfbox">
           <label for="">Estado</label>
-          <input type="text" name="" placeholder="Digite seu estado" />
+          <input
+            formControlName="estado"
+            type="text"
+            name=""
+            placeholder="Digite seu estado"
+          />
+          <div
+            *ngIf="
+              form.get('estado').hasError('required') &&
+              form.get('estado').touched
+            "
+            class="invalid-feedback"
+          >
+            O estado é obrigatório.
+          </div>
         </div>
       </div>
 
@@ -90,51 +233,108 @@
       <div class="fullbox">
         <label for="email">Email</label>
         <input
+          formControlName="email"
           type="email"
           name="email"
           id="email"
           placeholder="Digite o seu email"
         />
+        <div
+          *ngIf="
+            form.get('email').hasError('required') && form.get('email').touched
+          "
+          class="invalid-feedback"
+        >
+          O email é obrigatório.
+        </div>
       </div>
 
       <div class="fullbox">
-        <label for="emailConfirm">Confirme seu email</label>
+        <label>Confirme seu email</label>
         <input
+          formControlName="emailConfirmar"
           type="email"
-          name="email"
-          id="emailConfirm"
+          name="emailConfirmar"
           placeholder="Digite novamente o seu email"
         />
+        <div
+          *ngIf="
+            form.get('emailConfirmar').hasError('required') &&
+            form.get('emailConfirmar').touched
+          "
+          class="invalid-feedback"
+        >
+          Confirmar o email é obrigatório.
+        </div>
       </div>
 
       <div class="double-box">
         <div class="halfbox">
           <label for="password">Senha</label>
           <input
+            formControlName="senha"
             type="password"
-            name="password"
-            id="password"
             placeholder="Digite a sua senha"
           />
+          <div
+            *ngIf="
+              form.get('senha').hasError('required') &&
+              form.get('senha').touched
+            "
+            class="invalid-feedback"
+          >
+            A senha é obrigatória.
+          </div>
         </div>
 
         <div class="halfbox">
           <label for="passwordConfirm">Confirme sua senha</label>
           <input
+            formControlName="senhaConfirmar"
             type="password"
             name="passwordConfirm"
             id="passwordConfirm"
             placeholder="Digite novamente a sua senha"
           />
+          <div
+            *ngIf="
+              form.get('senhaConfirmar').hasError('required') &&
+              form.get('senhaConfirmar').touched
+            "
+            class="invalid-feedback"
+          >
+            Confirmar a senha é obrigatório.
+          </div>
         </div>
       </div>
 
-      <label for="agreement" id="agreement">
-        <input type="checkbox" name="agreement" id="checkbox" />
+      <label for="agreement">
+        <input formControlName="agreement" type="checkbox" name="agreement" />
         Eu li e concordo com os <a>Termos de uso.</a>
+        <div
+          *ngIf="
+            form.get('agreement').hasError('requiredTrue') &&
+            form.get('agreement').touched
+          "
+          class="invalid-feedback"
+        >
+          Você deve aceitar os termos.
+        </div>
       </label>
 
-      <button>Cadastrar-se</button>
+      <!-- <pre>
+        {{ this.form.value | json }}
+      </pre> -->
+
+      <button type="submit">Cadastrar-se</button>
     </form>
   </div>
 </div>
+
+<!-- 
+  [ngClass]="{
+  'is-invalid':
+    registerForm.get('tema').errors &&
+    registerForm.get('tema').touched
+  }" 
+-->

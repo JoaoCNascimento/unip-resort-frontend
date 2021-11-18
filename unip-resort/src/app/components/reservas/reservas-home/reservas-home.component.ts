@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { faDoorOpen, faQuestion, faTable, faUser } from '@fortawesome/free-solid-svg-icons';
 import { Categoria } from 'src/app/models/Categoria';
 import { Quarto } from 'src/app/models/Quarto';
@@ -46,7 +46,8 @@ export class ReservasHomeComponent implements OnInit {
 
   constructor(
     private cs: CategoriaService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -57,6 +58,10 @@ export class ReservasHomeComponent implements OnInit {
     this.cs.findAll().subscribe(
       res => this.categorias = res
     )
+  }
+
+  goToReservar(id) {
+    this.router.navigate(['reservas','nova-reserva', id], { relativeTo: this.route.root });
   }
 
 }

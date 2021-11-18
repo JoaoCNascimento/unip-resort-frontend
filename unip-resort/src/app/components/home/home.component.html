@@ -1,20 +1,17 @@
 <header>
-
   <a>
-    <img src="/assets/img/logo/unip-resort-logo.png" width="200" height="100">
+    <img src="/assets/img/logo/unip-resort-logo.png" width="200" height="100" />
   </a>
 
   <div class="header-buttons">
-
     <p>Entrar como:</p>
 
     <div class="buttons">
-      <a routerLink="/login"> Cliente </a>
+      <a (click)="redirect(1)"> Cliente </a>
 
-      <a routerLink="/login-funcionario"> Funcionário </a>
+      <a (click)="redirect(2)"> Funcionário </a>
     </div>
   </div>
-
 </header>
 
 <nav>
@@ -26,40 +23,71 @@
 
 <!-- first-content -->
 <div class="content">
-
   <div class="content-block">
     <h2>Quem somos nós?</h2>
-    <p>Nós da UNIP Resort temos orgulho de representar, há mais de 90 anos, tradição e destaque na baixada santista.
-      Tendo sido desde sempre um referencial de hospitalidade e cordialidade para todos!
+    <p>
+      Nós da UNIP Resort temos orgulho de representar, há mais de 90 anos,
+      tradição e destaque na baixada santista. Tendo sido desde sempre um
+      referencial de hospitalidade e cordialidade para todos!
     </p>
   </div>
 
   <div class="content-block">
-    <img src="assets/img/slider/slide1.jpg" alt="Imagem de um dos locais do hotel." id="slider">
-  </div>
+    <!-- Slideshow container -->
+    <div class="slideshow-container">
+      <!-- Full-width images with number and caption text -->
+      <div class="mySlides fade">
+        <!-- <div class="numbertext">1 / 3</div> -->
+        <img src="assets/img/slider/slide1.jpg" style="width: 100%" />
+        <div class="text">Lazer</div>
+      </div>
 
+      <div class="mySlides fade">
+        <!-- <div class="numbertext">2 / 3</div> -->
+        <img src="assets/img/slider/slide2.jpg" style="width: 100%" />
+        <div class="text">Quartos aconchegantes</div>
+      </div>
+
+      <div class="mySlides fade">
+        <!-- <div class="numbertext">3 / 3</div> -->
+        <img src="assets/img/slider/slide3.jpg" style="width: 100%" />
+        <div class="text">Você encontra aqui!</div>
+      </div>
+
+      <!-- Next and previous buttons -->
+      <!-- <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a> -->
+    </div>
+    <br />
+
+    <!-- The dots/circles -->
+    <div style="text-align: center">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+  </div>
 </div>
 
 <!-- second-content -->
 <div class="content">
-
   <div class="content-block last">
-    <img src="assets/img/logo/vaultboyUR.png" alt="Imagem contendo 'mascote' do hotel.">
+    <img
+      src="assets/img/logo/vaultboyUR.png"
+      alt="Imagem contendo 'mascote' do hotel."
+    />
   </div>
 
   <div class="content-block">
     <h2>O que fazemos?</h2>
-    <p> Oferecemos a melhor hospedagem de toda a baixada santista!</p>
+    <p>Oferecemos a melhor hospedagem de toda a baixada santista!</p>
   </div>
-
 </div>
 
 <div class="last-block">
-
   <h2 id="services">Nossos Serviços</h2>
 
   <div class="list">
-
     <div class="row">
       <fa-icon [icon]="faBed"></fa-icon> Quartos arejados e aconchegantes.
     </div>
@@ -75,37 +103,40 @@
     <div class="row">
       <fa-icon [icon]="faClock"></fa-icon> Serviço de quarto 24 horas.
     </div>
-    <div class="row">
-      <fa-icon [icon]="faPlus"></fa-icon> E muito mais!
-    </div>
-
+    <div class="row"><fa-icon [icon]="faPlus"></fa-icon> E muito mais!</div>
   </div>
 
   <a routerLink="/reservas">Clique aqui e faça sua reserva agora!</a>
-
 </div>
 
 <footer>
-
   <h2>Fale Conosco</h2>
 
   <div id="contato" class="footer-content">
     <div>
+      <p><fa-icon [icon]="faPhone" class="blue"></fa-icon> (13) 3488-5565</p>
       <p>
-        <fa-icon [icon]="faPhone" class="blue"></fa-icon> (13) 3488-5565
+        <fa-icon [icon]="faMark" class="red"></fa-icon> Rua Francisco de Assis
+        14094, Vila Antártica, Santos, SP
       </p>
       <p>
-        <fa-icon [icon]="faMark" class="red"></fa-icon> Rua Francisco de Assis 14094, Vila Antártica, Santos, SP
-      </p>
-      <p>
-        <fa-icon [icon]="faEnvelope" class="yellow"></fa-icon> unipresort@gmail.com
+        <fa-icon [icon]="faEnvelope" class="yellow"></fa-icon>
+        unipresort@gmail.com
       </p>
     </div>
 
     <div>
-      <p> <img src="/assets/img/icons/icon-whatsApp.png" width="16"> (13) 99184-5535</p>
-      <p> <img src="/assets/img/icons/icon-facebook.png" width="16"> @unipresort</p>
-      <p> <img src="/assets/img/icons/icon-instagram.png" width="16"> @unipresortoficial</p>
+      <p>
+        <img src="/assets/img/icons/icon-whatsApp.png" width="16" /> (13)
+        99184-5535
+      </p>
+      <p>
+        <img src="/assets/img/icons/icon-facebook.png" width="16" /> @unipresort
+      </p>
+      <p>
+        <img src="/assets/img/icons/icon-instagram.png" width="16" />
+        @unipresortoficial
+      </p>
     </div>
   </div>
 
@@ -114,5 +145,7 @@
 <!-- chatbox -->
 <a routerLink="/ajuda" id="help">
   <fa-icon [icon]="faQuestion"></fa-icon>
-  <p onselectstart="return false">Para acessar a central de ajuda, clique aqui!</p>
+  <p onselectstart="return false">
+    Para acessar a central de ajuda, clique aqui!
+  </p>
 </a>

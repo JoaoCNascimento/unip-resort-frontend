@@ -3,12 +3,11 @@
     <img src="/assets/img/logo/unip-resort-logo.png" alt="Logo" width="200" height="100">
   </a>
 
-  <span class="hamburguer" (click)="revelarMenu()">
+  <span *ngIf="authService.token" class="hamburguer" (click)="revelarMenu()">
     <fa-icon [icon]="faBars"></fa-icon>
   </span>
 
-  <div id="menu" class="sidenav">
-
+  <div *ngIf="authService.token" id="menu" class="sidenav">
     <p class="close-btn" (click)="esconderMenu()">&times;</p>
 
     <a routerLink="./" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
@@ -20,9 +19,14 @@
     <a routerLink="meu-perfil" routerLinkActive="active">
       <fa-icon [icon]="faUser"></fa-icon> Meu perfil
     </a>
-    <a href="index.html" routerLinkActive="active">
+    <a (click)="exit()" routerLinkActive="active">
       <fa-icon [icon]="faDoor"></fa-icon> Sair
     </a>
+  </div>
+
+  <div *ngIf="!authService.token" class="back-btn" (click)="back()">
+    <fa-icon [icon]="faArrow"></fa-icon>
+    Voltar à tela anterior
   </div>
 </header>
 

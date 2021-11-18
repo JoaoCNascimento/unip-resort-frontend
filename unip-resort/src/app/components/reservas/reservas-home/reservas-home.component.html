@@ -18,7 +18,7 @@
     <div class="valor">
       <h3>Oferta</h3>
       <p>{{ categoria.precoDiaria | currency: 'BRL' }}</p>
-      <button [routerLink]="['nova-reserva', categoria.id]" type="menu">Reservar</button>
+      <button (click)="goToReservar(categoria.id)" type="menu">Reservar</button>
     </div>
   </div>
 

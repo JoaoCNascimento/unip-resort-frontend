@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { faBars, faDoorOpen, faHotel, faQuestion, faTable, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faBars, faDoorOpen, faHotel, faQuestion, faTable, faUser } from '@fortawesome/free-solid-svg-icons';
 import * as $ from "jquery";
+import { Location } from '@angular/common';
+import { AuthService } from 'src/app/services/api/auth.service';
 
 @Component({
   selector: 'app-reservas',
@@ -15,11 +17,23 @@ export class ReservasComponent implements OnInit {
   faDoor = faDoorOpen
   faQuestion = faQuestion
   faBars = faBars
+  faArrow = faArrowLeft
 
-  constructor() { }
+  constructor(
+    public authService: AuthService,
+    private location: Location
+  ) { }
 
   ngOnInit(): void {
     this.ajustarNavbar();
+  }
+
+  back() {
+    this.location.back();
+  }
+
+  exit() {
+    this.authService.setToken();
   }
 
 

@@ -49,6 +49,13 @@ header {
   justify-content: space-between;
 }
 
+.back-btn {
+  padding: 10px 20px;
+  margin-right: 30px;
+  border-radius: 5px;
+  background-color: var(--golden);
+}
+
 #menu .active {
   border: 2px solid #1c1c1c;
   background-color: #cfa227;
@@ -131,6 +138,11 @@ header {
     top: 0;
     right: -300px;
     overflow-x: hidden;
+  }
+
+  .back-btn {
+    margin: auto;
+    margin-bottom: 15px;
   }
 
   header {
