@@ -1,9 +1,17 @@
 # UnipResort
 
-Frontend da aplicação para o hotel Unip Resort, com funcionalidades que permitem a criação de reservas, prestação de ajuda e muito mais!
+Frontend da aplicação para o hotel Unip Resort, com funcionalidades que permitem a criação de reservas e muito mais!
 
 ## Instalação e Execução
 
-Para iniciar o projeto, baixe a versão 9 (ou superior) do angular `npm i -g --save @angular/cli@9.0.0`
+Para iniciar o projeto:
 
-Após baixar o angular cli, inicie o projeto através do comando `npm start` ou `ng serve`
+ - baixe a versão 9 (ou superior) do angular `npm i -g --save @angular/cli@9.0.0`
+
+ - Após baixar o angular cli, inicie o projeto através do comando `npm start` ou `ng serve`
+
+OBS: para iniciar o projeto na primeira vez, execute o comando `npm i -d` para instalar as dependências.
+
+## Manual de uso
+
+-> TODO
