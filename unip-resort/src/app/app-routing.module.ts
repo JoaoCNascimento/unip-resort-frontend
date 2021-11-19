@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AjudaComponent } from './components/ajuda/ajuda.component';
+import { TermosComponent } from './components/termos/termos.component';
 import { AuthGuard } from './guard/auth.guard';
 
 
@@ -39,6 +40,11 @@ const routes: Routes = [
     path: 'funcionario',
     loadChildren: () => import('./modules/funcionario/funcionario.module')
       .then(m => m.FuncionarioModule), canActivate: [AuthGuard]
+  },
+
+  {
+    path: 'termos-de-uso',
+    component: TermosComponent  
   },
 
   {

@@ -11,12 +11,15 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { LoaderInterceptor } from './shared/loader/loader.interceptor';
 import { LoaderComponent } from './shared/loader/loader.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TermosComponent } from './components/termos/termos.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
     AppComponent,
     AjudaComponent,
-    LoaderComponent
+    LoaderComponent,
+    TermosComponent
   ],
   imports: [
     BrowserModule,
@@ -24,6 +27,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule, 
+    FontAwesomeModule,
     ToastrModule.forRoot({progressBar: true})
   ],
   providers: [
