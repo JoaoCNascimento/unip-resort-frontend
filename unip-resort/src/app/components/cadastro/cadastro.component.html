@@ -310,7 +310,7 @@
 
       <label for="agreement">
         <input formControlName="agreement" type="checkbox" name="agreement" />
-        Eu li e concordo com os <a>Termos de uso.</a>
+        Eu li e concordo com os <a routerLink="/termos-de-uso">Termos de uso.</a>
         <div
           *ngIf="
             form.get('agreement').hasError('requiredTrue') &&
