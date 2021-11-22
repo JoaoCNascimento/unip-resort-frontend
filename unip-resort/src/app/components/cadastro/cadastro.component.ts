@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Cliente } from 'src/app/models/Cliente';
+import { AuthService } from 'src/app/services/api/auth.service';
 import { ClienteService } from 'src/app/services/api/cliente.service';
 import { CepService } from 'src/app/services/cep.service';
 
@@ -18,6 +19,8 @@ export class CadastroComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private cs: ClienteService,
+    private authService: AuthService,
+    private route: ActivatedRoute,
     private cepService: CepService,
     private fb: FormBuilder
   ) {
@@ -25,6 +28,9 @@ export class CadastroComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(this.authService.token)
+      this.router.navigate(['/reservas'], {relativeTo: this.route.root})
+
     this.configurarForm();
   }
 
