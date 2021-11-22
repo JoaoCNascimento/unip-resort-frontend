@@ -28,7 +28,7 @@ export class ClienteService {
 
   createCliente(c: Cliente) {
     return this.httpClient.post(this.baseUrl, c).pipe(
-      tap(),
+      tap(res => this.successMessage('Cadastrado com sucesso!')),
       catchError(er => {this.handleError(er); return er})
     );
   }
