@@ -39,7 +39,7 @@ export class DetalhesNovaReservaComponent implements OnInit {
     this.configurateForm();
     this.cs.findAll().subscribe((res) => {
       this.categorias = res;
-      this.changeCategoria(this.route.snapshot.params["id"]);
+      this.changeCategoria(this.route.snapshot.params["id"] | this.categorias[0].id);
     });
   }
 
