@@ -3,5 +3,6 @@ export interface Categoria {
     nome: String;
     descricao: String;
     imageUrl: String;
+    status?: boolean;
     precoDiaria: Number;
 }
