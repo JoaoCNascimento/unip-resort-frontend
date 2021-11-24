@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Cliente } from 'src/app/models/Cliente';
 import { AuthService } from 'src/app/services/api/auth.service';
 import { ClienteService } from 'src/app/services/api/cliente.service';
@@ -22,6 +23,7 @@ export class CadastroComponent implements OnInit {
     private authService: AuthService,
     private route: ActivatedRoute,
     private cepService: CepService,
+    private toastrService: ToastrService,
     private fb: FormBuilder
   ) {
 
@@ -47,18 +49,7 @@ export class CadastroComponent implements OnInit {
           Validators.email
         ]
       }),
-      emailConfirmar: new FormControl(null, {
-        validators: [
-          Validators.required,
-          Validators.email
-        ]
-      }),
       senha: new FormControl(null, {
-        validators: [
-          Validators.required
-        ]
-      }),
-      senhaConfirmar: new FormControl(null, {
         validators: [
           Validators.required
         ]
@@ -122,7 +113,9 @@ export class CadastroComponent implements OnInit {
   onSubmit() {
     if(!this.form.valid) {
       this.form.markAllAsTouched();
-      return alert('Form inválido.');
+      return this.toastrService.warning('Verifique se todos os campos foram preenchidos corretamente.', 'Formulário inválido...', {
+        timeOut: 4000
+      });
     }
 
       let cliente: Cliente = Object.assign({}, this.form.value)

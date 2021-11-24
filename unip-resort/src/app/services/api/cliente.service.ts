@@ -79,8 +79,18 @@ export class ClienteService {
   }
 
   handleError(er:any) {
+    console.log(er);
+    
     if(er.status === 400)
+    {
+      if(er.error.errors)
+        return this.toastrService.warning(er.error.errors[0].message, 'Erro no campo: ' + er.error.errors[0].fieldName);
+
+      if(er.error.message)
+        return this.toastrService.warning(er.error.message);
+
       return this.errorMessage('Verifique se todos os campos foram preenchidos corretamente.');
+    }
 
     if(er.status === 500)
       return this.errorMessage('Houve um erro no servidor, tente novamente mais tarde.');

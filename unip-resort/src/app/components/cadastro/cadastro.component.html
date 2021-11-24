@@ -249,7 +249,7 @@
         </div>
       </div>
 
-      <div class="fullbox">
+      <!-- <div class="fullbox">
         <label>Confirme seu email</label>
         <input
           formControlName="emailConfirmar"
@@ -266,28 +266,26 @@
         >
           Confirmar o email é obrigatório.
         </div>
+      </div> -->
+
+      <div class="fullbox">
+        <label for="password">Senha</label>
+        <input
+          formControlName="senha"
+          type="text"
+          placeholder="Digite a sua senha"
+        />
+        <div
+          *ngIf="
+            form.get('senha').hasError('required') && form.get('senha').touched
+          "
+          class="invalid-feedback"
+        >
+          A senha é obrigatória.
+        </div>
       </div>
 
-      <div class="double-box">
-        <div class="halfbox">
-          <label for="password">Senha</label>
-          <input
-            formControlName="senha"
-            type="password"
-            placeholder="Digite a sua senha"
-          />
-          <div
-            *ngIf="
-              form.get('senha').hasError('required') &&
-              form.get('senha').touched
-            "
-            class="invalid-feedback"
-          >
-            A senha é obrigatória.
-          </div>
-        </div>
-
-        <div class="halfbox">
+      <!-- <div class="halfbox">
           <label for="passwordConfirm">Confirme sua senha</label>
           <input
             formControlName="senhaConfirmar"
@@ -305,22 +303,24 @@
           >
             Confirmar a senha é obrigatório.
           </div>
-        </div>
-      </div>
+        </div> -->
 
       <label for="agreement">
         <input formControlName="agreement" type="checkbox" name="agreement" />
-        Eu li e concordo com os <a routerLink="/termos-de-uso">Termos de uso.</a>
+        Eu li e concordo com os
+        <a routerLink="/termos-de-uso">Termos de uso.</a>
         <div
           *ngIf="
-            form.get('agreement').hasError('requiredTrue') &&
+            form.get('agreement').hasError('required') &&
             form.get('agreement').touched
           "
           class="invalid-feedback"
         >
-          Você deve aceitar os termos.
+          Você deve aceitar os termos para continuar.
         </div>
       </label>
+
+
 
       <!-- <pre>
         {{ this.form.value | json }}
