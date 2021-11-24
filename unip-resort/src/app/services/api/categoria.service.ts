@@ -23,7 +23,7 @@ export class CategoriaService {
 
  findAll(): Observable<any> {
    return this.httpClient.get<any[]>(this.baseUrl).pipe(
-     tap(res => {this.successMessage(); return res}),
+    //  tap(res => {this.successMessage(); return res}),
      catchError(er => {this.handleError(er); return er})
    );
  }

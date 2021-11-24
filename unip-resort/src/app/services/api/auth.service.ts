@@ -12,6 +12,7 @@ import { Login } from "src/app/models/Login";
 export class AuthService {
 
   private readonly TOKEN: string = 'Authorization';
+  private readonly EMAIL: string = 'Email';
 
   baseUrl = "https://backend-pim.herokuapp.com/login";
 
@@ -19,6 +20,10 @@ export class AuthService {
 
   get token() {
     return localStorage.getItem(this.TOKEN);
+  }
+
+  get email() {
+    return localStorage.getItem(this.EMAIL);
   }
 
   constructor(
@@ -32,7 +37,7 @@ export class AuthService {
   authenticate(login: Login) {
     return this.httpClient.post(this.baseUrl, login, { observe: 'response' }).pipe(
       tap(res => {
-        this.setToken(res.headers.get('Authorization'));
+        this.setToken(res.headers.get('Authorization'), login.email);
       }),
       catchError(er => {this.handleError(er); return er})
     );
@@ -53,14 +58,16 @@ export class AuthService {
     this.toastr.success(message);
   }
 
-  setToken(token?: string) {
+  setToken(token?: string, email?: string) {
     if (!localStorage.getItem('Authorization') && token) {
       localStorage.setItem(this.TOKEN, token);
+      localStorage.setItem(this.EMAIL, email);
       this.successMessage('Logado com sucesso!');
       this.router.navigate(['']);
     }
     else {
       localStorage.removeItem(this.TOKEN);
+      localStorage.removeItem(this.EMAIL);
       this.router.navigate(['login']);
     }
   }
