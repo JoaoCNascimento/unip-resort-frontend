@@ -66,6 +66,7 @@ export class AuthService {
       this.router.navigate(['']);
     }
     else {
+      this.toastr.info('Deslogando...');
       localStorage.removeItem(this.TOKEN);
       localStorage.removeItem(this.EMAIL);
       this.router.navigate(['login']);

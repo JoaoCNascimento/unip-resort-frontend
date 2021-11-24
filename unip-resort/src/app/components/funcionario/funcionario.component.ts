@@ -26,8 +26,7 @@ export class FuncionarioComponent implements OnInit {
 
   constructor(
     private rs: ReservasService,
-    private authService: AuthService,
-    private toastrService: ToastrService
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -41,7 +40,6 @@ export class FuncionarioComponent implements OnInit {
 
 
   exit() {
-    this.toastrService.info('Deslogando...')
     this.authService.setToken();
   }
   /*
