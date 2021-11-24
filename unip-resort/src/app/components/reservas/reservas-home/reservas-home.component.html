@@ -19,9 +19,12 @@
       <h3>Oferta</h3>
       <p>{{ categoria.precoDiaria | currency: 'BRL' }}</p>
       <button (click)="goToReservar(categoria.id)" type="menu">Reservar</button>
+      
+    </div>
+    <div *ngIf="!categoria.status" class="disponibilidade-overlay">
+      <h3>Indisponível</h3>
     </div>
   </div>
-
 </div>
 
 <!-- chatbox -->
