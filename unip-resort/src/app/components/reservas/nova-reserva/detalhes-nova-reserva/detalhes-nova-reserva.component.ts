@@ -86,7 +86,6 @@ export class DetalhesNovaReservaComponent implements OnInit {
       ],
       dataCheckIn: [null, []],
       dataCheckOut: [null, []],
-      cupom: [null, []],
     });
   }
 
