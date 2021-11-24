@@ -26,7 +26,6 @@ export class AdministrarReservasComponent implements OnInit {
 
   getReservas() {
     this.rs.findAll().subscribe((res: Reserva[]) => {
-      res.map(r => r.status = false)
       this.reservas = res;
     })
   }
