@@ -27,25 +27,25 @@
 
   <a routerLink="checkInList">
     <fa-icon [icon]="faTicket"></fa-icon>
-    <p>Check In</p>
+    <p>Check In & Check Out</p>
   </a>
 
-  <a routerLink="checkOutList">
+  <!-- <a routerLink="checkOutList">
     <fa-icon [icon]="faCheckOut"></fa-icon>
-    <p>Check Out</p>
-  </a>
+    <p></p>
+  </a> -->
 
   <a routerLink="cadastrar-cliente">
     <fa-icon [icon]="faUserPlus"></fa-icon>
     Cadastrar Cliente
   </a>
 
-  <a routerLink="editar-cliente">
+  <a routerLink="administrar-clientes">
     <fa-icon [icon]="faUserEdit"></fa-icon>
     Editar cliente
   </a>
 
-  <a routerLink="/">
+  <a (click)="exit()">
     <fa-icon [icon]="faDoorOpen"></fa-icon>
     Sair
   </a>

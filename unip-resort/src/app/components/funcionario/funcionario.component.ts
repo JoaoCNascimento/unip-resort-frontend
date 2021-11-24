@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { faBars, faCheckCircle, faDoorOpen, faEdit, faPhone, faPlus, faTicketAlt, faTrash, faTrashAlt, faUser, faUserCog, faUserEdit, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import * as $ from 'jquery';
+import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/services/api/auth.service';
 import { ReservasService } from 'src/app/services/api/reservas.service';
 
 @Component({
@@ -23,7 +25,9 @@ export class FuncionarioComponent implements OnInit {
 
 
   constructor(
-    private rs: ReservasService
+    private rs: ReservasService,
+    private authService: AuthService,
+    private toastrService: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -35,6 +39,11 @@ export class FuncionarioComponent implements OnInit {
         menu.css({ right: -400 });
   }
 
+
+  exit() {
+    this.toastrService.info('Deslogando...')
+    this.authService.setToken();
+  }
   /*
   ________________________________
   **********  JQUERY *************
