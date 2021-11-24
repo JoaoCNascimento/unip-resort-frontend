@@ -11,6 +11,7 @@ import { ReservaRealizadaComponent } from 'src/app/components/funcionario/nova-r
 import { CadastroComponent } from 'src/app/components/funcionario/cadastro/cadastro.component';
 import { AdministrarReservasComponent } from 'src/app/components/funcionario/administrar-reservas/administrar-reservas.component';
 import { PipesModule } from 'src/app/pipes/pipes/pipes.module';
+import { AdministrarClientesComponent } from 'src/app/components/funcionario/administrar-clientes/administrar-clientes.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { PipesModule } from 'src/app/pipes/pipes/pipes.module';
     DetalhesNovaReservaComponent,
     ReservaRealizadaComponent,
     CadastroComponent,
-    AdministrarReservasComponent
+    AdministrarReservasComponent,
+    AdministrarClientesComponent
   ],
   imports: [
     CommonModule,

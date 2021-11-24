@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AdministrarClientesComponent } from 'src/app/components/funcionario/administrar-clientes/administrar-clientes.component';
 import { AdministrarReservasComponent } from 'src/app/components/funcionario/administrar-reservas/administrar-reservas.component';
 import { CadastroComponent } from 'src/app/components/funcionario/cadastro/cadastro.component';
 import { FuncionarioComponent } from 'src/app/components/funcionario/funcionario.component';
@@ -23,6 +24,9 @@ const routes: Routes = [
       {
         path: 'reservas', component: AdministrarReservasComponent
       },
+      {
+        path: 'administrar-clientes', component: AdministrarClientesComponent
+      }
     ]
   },
   {
