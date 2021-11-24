@@ -42,6 +42,10 @@ p {
   font-weight: var(--light-text-weight);
 }
 
+a:hover {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 600px) {
   #form-container {
     width: 100%;

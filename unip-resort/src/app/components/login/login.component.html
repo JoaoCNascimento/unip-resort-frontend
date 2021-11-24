@@ -1,30 +1,66 @@
-<div id="container">   
-    <header>
-        <a routerLink="/">
-            <img src="/assets/img/logo/unip-resort-logo.png" width="200" height="100" alt="logo unip resort" draggable="false">
-        </a>
-    </header>
-    
-    <div id="form-container">
-        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form_standard">
-    
-            <h2>Faça o login para acessar a área de cliente</h2>
-    
+<div id="container">
+  <header>
+    <a routerLink="/">
+      <img
+        src="/assets/img/logo/unip-resort-logo.png"
+        width="200"
+        height="100"
+        alt="logo unip resort"
+        draggable="false"
+      />
+    </a>
+  </header>
 
-            <div class="fullbox">
-                <label for="email">Email</label>
-                <input type="email" formControlName="email" name="email" id="email" placeholder="Digite seu email">    
-            </div>
+  <div id="form-container">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form_standard">
+      <h2>Faça o login para acessar a área de cliente</h2>
 
-            <div class="fullbox">
-                <label for="senha">Senha</label>
-                <input type="password" formControlName="senha" name="senha" id="password" placeholder="Digite sua senha">    
-            </div>
-    
-            <button>Entrar</button>
-    
-            <p>Ainda não tem uma conta? <a routerLink="/cadastrar">Cadastre-se agora!</a></p>
-    
-        </form>
-    </div>
+      <div class="fullbox">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          formControlName="email"
+          name="email"
+          id="email"
+          placeholder="Digite seu email"
+        />
+        <div
+          *ngIf="
+            form.get('email').hasError('required') && form.get('email').touched
+          "
+          class="invalid-feedback"
+        >
+          Digite um email válido.
+        </div>
+      </div>
+
+      <div class="fullbox">
+        <label for="senha">Senha</label>
+        <input
+          type="password"
+          formControlName="senha"
+          name="senha"
+          id="password"
+          placeholder="Digite sua senha"
+        />
+        <div
+          *ngIf="
+            form.get('senha').hasError('required') && form.get('senha').touched
+          "
+          class="invalid-feedback"
+        >
+          Digite sua senha.
+        </div>
+      </div>
+
+      <button>Entrar</button>
+
+      <p><a (click)="resetPassword()">Esqueci minha senha</a></p>
+
+      <p>
+        Ainda não tem uma conta?
+        <a routerLink="/cadastrar">Cadastre-se agora!</a>
+      </p>
+    </form>
+  </div>
 </div>
