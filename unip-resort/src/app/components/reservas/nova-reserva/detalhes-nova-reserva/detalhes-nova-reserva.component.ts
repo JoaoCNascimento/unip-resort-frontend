@@ -2,8 +2,11 @@ import { AfterContentInit, Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import * as moment from "moment";
+import { ToastrService } from "ngx-toastr";
 import { Categoria } from "src/app/models/Categoria";
+import { Quarto } from "src/app/models/Quarto";
 import { CategoriaService } from "src/app/services/api/categoria.service";
+import { QuartoService } from "src/app/services/api/quartos.service";
 
 @Component({
   selector: "app-detalhes-nova-reserva",
@@ -32,14 +35,45 @@ export class DetalhesNovaReservaComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private cs: CategoriaService
+    private cs: CategoriaService,
+    private qs: QuartoService,
+    private toastrService: ToastrService
   ) {}
 
   ngOnInit(): void {
     this.configurateForm();
+    this.getCategorias();
+  }
+
+  getCategorias() {
     this.cs.findAll().subscribe((res) => {
-      this.categorias = res;
-      this.changeCategoria(this.route.snapshot.params["id"] | this.categorias[0].id);
+      let categorias = res;
+      if (categorias.length === 0)
+      {
+        this.router.navigate(['/'], { relativeTo: this.route.root });
+        return this.toastrService.error('Não há categorias cadastradas no sistema.');
+      } 
+        
+      this.qs.findAll().subscribe((_quartos: Quarto[]) => {
+        let _categorias = categorias.map((c) => {
+
+          let listaQuartos = _quartos.filter((q) => {
+            return q.categoria.nome === c.nome;
+          });
+          
+          if (listaQuartos.length >= 1) {
+            c.status = true;
+            return c;
+          }
+
+          c.status = false;
+          return undefined;
+        });
+
+        _categorias = _categorias.filter(c => {return c !== undefined});
+        this.categorias = _categorias;
+        this.changeCategoria(this.route.snapshot.params["id"] | this.categorias[0].id);
+      });
     });
   }
 
@@ -91,9 +125,13 @@ export class DetalhesNovaReservaComponent implements OnInit {
     let categoria;
 
     if (categoriaId) {
-      categoria =
-        this.categorias[this.categorias.findIndex((c) => c.id == categoriaId)];
-      this.categoria = categoria;
+      categoria = this.categorias[this.categorias.findIndex((c) => c.id == categoriaId)];
+      if (categoria === null || categoria === undefined) {
+        this.categoria = this.categorias[0];
+      }
+      else
+        this.categoria = categoria;
+        
     } else {
       categoria =
         this.categorias[
@@ -104,7 +142,7 @@ export class DetalhesNovaReservaComponent implements OnInit {
       this.categoria = categoria;
     }
 
-    this.form.get("categoria").setValue(categoria.nome);
+    this.form.get("categoria").setValue(this.categoria.nome);
     this.calcularValorDiaria();
   }
 
