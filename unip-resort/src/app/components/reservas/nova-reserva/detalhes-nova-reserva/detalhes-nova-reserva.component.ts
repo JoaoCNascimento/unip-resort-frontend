@@ -5,8 +5,13 @@ import * as moment from "moment";
 import { ToastrService } from "ngx-toastr";
 import { Categoria } from "src/app/models/Categoria";
 import { Quarto } from "src/app/models/Quarto";
+import { AuthService } from "src/app/services/api/auth.service";
 import { CategoriaService } from "src/app/services/api/categoria.service";
 import { QuartoService } from "src/app/services/api/quartos.service";
+import { ReservasService } from "src/app/services/api/reservas.service";
+import { ClienteService } from "src/app/services/api/cliente.service";
+import { Reserva } from "src/app/models/Reserva";
+import { Cliente } from "src/app/models/Cliente";
 
 @Component({
   selector: "app-detalhes-nova-reserva",
@@ -37,13 +42,48 @@ export class DetalhesNovaReservaComponent implements OnInit {
     private router: Router,
     private cs: CategoriaService,
     private qs: QuartoService,
-    private toastrService: ToastrService
+    private cliService: ClienteService,
+    private toastrService: ToastrService,
+    private authService: AuthService,
+    private rs: ReservasService
   ) {}
 
   ngOnInit(): void {
     this.configurateForm();
     this.getCategorias();
   }
+
+  onSubmit() {
+    if(this.form.invalid) {
+      this.form.markAllAsTouched();
+      return this.toastrService.warning('Verifique se os campos foram preenchidos corretamente.', 'Formulário inválido...')
+    }
+  
+      // EU SEI, isso aqui tá terrível...
+      // Se alguém estiver vendo isso, saiba que quando fiz isso faltavam 2 dias para entregar o trabalho. 
+      this.cliService.findByEmail().subscribe((_cliente: Cliente) => {
+        let cliente = _cliente;
+        let reserva: Reserva = Object.assign({}, this.form.value);
+        this.qs.findAll().subscribe((_quartos: Quarto[]) => {
+          reserva.cliente = cliente.id;
+          reserva.valor = undefined;
+          reserva.categoria = undefined;
+          // TO DO - implementar lógica de checar se já há reserva.
+          let quarto: Quarto = _quartos.filter(q => { return q.categoria.nome === this.categoria.nome })[0];
+          reserva.quarto = quarto.id;
+          let checkIn = moment(reserva.dataReserva);
+          let checkOut = moment(reserva.dataSaida);
+          reserva.tempoEstadia = checkOut.diff(checkIn, "days") + 1;
+          reserva.dataReserva = moment(reserva.dataReserva).format('DD/MM/yyyy HH:mm:ss');
+          reserva.dataSaida = moment(reserva.dataSaida).format('DD/MM/yyyy HH:mm:ss')
+          //  = moment(reserva.dataSaida).format('DD/MM/yyyy').diff(moment(reserva.dataReserva).format('DD/MM/yyyy'), "days") + 1;
+          this.rs.create(reserva).subscribe(res => {
+            this.router.navigate(['reservas/minhas-reservas'], {relativeTo: this.route.root})
+          });
+        })
+      })
+      // this.rs.create()
+    }
 
   getCategorias() {
     this.cs.findAll().subscribe((res) => {
@@ -79,13 +119,13 @@ export class DetalhesNovaReservaComponent implements OnInit {
 
   configurateForm() {
     this.form = this.fb.group({
-      categoria: [, []],
+      categoria: [, [Validators.required]],
       qtdHospedes: [
         1,
         [Validators.min(1), Validators.max(6), Validators.required],
       ],
-      dataCheckIn: [null, []],
-      dataCheckOut: [null, []],
+      dataReserva: [null, [Validators.required, Validators.minLength(15)]],
+      dataSaida: [null, [Validators.required, Validators.minLength(15)]],
     });
   }
 
@@ -97,24 +137,24 @@ export class DetalhesNovaReservaComponent implements OnInit {
 
   calcularValorDiaria() {
     if (
-      this.form.get("dataCheckIn").value &&
-      this.form.get("dataCheckOut").value
+      this.form.get("dataReserva").value &&
+      this.form.get("dataSaida").value
     ) {
-      let checkIn = moment(this.form.get("dataCheckIn").value);
-      let checkOut = moment(this.form.get("dataCheckOut").value);
+      let checkIn = moment(this.form.get("dataReserva").value);
+      let checkOut = moment(this.form.get("dataSaida").value);
       let days = checkOut.diff(checkIn, "days") + 1;
 
       if(!checkOut.isSameOrAfter(checkIn)) {
         return alert('Datas inválidas.');
       }
 
-      if (this.form.get("qtdHospedes").value) {
-        let qtdHospedes = this.form.get("qtdHospedes").value;
+      // if (this.form.get("qtdHospedes").value) {
+      //   let qtdHospedes = this.form.get("qtdHospedes").value;
         
-        if (qtdHospedes > 0) {
-          this.valorTaxa = (Number(this.categoria.precoDiaria) / 10) * qtdHospedes;
-        }
-      }
+      //   if (qtdHospedes > 0) {
+      //     this.valorTaxa = (Number(this.categoria.precoDiaria) / 10) * qtdHospedes;
+      //   }
+      // }
 
       this.valorTotal = Number(this.categoria.precoDiaria) * days;
     }

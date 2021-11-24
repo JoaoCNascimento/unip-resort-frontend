@@ -3,10 +3,12 @@ import { Quarto } from "./Quarto";
 
 export interface Reserva {
     id: number;
-    dataReserva: Date;
-    dataSaida: Date;
+    dataReserva: Date | string;
+    dataSaida: Date | string;
     valor: number;
     status:boolean;
-    cliente: Cliente;
-    quarto: Quarto;
+    tempoEstadia: Number;
+    cliente: Cliente | Number;
+    quarto: Quarto | Number;
+    categoria?: any;
 }
