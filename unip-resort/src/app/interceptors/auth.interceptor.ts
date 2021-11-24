@@ -15,13 +15,19 @@ export class AuthInterceptor implements HttpInterceptor {
     private authService: AuthService
   ) {}
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<any>> {
-    
+  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<any>> {  
+
     if (this.authService.token) {
       request = request.clone({
         setHeaders: {
           'Authorization': this.authService.token,
         },
+      });
+    }
+
+    if(request.url.split('/')[2] === "viacep.com.br") {
+      request = request.clone({
+        headers: request.headers.delete('Authorization')
       });
     }
 
