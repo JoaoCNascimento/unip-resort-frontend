@@ -78,10 +78,6 @@ export class ReservasHomeComponent implements OnInit {
             return q.categoria.nome === c.nome;
           });
 
-          console.log(listaQuartos);
-
-          console.log(c);
-          
           if (listaQuartos.length >= 1) {
             c.status = true;
             return c;
