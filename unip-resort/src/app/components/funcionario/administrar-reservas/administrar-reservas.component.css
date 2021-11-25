@@ -41,12 +41,11 @@ td {
   text-align: center;
 }
 
-td + td + td + td + td + td + td {
-  font-size: 1.2rem;
-}
-
 td + td + td + td + td + td + td .fa {
   padding: 5px;
+  margin: 5px;
+  cursor: pointer;
+  font-size: 1.6rem;
 }
 
 .fa-edit {
@@ -85,10 +84,10 @@ form,
 }
 
 #form-container {
-  margin: 25px auto;
+  margin: 10px auto;
+  padding: 20px;
   border-radius: 5px;
   width: 100%;
-  padding: 20px;
   flex-direction: column;
   align-items: center;
   background-color: #fff;
@@ -139,6 +138,10 @@ hr {
   flex-direction: column;
   /* background-color: #b1e2ff96; */
   width: 100%;
+}
+
+.hospede-container p {
+  text-align: left;
 }
 
 .hospede-container .pesquisar {

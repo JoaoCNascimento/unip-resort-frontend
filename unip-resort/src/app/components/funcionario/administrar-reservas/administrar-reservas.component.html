@@ -21,8 +21,8 @@
         <td>{{ reserva.cliente.cpf | cpf }}</td>
         <td>{{ reserva.status ? "CheckIn Realizado" : "Pendente" }}</td>
         <td>
-          <fa-icon [icon]="faEdit" class="fa fa-edit"></fa-icon>
-          <fa-icon [icon]="faTrash" class="fa fa-trash"></fa-icon>
+          <fa-icon (click)="openForm(reserva.id)" [icon]="faEdit" class="fa fa-edit"></fa-icon>
+          <fa-icon (click)="deleteReserva(reserva.id)" [icon]="faTrash" class="fa fa-trash"></fa-icon>
         </td>
       </tr>
     </tbody>
@@ -35,111 +35,157 @@
       <div id="form-container">
         <h2>Detalhes da reserva</h2>
 
-        <div [formGroup]="form" class="hospede-container">
-          <div class="pesquisar">
-            <label for="">CPF</label>
-            <input type="text" placeholder="Ex.: XXX.XXX.XXX-XX" />
-            <button>Pesquisar</button>
-          </div>
-          <!--  -->
-          <div class="hospede-data">
-            <h3>Dados cliente</h3>
+  <div class="hospede-container">
+    <div class="pesquisar">
+      <label for="">CPF</label>
+      <input [(ngModel)]="cpf" type="text" placeholder="Ex.: XXX.XXX.XXX-XX"/>
+      <button (click)="findCliente()">Pesquisar</button>
+    </div>
+    <!--  -->
+    <div class="hospede-data">
 
-            <h4>Nome:</h4>
-            <p>Maurício Alabama</p>
+      <h3>Dados cliente</h3>
 
-            <h4>CPF:</h4>
-            <p>421.412.421-44</p>
+      <h4>Nome:</h4>
+      <p>{{ cliente ? cliente.nome : '----------------' }}</p>
 
-            <h4>Email</h4>
-            <p>mariucio@email.com</p>
-          </div>
-        </div>
+      <h4>CPF:</h4>
+      <p>{{ cliente ? (cliente.cpf.toString() | cpf) : '----------------' }}</p>
 
-        <hr />
+      <h4>Email</h4>
+      <p>{{ cliente ? cliente.email : '----------------' }}</p>
+      
+    </div>
 
-        <div class="content">
-          <div class="img">
-            <img
-              src="{{ categoria.imageUrl || 'assets/img-empty.png' }}"
-              alt="Quarto do hotel"
-            />
-          </div>
+  <hr>
 
-          <div class="contentbox">
-            <h3>{{ categoria.nome }}</h3>
+  <div class="content">
+    <div class="img">
+      <img
+        src="{{ categoria.imageUrl || 'assets/img-empty.png' }}"
+        alt="Quarto do hotel"
+      />
+    </div>
 
-            <p>
-              {{ categoria.descricao }}
-            </p>
-          </div>
-        </div>
+    <div class="contentbox">
+      <h3>{{ categoria.nome }}</h3>
 
-        <form [formGroup]="form">
-          <label for="apartamento">Selecione a categoria do quarto </label>
-          <select
-            formControlName="categoria"
-            name="apartamento"
-            id="apartamento-selectbox"
-          >
-            <option
-              *ngFor="let categoria of categorias"
-              (click)="changeCategoria(categoria.id)"
-              value="{{ categoria.nome }}"
-            >
-              {{ categoria.nome }} - Preço Diária
-              {{ categoria.precoDiaria | currency: "BRL" }}
-            </option>
-          </select>
+      <p>
+        {{ categoria.descricao }}
+      </p>
+    </div>
+  </div>
 
-          <label for="numeroHospedes">Quantidade de hóspedes: </label>
-          <input
-            (change)="changeCategoria()"
-            (change)="calcularValorDiaria()"
-            formControlName="qtdHospedes"
-            type="number"
-            name="numeroHospedes"
-            id="numeroHospedes"
-            min="1"
-            max="6"
-          />
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <label for="apartamento">Selecione a categoria do quarto </label>
+    <select
+      formControlName="categoria"
+      name="apartamento"
+      id="apartamento-selectbox"
+    >
+      <option
+        *ngFor="let categoria of categorias"
+        (click)="changeCategoria(categoria.id)"
+        value="{{ categoria.nome }}"
+      >
+        {{ categoria.nome }} - Preço Diária
+        {{ categoria.precoDiaria | currency: "BRL" }}
+      </option>
+    </select>
+    <div
+      *ngIf="
+        form.get('categoria').hasError('required') &&
+        form.get('categoria').touched
+      "
+      class="invalid-feedback"
+    >
+      A categoria é obrigatória.
+    </div>
 
-          <label for="checkIn">Data de check-in</label>
-          <input
-            formControlName="dataCheckIn"
-            type="date"
-            name="checkIn"
-            id="checkIn"
-          />
+    <!-- <label for="numeroHospedes">Quantidade de hóspedes: </label>
+    <input
+      (change)="changeCategoria()"
+      (change)="calcularValorDiaria()"
+      formControlName="qtdHospedes"
+      type="number"
+      name="numeroHospedes"
+      id="numeroHospedes"
+      min="1"
+      max="6"
+    />
+    <div
+      *ngIf="
+        form.get('qtdHospedes').hasError('required') &&
+        form.get('qtdHospedes').touched
+      "
+      class="invalid-feedback"
+    >
+      A quantidade de hóspedes é obrigatória.
+    </div>
+    <div
+      *ngIf="
+        form.get('qtdHospedes').hasError('max') &&
+        form.get('qtdHospedes').touched
+      "
+      class="invalid-feedback"
+    >
+      A quantidade de hóspedes não pode ultrapassar 6.
+    </div>
+    <div
+      *ngIf="
+        form.get('qtdHospedes').hasError('min') &&
+        form.get('qtdHospedes').touched
+      "
+      class="invalid-feedback"
+    >
+      A quantidade de hóspedes mínima deve ser 1.
+    </div> -->
 
-          <label for="checkOut">Data de check-out</label>
-          <input
-            (change)="calcularValorDiaria()"
-            formControlName="dataCheckOut"
-            type="date"
-            name="checkOut"
-            id="checkOut"
-          />
+    <label for="checkIn">Data e hora de check-in</label>
+    <input
+      (change)="calcularValorDiaria()"
+      formControlName="dataReserva"
+      type="datetime-local"
+      name="checkIn"
+      id="checkIn"
+    />
+    <div
+      *ngIf="
+        form.get('dataReserva').hasError('required') &&
+        form.get('dataReserva').touched
+      "
+      class="invalid-feedback"
+    >
+      A data de check-in é obrigatória
+    </div>
 
-          <!-- <label for="cupom">Cupom de desconto</label>
-    <input (change)="calcularValorDiaria()" formControlName="cupom" type="text" name="cupom" id="cupom" placeholder="Digite o código do seu cupom"> -->
+    <label for="checkOut">Data e hora de check-out</label>
+    <input
+      (change)="calcularValorDiaria()"
+      formControlName="dataSaida"
+      type="datetime-local"
+      name="checkOut"
+      id="checkOut"
+    />
+    <div
+      *ngIf="
+        form.get('dataSaida').hasError('required') &&
+        form.get('dataSaida').touched
+      "
+      class="invalid-feedback"
+    >
+      A data de check-out é obrigatória
+    </div>
 
-          <div class="total">
-            <h4>Valor Total:</h4>
-            <p>
-              {{ valorTotalDescricao }} {{ valorTotal }}
-              {{
-                valorTaxa > 0
-                  ? "+ R$ " +
-                    valorTaxa +
-                    " taxa de serviço (10% do preço da diária por hóspede.)"
-                  : ""
-              }}
-            </p>
-          </div>
+    <div class="total">
+      <h4>Valor Total:</h4>
+      <p>
+        {{ valorTotalDescricao }} {{ valorTotal }}
+      </p>
+    </div>
 
-          <button (click)="revealModal()">Pagamento</button>
-        </form>
+    <button type="submit">Confirmar</button>
+  </form>
       </div>
     </div>
   </div>

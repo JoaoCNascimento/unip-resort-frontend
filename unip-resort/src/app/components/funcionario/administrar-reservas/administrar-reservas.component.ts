@@ -5,9 +5,11 @@ import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import * as moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
 import { Categoria } from 'src/app/models/Categoria';
+import { Cliente } from 'src/app/models/Cliente';
 import { Quarto } from 'src/app/models/Quarto';
 import { Reserva } from 'src/app/models/Reserva';
 import { CategoriaService } from 'src/app/services/api/categoria.service';
+import { ClienteService } from 'src/app/services/api/cliente.service';
 import { QuartoService } from 'src/app/services/api/quartos.service';
 import { ReservasService } from 'src/app/services/api/reservas.service';
 
@@ -18,9 +20,18 @@ import { ReservasService } from 'src/app/services/api/reservas.service';
 })
 export class AdministrarReservasComponent implements OnInit {
 
+  cpf: string = '';
+  reserva: Reserva = undefined;
+  cliente = undefined;
   form: FormGroup;
   categorias: Categoria[];
-  categoria: Categoria;
+  categoria: Categoria = {
+    id: 0,
+    descricao: 'Nenhuma categoria',
+    imageUrl: '/assets/img-empty.png',
+    nome: 'Nenhuma Categoria',
+    precoDiaria: 0
+  };
   quartos: Quarto[];
   valorTotal: number = 0;
   valorTotalDescricao: string = "R$ ";
@@ -39,6 +50,7 @@ export class AdministrarReservasComponent implements OnInit {
     private qs: QuartoService,
     private toastrService: ToastrService,
     private fb: FormBuilder,
+    private clis: ClienteService,
     private route: ActivatedRoute
   ) { }
 
@@ -46,6 +58,15 @@ export class AdministrarReservasComponent implements OnInit {
     this.getReservas();
     this.getCategorias();
     this.configurateForm();
+  }
+
+  deleteReserva(id) {
+    if(confirm('Deseja realmente excluir a reserva de ID: ' + id + '?'))
+      return this.rs.delete(id).subscribe(res => {
+        this.getReservas();
+      });
+
+    this.toastrService.info('Exclusão cancelada.');
   }
 
   getReservas() {
@@ -64,7 +85,7 @@ export class AdministrarReservasComponent implements OnInit {
       } 
         
       this.qs.findAll().subscribe((_quartos: Quarto[]) => {
-        let _categorias = categorias.map((c) => {
+        let _categorias = categorias.map((c:Categoria) => {
 
           let listaQuartos = _quartos.filter((q) => {
             return q.categoria.nome === c.nome;
@@ -86,17 +107,116 @@ export class AdministrarReservasComponent implements OnInit {
     });
   }
 
-  configurateForm() {
-    let pattern: RegExp = new RegExp('^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$');
+  onSubmit() {
+    if (this.cliente === undefined || this.cliente === null)
+      return this.toastrService.warning("Nenhum cliente inserido.");
+
+    if (this.form.invalid) {
+      this.toastrService.warning(
+        "Verique se os campos foram preenchidos corretamente.",
+        "Formulário inválido..."
+      );
+      return this.form.markAllAsTouched();
+    }
+
+    // EU SEI, isso aqui tá terrível...
+    // Se alguém estiver vendo isso, saiba que quando fiz isso faltavam 2 dias para entregar o trabalho.
+    this.qs.findAll().subscribe((_quartos: Quarto[]) => {
+      let reserva: Reserva = Object.assign({}, this.form.value);
+      reserva.cliente = this.cliente.id;
+      reserva.valor = undefined;
+      reserva.categoria = undefined;
+      // TO DO - implementar lógica de checar se já há reserva.
+      let quarto: Quarto = _quartos.filter((q) => {
+        return q.categoria.nome === this.categoria.nome;
+      })[0];
+      reserva.quarto = quarto.id;
+      let checkIn = moment(reserva.dataReserva);
+      let checkOut = moment(reserva.dataSaida);
+
+      if (checkIn.isBefore(moment()) || checkOut.isBefore(moment()) || checkOut.isBefore(checkIn))
+        return this.toastrService.warning('Insira datas válidas!');
+
+      reserva.tempoEstadia = checkOut.diff(checkIn, "days") + 1;
+      reserva.dataReserva = moment(reserva.dataReserva).format(
+        "DD/MM/yyyy HH:mm:ss"
+      );
+      reserva.dataSaida = moment(reserva.dataSaida).format(
+        "DD/MM/yyyy HH:mm:ss"
+      );
+      //  = moment(reserva.dataSaida).format('DD/MM/yyyy').diff(moment(reserva.dataReserva).format('DD/MM/yyyy'), "days") + 1;
+      this.rs.update(reserva).subscribe((res) => {
+        this.getReservas();
+        this.hideModal();
+      });
+    });
+  }
+
+  findCliente() {
+    this.clis.findAll().subscribe((res: Cliente[]) => {
+      (res) =>
+        res.map((c: Cliente) => {
+          c.cpf = c.cpf.replace(".", "").replace(".", "").replace("-", "");
+          return c;
+        });
+
+      this.cliente = res.filter((c) => {
+        return c.cpf ===
+          this.cpf.replace(".", "").replace(".", "").replace("-", "")
+          ? c
+          : null;
+      })[0];
+
+      console.log(this.cliente, this.cpf);
+
+      if (this.cliente === undefined)
+        this.toastrService.warning(
+          "Nenhum cliente encontrado para o cpf informado."
+        );
+    });
+  }
+
+  openForm(id) {
+    this.rs.findById(id).subscribe(res => {
+      this.reserva = res;
+      this.cliente = this.reserva.cliente;
+      this.configurateForm(true);
+    });
+  }
+
+  configurateForm(edit?) {
+
+    if(edit) {
+      let dataReserva = moment(this.reserva.dataReserva, 'DD/MM/yyyy HH:mm').format('DD/MM/yyyy HH:mm').toString()
+      .split(' ');
+      let dataSaida = moment(this.reserva.dataSaida, 'DD/MM/yyyy HH:mm').format('DD/MM/yyyy HH:mm').toString()
+      .split(' ');
+
+      this.reserva.dataReserva = dataReserva[0].split('/').reverse().join('-') + ' ' + dataReserva[1];
+      this.reserva.dataSaida = dataSaida[0].split('/').reverse().join('-') + ' ' + dataSaida[1];
+
+      this.form = this.fb.group({
+        id: [this.reserva.id],
+        categoria: [this.reserva.quarto.categoria.nome, [Validators.required]],
+        // qtdHospedes: [
+        //   1,
+        //   [Validators.min(1), Validators.max(6), Validators.required],
+        // ],
+        dataReserva: [this.reserva.dataReserva, [Validators.required, Validators.minLength(15)]],
+        dataSaida: [this.reserva.dataSaida, [Validators.required, Validators.minLength(15)]],
+      });
+
+      return this.revealModal();
+    }
 
     this.form = this.fb.group({
       categoria: [, [Validators.required]],
-      qtdHospedes: [
-        1,
-        [Validators.min(1), Validators.max(6), Validators.required],
-      ],
-      dataCheckIn: [null, [Validators.required, Validators.pattern(pattern)]],
-      dataCheckOut: [null, [Validators.required, Validators.pattern(pattern)]],
+      // qtdHospedes: [
+      //   1,
+      //   [Validators.min(1), Validators.max(6), Validators.required],
+      // ],
+      dataReserva: [null, [Validators.required, Validators.minLength(15)]],
+      dataSaida: [null, [Validators.required, Validators.minLength(15)]],
     });
   }
 
@@ -108,24 +228,24 @@ export class AdministrarReservasComponent implements OnInit {
 
   calcularValorDiaria() {
     if (
-      this.form.get("dataCheckIn").value &&
-      this.form.get("dataCheckOut").value
+      this.form.get("dataReserva").value &&
+      this.form.get("dataSaida").value
     ) {
-      let checkIn = moment(this.form.get("dataCheckIn").value);
-      let checkOut = moment(this.form.get("dataCheckOut").value);
+      let checkIn = moment(this.form.get("dataReserva").value);
+      let checkOut = moment(this.form.get("dataSaida").value);
       let days = checkOut.diff(checkIn, "days") + 1;
 
-      if(!checkOut.isSameOrAfter(checkIn)) {
-        return alert('Datas inválidas.');
+      if (!checkOut.isSameOrAfter(checkIn)) {
+        return this.toastrService.warning('Insira datas válidas!');
       }
 
-      if (this.form.get("qtdHospedes").value) {
-        let qtdHospedes = this.form.get("qtdHospedes").value;
-        
-        if (qtdHospedes > 0) {
-          this.valorTaxa = (Number(this.categoria.precoDiaria) / 10) * qtdHospedes;
-        }
-      }
+      // if (this.form.get("qtdHospedes").value) {
+      //   let qtdHospedes = this.form.get("qtdHospedes").value;
+
+      //   if (qtdHospedes > 0) {
+      //     this.valorTaxa = (Number(this.categoria.precoDiaria) / 10) * qtdHospedes;
+      //   }
+      // }
 
       this.valorTotal = Number(this.categoria.precoDiaria) * days;
     }
@@ -135,13 +255,12 @@ export class AdministrarReservasComponent implements OnInit {
     let categoria;
 
     if (categoriaId) {
-      categoria = this.categorias[this.categorias.findIndex((c) => c.id == categoriaId)];
-      if (categoria === null || categoria === undefined) {
-        this.categoria = this.categorias[0];
-      }
-      else
-        this.categoria = categoria;
-        
+      categoria =
+        this.categorias[this.categorias.findIndex((c) => c.id == categoriaId)];
+      this.categoria = categoria;
+    } else if (!this.form.get("categoria").value) {
+      this.categoria = this.categorias[0];
+      this.form.get("categoria").setValue(this.categoria.nome);
     } else {
       categoria =
         this.categorias[
@@ -152,7 +271,7 @@ export class AdministrarReservasComponent implements OnInit {
       this.categoria = categoria;
     }
 
-    this.form.get("categoria").setValue(this.categoria.nome);
+    this.form.get("categoria").setValue(categoria.nome);
     this.calcularValorDiaria();
   }
 
