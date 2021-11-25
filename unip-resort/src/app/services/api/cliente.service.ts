@@ -35,7 +35,7 @@ export class ClienteService {
 
   findByEmail() {
     return this.httpClient.get(this.baseUrl + '/email/?value=' + this.authService.email.toString()).pipe(
-      tap(res => this.successMessage('Dados encontrados com sucesso!')),
+      tap(res => {this.successMessage('Dados encontrados com sucesso!'); if(res === null){this.authService.setToken()} return res;}),
       catchError(er => {this.handleError(er); return er;})
     );
   }
