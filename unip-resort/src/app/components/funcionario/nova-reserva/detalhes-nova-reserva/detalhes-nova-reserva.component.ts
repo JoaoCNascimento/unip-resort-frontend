@@ -12,6 +12,7 @@ import { CategoriaService } from "src/app/services/api/categoria.service";
 })
 export class DetalhesNovaReservaComponent implements OnInit {
   form: FormGroup;
+  formCliente: FormGroup;
   valorTotal: number = 0;
   valorTotalDescricao: string = "R$ ";
   valorTaxa: number = 0;
@@ -43,15 +44,23 @@ export class DetalhesNovaReservaComponent implements OnInit {
     });
   }
 
+  onSubmit() {
+
+  }
+
   configurateForm() {
+    this.formCliente = this.fb.group({
+
+    })
+
     this.form = this.fb.group({
-      categoria: [, []],
-      qtdHospedes: [
-        1,
-        [Validators.min(1), Validators.max(6), Validators.required],
-      ],
-      dataCheckIn: [null, []],
-      dataCheckOut: [null, []],
+      categoria: [, [Validators.required]],
+      // qtdHospedes: [
+      //   1,
+      //   [Validators.min(1), Validators.max(6), Validators.required],
+      // ],
+      dataReserva: [null, [Validators.required, Validators.minLength(15)]],
+      dataSaida: [null, [Validators.required, Validators.minLength(15)]],
     });
   }
 
@@ -63,24 +72,24 @@ export class DetalhesNovaReservaComponent implements OnInit {
 
   calcularValorDiaria() {
     if (
-      this.form.get("dataCheckIn").value &&
-      this.form.get("dataCheckOut").value
+      this.form.get("dataReserva").value &&
+      this.form.get("dataSaida").value
     ) {
-      let checkIn = moment(this.form.get("dataCheckIn").value);
-      let checkOut = moment(this.form.get("dataCheckOut").value);
+      let checkIn = moment(this.form.get("dataReserva").value);
+      let checkOut = moment(this.form.get("dataSaida").value);
       let days = checkOut.diff(checkIn, "days") + 1;
 
       if(!checkOut.isSameOrAfter(checkIn)) {
         return alert('Datas inválidas.');
       }
 
-      if (this.form.get("qtdHospedes").value) {
-        let qtdHospedes = this.form.get("qtdHospedes").value;
+      // if (this.form.get("qtdHospedes").value) {
+      //   let qtdHospedes = this.form.get("qtdHospedes").value;
         
-        if (qtdHospedes > 0) {
-          this.valorTaxa = (Number(this.categoria.precoDiaria) / 10) * qtdHospedes;
-        }
-      }
+      //   if (qtdHospedes > 0) {
+      //     this.valorTaxa = (Number(this.categoria.precoDiaria) / 10) * qtdHospedes;
+      //   }
+      // }
 
       this.valorTotal = Number(this.categoria.precoDiaria) * days;
     }

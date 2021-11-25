@@ -26,109 +26,143 @@
 
   <hr>
 
-  <div class="content">
+  <h2>Detalhes da reserva</h2>
 
+  <div class="content">
     <div class="img">
-      <img src="{{ categoria.imageUrl || 'assets/img-empty.png' }}" alt="Quarto do hotel">
+      <img
+        src="{{ categoria.imageUrl || 'assets/img-empty.png' }}"
+        alt="Quarto do hotel"
+      />
     </div>
 
     <div class="contentbox">
-
       <h3>{{ categoria.nome }}</h3>
 
-      <p> 
+      <p>
         {{ categoria.descricao }}
       </p>
-
     </div>
-
   </div>
 
-
-  <form [formGroup]="form">
-
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <label for="apartamento">Selecione a categoria do quarto </label>
-    <select formControlName="categoria" name="apartamento" id="apartamento-selectbox">
-      <option *ngFor="let categoria of categorias" (click)="changeCategoria(categoria.id)" value="{{categoria.nome}}">{{ categoria.nome }} - Preço Diária {{ categoria.precoDiaria | currency: 'BRL' }}</option>
+    <select
+      formControlName="categoria"
+      name="apartamento"
+      id="apartamento-selectbox"
+    >
+      <option
+        *ngFor="let categoria of categorias"
+        (click)="changeCategoria(categoria.id)"
+        value="{{ categoria.nome }}"
+      >
+        {{ categoria.nome }} - Preço Diária
+        {{ categoria.precoDiaria | currency: "BRL" }}
+      </option>
     </select>
+    <div
+      *ngIf="
+        form.get('categoria').hasError('required') &&
+        form.get('categoria').touched
+      "
+      class="invalid-feedback"
+    >
+      A categoria é obrigatória.
+    </div>
 
-    <label for="numeroHospedes">Quantidade de hóspedes: </label>
-    <input (change)="changeCategoria()" (change)="calcularValorDiaria()" formControlName="qtdHospedes" type="number" name="numeroHospedes" id="numeroHospedes" min="1" max="6">
+    <!-- <label for="numeroHospedes">Quantidade de hóspedes: </label>
+    <input
+      (change)="changeCategoria()"
+      (change)="calcularValorDiaria()"
+      formControlName="qtdHospedes"
+      type="number"
+      name="numeroHospedes"
+      id="numeroHospedes"
+      min="1"
+      max="6"
+    />
+    <div
+      *ngIf="
+        form.get('qtdHospedes').hasError('required') &&
+        form.get('qtdHospedes').touched
+      "
+      class="invalid-feedback"
+    >
+      A quantidade de hóspedes é obrigatória.
+    </div>
+    <div
+      *ngIf="
+        form.get('qtdHospedes').hasError('max') &&
+        form.get('qtdHospedes').touched
+      "
+      class="invalid-feedback"
+    >
+      A quantidade de hóspedes não pode ultrapassar 6.
+    </div>
+    <div
+      *ngIf="
+        form.get('qtdHospedes').hasError('min') &&
+        form.get('qtdHospedes').touched
+      "
+      class="invalid-feedback"
+    >
+      A quantidade de hóspedes mínima deve ser 1.
+    </div> -->
 
-    <label for="checkIn">Data de check-in</label>
-    <input formControlName="dataCheckIn" type="date" name="checkIn" id="checkIn">
+    <label for="checkIn">Data e hora de check-in</label>
+    <input
+      (change)="calcularValorDiaria()"
+      formControlName="dataReserva"
+      type="datetime-local"
+      name="checkIn"
+      id="checkIn"
+    />
+    <div
+      *ngIf="
+        form.get('dataReserva').hasError('required') &&
+        form.get('dataReserva').touched
+      "
+      class="invalid-feedback"
+    >
+      A data de check-in é obrigatória
+    </div>
 
-    <label for="checkOut">Data de check-out</label>
-    <input (change)="calcularValorDiaria()" formControlName="dataCheckOut" type="date" name="checkOut" id="checkOut">
+    <label for="checkOut">Data e hora de check-out</label>
+    <input
+      (change)="calcularValorDiaria()"
+      formControlName="dataSaida"
+      type="datetime-local"
+      name="checkOut"
+      id="checkOut"
+    />
+    <div
+      *ngIf="
+        form.get('dataSaida').hasError('required') &&
+        form.get('dataSaida').touched
+      "
+      class="invalid-feedback"
+    >
+      A data de check-out é obrigatória
+    </div>
 
     <!-- <label for="cupom">Cupom de desconto</label>
     <input (change)="calcularValorDiaria()" formControlName="cupom" type="text" name="cupom" id="cupom" placeholder="Digite o código do seu cupom"> -->
 
     <div class="total">
-      <h4>Valor Total: </h4>
-      <p>{{ valorTotalDescricao }} {{ valorTotal }} {{ valorTaxa > 0 ? '+ R$ ' + valorTaxa + ' taxa de serviço (10% do preço da diária por hóspede.)' : '' }}</p>
+      <h4>Valor Total:</h4>
+      <p>
+        {{ valorTotalDescricao }} {{ valorTotal }}
+        <!-- {{
+          valorTaxa > 0
+            ? "+ R$ " +
+              valorTaxa +
+              " taxa de serviço (10% do preço da diária por hóspede.)"
+            : ""
+        }} -->
+      </p>
     </div>
 
-    <button (click)="revealModal()">Pagamento</button>
-
+    <button type="submit">Confirmar</button>
   </form>
-
-</div>
-
-<div class="modal-container">
-  <div class="modal-body">
-    <span (click)="hideModal()" class="modal-close-button">&times;</span>
-    <div class="opcoes-pagamento-container">
-      <h2>Selecione uma forma de pagamento</h2>
-    
-      <a>
-        <div (click)="reservaRealizada()" class="formaPagamento">
-          <div class="img">
-            <img src="assets/img/íconesPagamento/cartão.png" alt="">
-          </div>
-    
-          <div class="nome">
-            Cartão de crédito
-          </div>
-        </div>
-      </a>
-    
-      <a (click)="reservaRealizada()">
-        <div class="formaPagamento">
-          <div class="img">
-            <img src="assets/img/íconesPagamento/boleto.png" alt="">
-          </div>
-    
-          <div class="nome">
-            Boleto
-          </div>
-        </div>
-      </a>
-    
-      <a (click)="reservaRealizada()">
-        <div class="formaPagamento">
-    
-          <div class="img">
-            <img src="assets/img/íconesPagamento/pix.png" alt="">
-          </div>
-    
-          <div class="nome">
-            PIX
-          </div>
-        </div>
-      </a>
-    
-      <a (click)="reservaRealizada()">
-        <div class="formaPagamento">
-          <div class="img">
-            <img src="assets/img/íconesPagamento/mp.png" alt="">
-          </div>
-    
-          <div class="nome">
-            Mercado Pago
-          </div>
-        </div>
-      </a>
-    </div>    
-  </div>
 </div>
