@@ -1,4 +1,4 @@
-<h2>Olá, João. Aqui estão as suas reservas</h2>
+<h2>Olá, {{ cliente ? cliente.nome.split(' ')[0] : '' }}! Aqui estão as suas reservas</h2>
 
 <div id="table-container">
   <table>
