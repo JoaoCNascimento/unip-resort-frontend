@@ -73,6 +73,10 @@ export class DetalhesNovaReservaComponent implements OnInit {
           reserva.quarto = quarto.id;
           let checkIn = moment(reserva.dataReserva);
           let checkOut = moment(reserva.dataSaida);
+
+          if (checkIn.isBefore(moment()) || checkOut.isBefore(moment()) || checkOut.isBefore(checkIn))
+          return this.toastrService.warning('Insira datas válidas!');
+
           reserva.tempoEstadia = checkOut.diff(checkIn, "days") + 1;
           reserva.dataReserva = moment(reserva.dataReserva).format('DD/MM/yyyy HH:mm:ss');
           reserva.dataSaida = moment(reserva.dataSaida).format('DD/MM/yyyy HH:mm:ss')
@@ -144,8 +148,8 @@ export class DetalhesNovaReservaComponent implements OnInit {
       let checkOut = moment(this.form.get("dataSaida").value);
       let days = checkOut.diff(checkIn, "days") + 1;
 
-      if(!checkOut.isSameOrAfter(checkIn)) {
-        return alert('Datas inválidas.');
+      if (!checkOut.isSameOrAfter(checkIn)) {
+        return this.toastrService.warning('Insira datas válidas!');
       }
 
       // if (this.form.get("qtdHospedes").value) {

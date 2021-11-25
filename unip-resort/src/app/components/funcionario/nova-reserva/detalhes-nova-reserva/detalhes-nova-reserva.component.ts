@@ -6,9 +6,11 @@ import { ToastrService } from "ngx-toastr";
 import { Categoria } from "src/app/models/Categoria";
 import { Cliente } from "src/app/models/Cliente";
 import { Quarto } from "src/app/models/Quarto";
+import { Reserva } from "src/app/models/Reserva";
 import { CategoriaService } from "src/app/services/api/categoria.service";
 import { ClienteService } from "src/app/services/api/cliente.service";
 import { QuartoService } from "src/app/services/api/quartos.service";
+import { ReservasService } from "src/app/services/api/reservas.service";
 
 @Component({
   selector: "app-detalhes-nova-reserva",
@@ -23,8 +25,7 @@ export class DetalhesNovaReservaComponent implements OnInit {
   valorTaxa: number = 0;
   imageSource: String = "";
   cliente: Cliente = undefined;
-  cpf: string = '';
-  
+  cpf: string = "";
 
   categoria: Categoria = {
     id: 1,
@@ -44,7 +45,8 @@ export class DetalhesNovaReservaComponent implements OnInit {
     private cs: CategoriaService,
     private clis: ClienteService,
     private toastrService: ToastrService,
-    private qs: QuartoService
+    private qs: QuartoService,
+    private rs: ReservasService
   ) {}
 
   ngOnInit(): void {
@@ -58,19 +60,19 @@ export class DetalhesNovaReservaComponent implements OnInit {
   getCategorias() {
     this.cs.findAll().subscribe((res) => {
       let categorias = res;
-      if (categorias.length === 0)
-      {
-        this.router.navigate(['/'], { relativeTo: this.route.root });
-        return this.toastrService.error('Não há categorias cadastradas no sistema.');
-      } 
-        
+      if (categorias.length === 0) {
+        this.router.navigate(["/"], { relativeTo: this.route.root });
+        return this.toastrService.error(
+          "Não há categorias cadastradas no sistema."
+        );
+      }
+
       this.qs.findAll().subscribe((_quartos: Quarto[]) => {
         let _categorias = categorias.map((c) => {
-
           let listaQuartos = _quartos.filter((q) => {
             return q.categoria.nome === c.nome;
           });
-          
+
           if (listaQuartos.length >= 1) {
             c.status = true;
             return c;
@@ -80,39 +82,89 @@ export class DetalhesNovaReservaComponent implements OnInit {
           return undefined;
         });
 
-        _categorias = _categorias.filter(c => {return c !== undefined});
+        _categorias = _categorias.filter((c) => {
+          return c !== undefined;
+        });
         this.categorias = _categorias;
-        this.changeCategoria(this.route.snapshot.params["id"] | this.categorias[0].id);
+        this.changeCategoria(
+          this.route.snapshot.params["id"] | this.categorias[0].id
+        );
       });
     });
   }
 
   findCliente() {
-    this.clis.findAll().subscribe((res: Cliente[])=> {
-      res => res.map((c: Cliente) => {
-        c.cpf = c.cpf.replace('.', '').replace('.', '').replace('-','');
-        return c;
-      });
+    this.clis.findAll().subscribe((res: Cliente[]) => {
+      (res) =>
+        res.map((c: Cliente) => {
+          c.cpf = c.cpf.replace(".", "").replace(".", "").replace("-", "");
+          return c;
+        });
 
-      this.cliente = res.filter(c => {
-        return c.cpf === this.cpf.replace('.', '').replace('.', '').replace('-','') ? c : null;
+      this.cliente = res.filter((c) => {
+        return c.cpf ===
+          this.cpf.replace(".", "").replace(".", "").replace("-", "")
+          ? c
+          : null;
       })[0];
 
-      console.log(this.cliente, this.cpf)
+      console.log(this.cliente, this.cpf);
 
-      if(this.cliente === undefined)
-        this.toastrService.warning('Nenhum cliente encontrado para o cpf informado.');
+      if (this.cliente === undefined)
+        this.toastrService.warning(
+          "Nenhum cliente encontrado para o cpf informado."
+        );
     });
   }
 
   onSubmit() {
+    if (this.cliente === undefined || this.cliente === null)
+      return this.toastrService.warning("Nenhum cliente inserido.");
 
+    if (this.form.invalid) {
+      this.toastrService.warning(
+        "Verique se os campos foram preenchidos corretamente.",
+        "Formulário inválido..."
+      );
+      return this.form.markAllAsTouched();
+    }
+
+    // EU SEI, isso aqui tá terrível...
+    // Se alguém estiver vendo isso, saiba que quando fiz isso faltavam 2 dias para entregar o trabalho.
+    this.qs.findAll().subscribe((_quartos: Quarto[]) => {
+      let reserva: Reserva = Object.assign({}, this.form.value);
+      reserva.cliente = this.cliente.id;
+      reserva.valor = undefined;
+      reserva.categoria = undefined;
+      // TO DO - implementar lógica de checar se já há reserva.
+      let quarto: Quarto = _quartos.filter((q) => {
+        return q.categoria.nome === this.categoria.nome;
+      })[0];
+      reserva.quarto = quarto.id;
+      let checkIn = moment(reserva.dataReserva);
+      let checkOut = moment(reserva.dataSaida);
+
+      if (checkIn.isBefore(moment()) || checkOut.isBefore(moment()) || checkOut.isBefore(checkIn))
+        return this.toastrService.warning('Insira datas válidas!');
+
+      reserva.tempoEstadia = checkOut.diff(checkIn, "days") + 1;
+      reserva.dataReserva = moment(reserva.dataReserva).format(
+        "DD/MM/yyyy HH:mm:ss"
+      );
+      reserva.dataSaida = moment(reserva.dataSaida).format(
+        "DD/MM/yyyy HH:mm:ss"
+      );
+      //  = moment(reserva.dataSaida).format('DD/MM/yyyy').diff(moment(reserva.dataReserva).format('DD/MM/yyyy'), "days") + 1;
+      this.rs.create(reserva).subscribe((res) => {
+        this.router.navigate(["funcionario/reservas"], {
+          relativeTo: this.route.root,
+        });
+      });
+    });
   }
 
   configurateForm() {
-    this.formCliente = this.fb.group({
-
-    })
+    this.formCliente = this.fb.group({});
 
     this.form = this.fb.group({
       categoria: [, [Validators.required]],
@@ -140,13 +192,13 @@ export class DetalhesNovaReservaComponent implements OnInit {
       let checkOut = moment(this.form.get("dataSaida").value);
       let days = checkOut.diff(checkIn, "days") + 1;
 
-      if(!checkOut.isSameOrAfter(checkIn)) {
-        return alert('Datas inválidas.');
+      if (!checkOut.isSameOrAfter(checkIn)) {
+        return this.toastrService.warning('Insira datas válidas!');
       }
 
       // if (this.form.get("qtdHospedes").value) {
       //   let qtdHospedes = this.form.get("qtdHospedes").value;
-        
+
       //   if (qtdHospedes > 0) {
       //     this.valorTaxa = (Number(this.categoria.precoDiaria) / 10) * qtdHospedes;
       //   }
@@ -163,12 +215,10 @@ export class DetalhesNovaReservaComponent implements OnInit {
       categoria =
         this.categorias[this.categorias.findIndex((c) => c.id == categoriaId)];
       this.categoria = categoria;
-    }
-    else if(!this.form.get('categoria').value) {
+    } else if (!this.form.get("categoria").value) {
       this.categoria = this.categorias[0];
-      this.form.get('categoria').setValue(this.categoria.nome);
-    } 
-    else {
+      this.form.get("categoria").setValue(this.categoria.nome);
+    } else {
       categoria =
         this.categorias[
           this.categorias.findIndex(
