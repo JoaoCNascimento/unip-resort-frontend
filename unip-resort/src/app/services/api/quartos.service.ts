@@ -23,23 +23,9 @@ export class QuartoService {
 
  findAll(): Observable<any> {
    return this.httpClient.get<any[]>(this.baseUrl).pipe(
-     tap(res => {this.successMessage(); return res}),
+     tap(res => { return res}),
      catchError(er => {this.handleError(er); return er})
    );
- }
-
- create(q: Quarto) {
-   return this.httpClient.post(this.baseUrl, q).pipe(
-     tap(res => {this.successMessage(); return res}),
-     catchError(er => {this.handleError(er); return er})
-   );
- }
-
- deleteById(id) {
-   return this.httpClient.delete(this.baseUrl + '/' + id).pipe(
-    tap(res => {this.successMessage(); return res}),
-    catchError(er => {this.handleError(er); return er})
-   )
  }
 
  successMessage() {
