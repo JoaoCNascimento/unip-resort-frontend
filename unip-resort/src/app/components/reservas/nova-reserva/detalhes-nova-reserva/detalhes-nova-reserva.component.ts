@@ -120,10 +120,10 @@ export class DetalhesNovaReservaComponent implements OnInit {
   configurateForm() {
     this.form = this.fb.group({
       categoria: [, [Validators.required]],
-      qtdHospedes: [
-        1,
-        [Validators.min(1), Validators.max(6), Validators.required],
-      ],
+      // qtdHospedes: [
+      //   1,
+      //   [Validators.min(1), Validators.max(6), Validators.required],
+      // ],
       dataReserva: [null, [Validators.required, Validators.minLength(15)]],
       dataSaida: [null, [Validators.required, Validators.minLength(15)]],
     });

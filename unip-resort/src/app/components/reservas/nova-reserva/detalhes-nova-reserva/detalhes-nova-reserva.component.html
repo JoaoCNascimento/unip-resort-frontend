@@ -44,7 +44,7 @@
       A categoria é obrigatória.
     </div>
 
-    <label for="numeroHospedes">Quantidade de hóspedes: </label>
+    <!-- <label for="numeroHospedes">Quantidade de hóspedes: </label>
     <input
       (change)="changeCategoria()"
       (change)="calcularValorDiaria()"
@@ -81,7 +81,7 @@
       class="invalid-feedback"
     >
       A quantidade de hóspedes mínima deve ser 1.
-    </div>
+    </div> -->
 
     <label for="checkIn">Data e hora de check-in</label>
     <input
@@ -137,53 +137,4 @@
 
     <button type="submit">Confirmar</button>
   </form>
-</div>
-
-<div class="modal-container">
-  <div class="modal-body">
-    <span (click)="hideModal()" class="modal-close-button">&times;</span>
-    <div class="opcoes-pagamento-container">
-      <h2>Selecione uma forma de pagamento</h2>
-
-      <a>
-        <div (click)="reservaRealizada()" class="formaPagamento">
-          <div class="img">
-            <img src="assets/img/íconesPagamento/cartão.png" alt="" />
-          </div>
-
-          <div class="nome">Cartão de crédito</div>
-        </div>
-      </a>
-
-      <a (click)="reservaRealizada()">
-        <div class="formaPagamento">
-          <div class="img">
-            <img src="assets/img/íconesPagamento/boleto.png" alt="" />
-          </div>
-
-          <div class="nome">Boleto</div>
-        </div>
-      </a>
-
-      <a (click)="reservaRealizada()">
-        <div class="formaPagamento">
-          <div class="img">
-            <img src="assets/img/íconesPagamento/pix.png" alt="" />
-          </div>
-
-          <div class="nome">PIX</div>
-        </div>
-      </a>
-
-      <a (click)="reservaRealizada()">
-        <div class="formaPagamento">
-          <div class="img">
-            <img src="assets/img/íconesPagamento/mp.png" alt="" />
-          </div>
-
-          <div class="nome">Mercado Pago</div>
-        </div>
-      </a>
-    </div>
-  </div>
 </div>
