@@ -56,7 +56,15 @@ export class ClienteService {
 
   findAll() {
     return this.httpClient.get(this.baseUrl).pipe(
-      tap(res => this.successMessage('Clientes retornados com sucesso!')),
+      tap((res: Cliente[]) => {
+        res = res.map(c => {
+          c.cpf = c.cpf.replace('.','').replace('.','').replace('-','');
+          c.rg = c.rg.replace('.','').replace('.','').replace('-','');
+
+          return c;
+        })
+        this.successMessage('Clientes retornados com sucesso!');
+      }),
       catchError(er => {this.handleError(er); return er;})
     )
   }
