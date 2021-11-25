@@ -31,6 +31,13 @@ export class ReservasService {
     );
   }
 
+  findById(id): Observable<any> {
+    return this.httpClient.get(this.baseUrl + '/' + id).pipe(
+      tap(),
+      catchError(er => { this.handleError(er); return er; })
+    );
+  }
+
   create(reserva: Reserva) {
     return this.httpClient
       .post(this.baseUrl, {
@@ -47,6 +54,31 @@ export class ReservasService {
           return er;
         })
       );
+  }
+
+  update(reserva: Reserva) {
+    return this.httpClient
+      .put(this.baseUrl + '/' + reserva.id, {
+        dataReserva: reserva.dataReserva,
+        dataSaida: reserva.dataSaida,
+        tempoEstadia: reserva.tempoEstadia,
+        cliente: reserva.cliente,
+        quarto: reserva.quarto,
+      })
+      .pipe(
+        tap((res) => this.toastr.success("Reserva atualizada com sucesso!")),
+        catchError((er) => {
+          this.handleError(er);
+          return er;
+        })
+      );
+  }
+
+  delete(id: number) {
+    return this.httpClient.delete(this.baseUrl + '/' + id).pipe(
+      tap(res => this.toastr.success('Reserva de id: ' + id + ', deletada com êxito.', 'Sucesso!')),
+      catchError(er => {this.handleError(er); return er;})
+    )
   }
 
   handleError(er: any) {
