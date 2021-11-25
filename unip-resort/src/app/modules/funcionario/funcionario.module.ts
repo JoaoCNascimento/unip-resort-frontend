@@ -5,7 +5,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 //Components
 import { FuncionarioComponent } from 'src/app/components/funcionario/funcionario.component';
 import { NovaReservaComponent } from 'src/app/components/funcionario/nova-reserva/nova-reserva.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DetalhesNovaReservaComponent } from 'src/app/components/funcionario/nova-reserva/detalhes-nova-reserva/detalhes-nova-reserva.component';
 import { ReservaRealizadaComponent } from 'src/app/components/funcionario/nova-reserva/reserva-realizada/reserva-realizada.component';
 import { CadastroComponent } from 'src/app/components/funcionario/cadastro/cadastro.component';
@@ -28,7 +28,8 @@ import { AdministrarClientesComponent } from 'src/app/components/funcionario/adm
     FuncionarioRoutingModule,
     ReactiveFormsModule,
     FontAwesomeModule,
-    PipesModule
+    PipesModule,
+    FormsModule
   ]
 })
 export class FuncionarioModule { }

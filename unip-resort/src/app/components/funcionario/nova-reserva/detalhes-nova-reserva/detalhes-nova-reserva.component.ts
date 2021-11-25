@@ -2,8 +2,13 @@ import { AfterContentInit, Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import * as moment from "moment";
+import { ToastrService } from "ngx-toastr";
 import { Categoria } from "src/app/models/Categoria";
+import { Cliente } from "src/app/models/Cliente";
+import { Quarto } from "src/app/models/Quarto";
 import { CategoriaService } from "src/app/services/api/categoria.service";
+import { ClienteService } from "src/app/services/api/cliente.service";
+import { QuartoService } from "src/app/services/api/quartos.service";
 
 @Component({
   selector: "app-detalhes-nova-reserva",
@@ -17,6 +22,9 @@ export class DetalhesNovaReservaComponent implements OnInit {
   valorTotalDescricao: string = "R$ ";
   valorTaxa: number = 0;
   imageSource: String = "";
+  cliente: Cliente = undefined;
+  cpf: string = '';
+  
 
   categoria: Categoria = {
     id: 1,
@@ -33,7 +41,10 @@ export class DetalhesNovaReservaComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private cs: CategoriaService
+    private cs: CategoriaService,
+    private clis: ClienteService,
+    private toastrService: ToastrService,
+    private qs: QuartoService
   ) {}
 
   ngOnInit(): void {
@@ -41,6 +52,56 @@ export class DetalhesNovaReservaComponent implements OnInit {
     this.cs.findAll().subscribe((res) => {
       this.categorias = res;
       this.changeCategoria(this.route.snapshot.params["id"]);
+    });
+  }
+
+  getCategorias() {
+    this.cs.findAll().subscribe((res) => {
+      let categorias = res;
+      if (categorias.length === 0)
+      {
+        this.router.navigate(['/'], { relativeTo: this.route.root });
+        return this.toastrService.error('Não há categorias cadastradas no sistema.');
+      } 
+        
+      this.qs.findAll().subscribe((_quartos: Quarto[]) => {
+        let _categorias = categorias.map((c) => {
+
+          let listaQuartos = _quartos.filter((q) => {
+            return q.categoria.nome === c.nome;
+          });
+          
+          if (listaQuartos.length >= 1) {
+            c.status = true;
+            return c;
+          }
+
+          c.status = false;
+          return undefined;
+        });
+
+        _categorias = _categorias.filter(c => {return c !== undefined});
+        this.categorias = _categorias;
+        this.changeCategoria(this.route.snapshot.params["id"] | this.categorias[0].id);
+      });
+    });
+  }
+
+  findCliente() {
+    this.clis.findAll().subscribe((res: Cliente[])=> {
+      res => res.map((c: Cliente) => {
+        c.cpf = c.cpf.replace('.', '').replace('.', '').replace('-','');
+        return c;
+      });
+
+      this.cliente = res.filter(c => {
+        return c.cpf === this.cpf.replace('.', '').replace('.', '').replace('-','') ? c : null;
+      })[0];
+
+      console.log(this.cliente, this.cpf)
+
+      if(this.cliente === undefined)
+        this.toastrService.warning('Nenhum cliente encontrado para o cpf informado.');
     });
   }
 

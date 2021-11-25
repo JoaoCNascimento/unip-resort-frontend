@@ -1,10 +1,10 @@
 <div id="form-container">
   <h2>Detalhes da reserva</h2>
 
-  <div [formGroup]="form" class="hospede-container">
+  <div class="hospede-container">
     <div class="pesquisar">
       <label for="">CPF</label>
-      <input type="text" placeholder="Ex.: XXX.XXX.XXX-XX"/>
+      <input [(ngModel)]="cpf" type="text" placeholder="Ex.: XXX.XXX.XXX-XX"/>
       <button>Pesquisar</button>
     </div>
     <!--  -->
@@ -13,16 +13,15 @@
       <h3>Dados cliente</h3>
 
       <h4>Nome:</h4>
-      <p>Maurício Alabama</p>
+      <p>{{ cliente ? cliente.nome : '----------------' }}</p>
 
       <h4>CPF:</h4>
-      <p>421.412.421-44</p>
+      <p>{{ cliente ? (cliente.cpf.toString() | cpf) : '----------------' }}</p>
 
       <h4>Email</h4>
-      <p>mariucio@email.com</p>
+      <p>{{ cliente ? cliente.email : '----------------' }}</p>
       
     </div>
-  </div>
 
   <hr>
 
