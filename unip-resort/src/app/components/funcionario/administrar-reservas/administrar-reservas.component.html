@@ -2,6 +2,7 @@
   <table>
     <thead>
       <th>#</th>
+      <th>Categoria</th>
       <th>Data de CheckIN</th>
       <th>Data de CheckOut</th>
       <th>Valor</th>
@@ -14,12 +15,13 @@
     <tbody *ngIf="reservas">
       <tr *ngFor="let reserva of reservas">
         <td>{{ reserva.id }}</td>
+        <td>{{ reserva.quarto.categoria.nome }}</td>
         <td>{{ reserva.dataReserva.split(" ")[0] }}</td>
         <td>{{ reserva.dataSaida.split(" ")[0] }}</td>
         <td>{{ reserva.valor | currency: "BRL" }}</td>
         <td>{{ reserva.cliente.nome.split(" ")[0] }}</td>
         <td>{{ reserva.cliente.cpf | cpf }}</td>
-        <td>{{ reserva.status ? "CheckIn Realizado" : "Pendente" }}</td>
+        <td>{{ reserva.statusChecked ? "Check In Realizado" : "Pendente" }}</td>
         <td>
           <fa-icon (click)="openForm(reserva.id)" [icon]="faEdit" class="fa fa-edit"></fa-icon>
           <fa-icon (click)="deleteReserva(reserva.id)" [icon]="faTrash" class="fa fa-trash"></fa-icon>

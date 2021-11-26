@@ -199,7 +199,8 @@ export class AdministrarReservasComponent implements OnInit {
 
       this.reserva.dataReserva = dataReserva[0].split('/').reverse().join('-') + ' ' + dataReserva[1];
       this.reserva.dataSaida = dataSaida[0].split('/').reverse().join('-') + ' ' + dataSaida[1];
-
+      
+      this.valorTotal = this.reserva.valor;
       this.form = this.fb.group({
         id: [this.reserva.id],
         categoria: [this.reserva.quarto.categoria.nome, [Validators.required]],
