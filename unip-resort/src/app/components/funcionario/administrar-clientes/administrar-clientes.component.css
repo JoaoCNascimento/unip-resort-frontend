@@ -69,3 +69,55 @@
       margin-bottom: 10px;
   }
   
+.modal-body {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  overflow-y: auto;
+  padding: 20px;
+  flex-direction: column;
+  background: linear-gradient(#0c090d, #2c242e, #3b2b3f);
+  background-repeat: no-repeat;
+  padding: 20px;
+}
+
+  #form-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: transparent;
+  }
+
+  .double-box {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .halfbox { 
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .modal-close-button {
+    color: #fff;
+  }
+
+  .modal-close-button:hover {
+    transition: 0.15;
+    color: rgb(168, 168, 168);
+  }
+
+  body,
+#form-container,
+form,
+.fullbox,
+.double-box,
+.halfbox {
+  display: flex;
+}
+
+.modal-body {
+  width: 800px;
+}

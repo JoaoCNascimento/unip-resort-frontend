@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import * as moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
 import { Cliente } from 'src/app/models/Cliente';
 import { ClienteService } from 'src/app/services/api/cliente.service';
@@ -30,6 +31,7 @@ export class AdministrarClientesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getClientes();
+    this.configurateForm();
   }
 
   getClientes() {
@@ -38,52 +40,72 @@ export class AdministrarClientesComponent implements OnInit {
     )
   }
 
-  configurateForm(id) {
+  openForm(id) {
+    this.cliente = this.clientes.filter(c => {
+      return c.id === id;
+    })[0];
 
+    console.log(this.cliente);
+
+    this.configurateForm(id);
+  }
+
+  delete(id) {
+    if(confirm('Deseja realmente excluir o cliente de ID: ' + id + '?')){
+      return this.cs.delete(id).subscribe(res => {
+        this.getClientes();
+      });
+    }
+
+    this.toastrService.info('Exclusão cancelada.');
+  }
+
+  configurateForm(id?) {
     if(id) {
       this.form = this.fb.group({
-        nome: new FormControl(this.cliente, {
+        id: new FormControl(this.cliente.id),
+        nome: new FormControl(this.cliente.nome, {
           validators: [Validators.required],
         }),
-        email: new FormControl(this.cliente, {
+        email: new FormControl(this.cliente.email, {
           validators: [Validators.required, Validators.email],
         }),
-        senha: new FormControl(this.cliente, {
+        senha: new FormControl('Digite uma nova senha', {
           validators: [Validators.required],
         }),
-        cpf: new FormControl(this.cliente, {
+        cpf: new FormControl(this.cliente.cpf, {
           validators: [Validators.required],
         }),
-        rg: new FormControl(this.cliente, {
+        rg: new FormControl(this.cliente.rg, {
           validators: [Validators.required],
         }),
-        dataNasc: new FormControl(this.cliente, {
+        dataNasc: new FormControl(moment(this.cliente.dataNasc.toString(), 'DD/MM/yyyy').format('DD/MM/yyyy').toString().split('/').reverse().join('-').toString(), {
           validators: [Validators.required],
         }),
-        telefone: new FormControl(this.cliente, {
+        telefone: new FormControl(this.cliente.telefone, {
           validators: [Validators.required],
         }),
-        cep: new FormControl(this.cliente, {
+        cep: new FormControl(this.cliente.cep, {
           validators: [Validators.required],
         }),
-        rua: new FormControl(this.cliente, {
+        rua: new FormControl(this.cliente.rua, {
           validators: [Validators.required],
         }),
-        bairro: new FormControl(this.cliente, {
+        bairro: new FormControl(this.cliente.bairro, {
           validators: [Validators.required],
         }),
-        numero: new FormControl(this.cliente, {
+        numero: new FormControl(this.cliente.numero, {
           validators: [Validators.required],
         }),
-        cidade: new FormControl(this.cliente, {
+        cidade: new FormControl(this.cliente.cidade, {
           validators: [Validators.required],
         }),
-        estado: new FormControl(this.cliente, {
+        estado: new FormControl(this.cliente.estado, {
           validators: [Validators.required],
         })
       });
 
-      return;
+      return this.revealModal();
     }
 
     this.form = this.fb.group({
@@ -146,9 +168,9 @@ export class AdministrarClientesComponent implements OnInit {
 
     let cliente: Cliente = Object.assign({}, this.form.value);
 
-    // this.cs.createCliente(cliente).subscribe((res) => {
-    //   this.router.navigate(['funcionario/nova-reserva'], { relativeTo: this.route.root });
-    // });
+    this.cs.update(cliente).subscribe(res => {
+
+    })
   }
 
   findCep() {

@@ -8,7 +8,7 @@ export interface Reserva {
     valor: number;
     status:boolean;
     tempoEstadia: Number;
-    cliente: Cliente | Number;
+    cliente: any;
     quarto: any;
     categoria?: any;
 }

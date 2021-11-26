@@ -71,7 +71,11 @@ export class AdministrarReservasComponent implements OnInit {
 
   getReservas() {
     this.rs.findAll().subscribe((res: Reserva[]) => {
-      this.reservas = res;
+      this.reservas = res.map(r => {
+        r.cliente.cpf = r.cliente.cpf.replace(".", "").replace(".", "").replace("-", "");
+        r.cliente.rg = r.cliente.rg.replace(".", "").replace(".", "").replace("-", "");
+        return r;
+      });
     })
   }
 
@@ -180,6 +184,7 @@ export class AdministrarReservasComponent implements OnInit {
     this.rs.findById(id).subscribe(res => {
       this.reserva = res;
       this.cliente = this.reserva.cliente;
+      this.cpf = this.cliente.cpf;
       this.configurateForm(true);
     });
   }

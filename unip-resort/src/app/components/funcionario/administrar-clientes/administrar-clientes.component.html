@@ -23,10 +23,16 @@
         <td>{{ cliente.telefone }}</td>
         <td>
           <fa-icon
-            (click)="configurateForm(cliente.id)"
+            (click)="openForm(cliente.id)"
             class="btn-action"
             [icon]="faEdit"
           ></fa-icon>
+          <fa-icon
+          (click)="delete(cliente.id)"
+          class="btn-action"
+          [icon]="faTrash"
+          >
+          </fa-icon>
         </td>
       </tr>
     </tbody>
@@ -339,21 +345,6 @@
                 Confirmar a senha é obrigatório.
               </div>
             </div> -->
-
-        <label for="agreement">
-          <input formControlName="agreement" type="checkbox" name="agreement" />
-          Eu li e concordo com os
-          <a routerLink="/termos-de-uso">Termos de uso.</a>
-          <div
-            *ngIf="
-              form.get('agreement').hasError('required') &&
-              form.get('agreement').touched
-            "
-            class="invalid-feedback"
-          >
-            Você deve aceitar os termos para continuar.
-          </div>
-        </label>
 
         <button type="submit">Cadastrar-se</button>
       </form>
