@@ -57,7 +57,7 @@ export class PerfilComponent implements OnInit {
         email: new FormControl(this.cliente.email, {
           validators: [Validators.required, Validators.email],
         }),
-        senha: new FormControl(this.cliente.senha, {
+        senha: new FormControl('Digite sua senha, ou uma nova', {
           validators: [Validators.required],
         }),
         cpf: new FormControl(this.cliente.cpf, {
