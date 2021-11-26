@@ -167,7 +167,7 @@ export class DetalhesNovaReservaComponent implements OnInit {
     }
   }
 
-  changeCategoria(categoriaId?: Number) {
+  changeCategoria(categoriaId?) {
     let categoria;
 
     if (categoriaId) {
@@ -188,7 +188,7 @@ export class DetalhesNovaReservaComponent implements OnInit {
       this.categoria = categoria;
     }
 
-    this.form.get("categoria").setValue(this.categoria.nome);
+    this.form.get("categoria").setValue(this.categoria.id);
     this.calcularValorDiaria();
   }
 
