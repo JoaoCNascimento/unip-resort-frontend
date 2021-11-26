@@ -106,7 +106,7 @@ export class AdministrarReservasComponent implements OnInit {
 
         _categorias = _categorias.filter(c => {return c !== undefined});
         this.categorias = _categorias;
-        this.changeCategoria(this.route.snapshot.params["id"] | this.categorias[0].id);
+        this.changeCategoria(this.categorias[0].id);
       });
     });
   }
@@ -210,6 +210,9 @@ export class AdministrarReservasComponent implements OnInit {
         dataReserva: [this.reserva.dataReserva, [Validators.required, Validators.minLength(15)]],
         dataSaida: [this.reserva.dataSaida, [Validators.required, Validators.minLength(15)]],
       });
+
+      this.categoria = this.reserva.quarto.categoria;
+      this.categoria.imageUrl = "https://pim-unip-resort.s3.sa-east-1.amazonaws.com/" + this.categoria.imageUrl;
 
       return this.revealModal();
     }
