@@ -87,7 +87,11 @@ export class ClienteService {
   }
 
   handleError(er:any) {
-    console.log(er);
+
+    if (er.status === 403) {
+      this.errorMessage("Acesso negado, faça o login novamente.");
+      this.authService.setToken();
+    }
     
     if(er.status === 400)
     {
