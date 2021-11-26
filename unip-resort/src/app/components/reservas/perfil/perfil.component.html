@@ -1,7 +1,7 @@
 <div id="container">
   <div id="form-container">
 
-    <form class="form_standard" [formGroup]="form">
+    <form class="form_standard" [formGroup]="form" (ngSubmit)="onSubmitUpdate()">
 
       <h2>Meu Cadastro</h2>
 
@@ -105,6 +105,7 @@
         <div class="halfbox">
           <label for="">CEP</label>
           <input
+          (change)="findCep()"
             formControlName="cep"
             type="text"
             name=""
@@ -244,7 +245,7 @@
         <label for="password">Senha</label>
         <input
           formControlName="senha"
-          type="password"
+          type="senha"
           placeholder="Digite a sua senha"
         />
         <div
@@ -261,15 +262,22 @@
 
       <!---------------------------------->
 
-      <div class="button-container">
-
+      <div *ngIf="!editavel" class="button-container">
         <button id="cometerAlteracao" (click)="ativarEdicao()">
           <fa-icon [icon]="faEdit"></fa-icon> Editar Cadastro
         </button>
-        <button id="cancelarReserva">
+        <button (click)="deleteConta()" id="cancelarReserva">
           <fa-icon [icon]="faTrash"></fa-icon> Excluir Minha Conta
         </button>
+      </div>
 
+      <div *ngIf="editavel" class="button-container">
+        <button type="submit" id="cometerAlteracao">
+          <fa-icon [icon]="faSave"></fa-icon> Salvar alterações
+        </button>
+        <button (click)="ativarEdicao()" id="cancelarReserva">
+          <fa-icon [icon]="faTimes"></fa-icon> Cancelar
+        </button>
       </div>
 
     </form>
