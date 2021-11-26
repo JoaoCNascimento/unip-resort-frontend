@@ -185,6 +185,7 @@ export class AdministrarReservasComponent implements OnInit {
       this.reserva = res;
       this.cliente = this.reserva.cliente;
       this.cpf = this.cliente.cpf;
+      this.changeCategoria(this.reserva.quarto.categoria.id);
       this.configurateForm(true);
     });
   }
@@ -203,7 +204,7 @@ export class AdministrarReservasComponent implements OnInit {
       this.valorTotal = this.reserva.valor;
       this.form = this.fb.group({
         id: [this.reserva.id],
-        categoria: [this.reserva.quarto.categoria.nome, [Validators.required]],
+        categoria: [this.reserva.quarto.categoria.id, [Validators.required]],
         // qtdHospedes: [
         //   1,
         //   [Validators.min(1), Validators.max(6), Validators.required],
@@ -280,7 +281,7 @@ export class AdministrarReservasComponent implements OnInit {
       this.categoria = categoria;
     }
 
-    this.form.get("categoria").setValue(categoria.nome);
+    this.form.get("categoria").setValue(categoria.id);
     this.calcularValorDiaria();
   }
 
