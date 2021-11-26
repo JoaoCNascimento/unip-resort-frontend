@@ -43,7 +43,7 @@ export class MinhasReservasComponent implements OnInit {
     this.cs.findByEmail().subscribe(
       (res: Cliente) => {
         this.cliente = res;
-      this.getReservas();
+      // this.getReservas();
       }
     )
   }
