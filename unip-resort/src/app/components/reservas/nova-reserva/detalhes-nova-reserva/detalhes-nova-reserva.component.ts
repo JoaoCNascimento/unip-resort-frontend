@@ -83,7 +83,7 @@ export class DetalhesNovaReservaComponent implements OnInit {
           //  = moment(reserva.dataSaida).format('DD/MM/yyyy').diff(moment(reserva.dataReserva).format('DD/MM/yyyy'), "days") + 1;
           this.rs.create(reserva).subscribe(res => {
             this.toastrService.success('Reserva realizada!');
-            this.toastrService.info('O pagamento deverá ser efetuado no hotel, na data de check in escolhida.', 'Importante!', { timeOut: 10000 });
+            this.toastrService.info('O pagamento deverá ser efetuado no hotel, na data de check in escolhida.', 'Importante!', { timeOut: 20000 });
             this.router.navigate(['reservas/minhas-reservas'], {relativeTo: this.route.root})
           });
         })
