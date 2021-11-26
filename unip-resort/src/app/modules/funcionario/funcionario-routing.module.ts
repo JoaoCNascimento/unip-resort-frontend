@@ -30,6 +30,9 @@ const routes: Routes = [
       },
       {
         path: 'check', component: CheckComponent
+      },
+      {
+        path: '', redirectTo: 'nova-reserva'
       }
     ]
   },
