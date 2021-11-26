@@ -118,7 +118,8 @@ export class DetalhesNovaReservaComponent implements OnInit {
 
         _categorias = _categorias.filter(c => {return c !== undefined});
         this.categorias = _categorias;
-        this.changeCategoria(this.route.snapshot.params["id"] | this.categorias[0].id);
+        let cat = this.route.snapshot.params["id"] ? this.route.snapshot.params["id"] : this.categorias[0].id;
+        this.changeCategoria(cat);
       });
     });
   }
