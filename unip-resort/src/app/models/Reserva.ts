@@ -6,7 +6,8 @@ export interface Reserva {
     dataReserva: Date | string;
     dataSaida: Date | string;
     valor: number;
-    status:boolean;
+    statusChecked:boolean;
+    status: boolean;
     tempoEstadia: Number;
     cliente: any;
     quarto: any;

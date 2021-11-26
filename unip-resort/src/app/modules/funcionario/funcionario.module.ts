@@ -12,6 +12,7 @@ import { CadastroComponent } from 'src/app/components/funcionario/cadastro/cadas
 import { AdministrarReservasComponent } from 'src/app/components/funcionario/administrar-reservas/administrar-reservas.component';
 import { PipesModule } from 'src/app/pipes/pipes/pipes.module';
 import { AdministrarClientesComponent } from 'src/app/components/funcionario/administrar-clientes/administrar-clientes.component';
+import { CheckComponent } from 'src/app/components/funcionario/check/check.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AdministrarClientesComponent } from 'src/app/components/funcionario/adm
     ReservaRealizadaComponent,
     CadastroComponent,
     AdministrarReservasComponent,
-    AdministrarClientesComponent
+    AdministrarClientesComponent,
+    CheckComponent
   ],
   imports: [
     CommonModule,
