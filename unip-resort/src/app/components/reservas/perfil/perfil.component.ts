@@ -5,7 +5,7 @@ import {
   FormGroup,
   Validators,
 } from "@angular/forms";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import {
   faEdit,
   faSave,
@@ -41,6 +41,7 @@ export class PerfilComponent implements OnInit {
     ,private toastrService: ToastrService
     ,private router: Router
     ,private cepService: CepService
+    ,private route: ActivatedRoute
     ) {}
 
   ngOnInit(): void {
@@ -51,6 +52,7 @@ export class PerfilComponent implements OnInit {
   deleteConta() {
     if(confirm('Deseja realmente excluir sua conta?')){
       this.cs.delete(this.cliente.id).subscribe(res => {
+        this.router.navigate(['/'],{relativeTo: this.route.root})
         this.toastrService.info('Até a próxima!', '', { timeOut: 15000 })
       })
       return;
