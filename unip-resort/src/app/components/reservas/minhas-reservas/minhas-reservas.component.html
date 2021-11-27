@@ -15,17 +15,153 @@
     <tbody *ngIf="reservas">
       <tr *ngFor="let reserva of reservas">
         <td>{{ reserva.id }}</td>
-        <td>{{ reserva.categoria }}</td>
-        <td>{{ reserva.dataCheckIn }}</td>
-        <td>{{ reserva.dataCheckOut }}</td>
+        <td>{{ reserva.quarto.categoria.nome }}</td>
+        <td>{{ reserva.dataReserva }}</td>
+        <td>{{ reserva.dataSaida }}</td>
         <td>{{ reserva.valor | currency:'BRL'}}</td>
-        <td>{{ reserva.status }}</td>
+        <td>{{ reserva.statusChecked ? 'Aguardando Check In' : 'Check In Realizado' }}</td>
         <td>
-          <fa-icon [icon]="faEdit" class="fa fa-edit"></fa-icon>
-          <fa-icon [icon]="faTrash" class="fa fa-trash"></fa-icon>
+          <fa-icon (click)="openForm(reserva.id)" [icon]="faEdit" class="fa fa-edit"></fa-icon>
+          <fa-icon (click)="deleteReserva(reserva.id)" [icon]="faTrash" class="fa fa-trash"></fa-icon>
         </td>
       </tr>
     </tbody>
   </table>
   <p *ngIf="reservas.length == 0">Você não possui nenhuma reserva.</p>
+</div>
+
+<div class="modal-container">
+  <div class="modal-body">
+    <span (click)="hideModal()" class="modal-close-button">&times;</span>
+    <div id="form-container">
+      <h2>Detalhes da reserva</h2>
+
+<div class="content">
+  <div class="img">
+    <img
+      src="{{ categoria.imageUrl || 'assets/img-empty.png' }}"
+      alt="Quarto do hotel"
+    />
+  </div>
+
+  <div class="contentbox">
+    <h3>{{ categoria.nome }}</h3>
+
+    <p>
+      {{ categoria.descricao }}
+    </p>
+  </div>
+</div>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <label for="apartamento">Selecione a categoria do quarto </label>
+  <select
+    formControlName="categoria"
+    name="apartamento"
+    id="apartamento-selectbox"
+    (change)="changeCategoria($event.target.value)"
+  >
+    <option
+      *ngFor="let categoria of categorias"
+      value="{{ categoria.id }}"
+      label="{{ categoria.nome + ' - Preço diária: ' + (categoria.precoDiaria | currency: 'BRL')  }}"
+    >
+    </option>
+  </select>
+  <div
+    *ngIf="
+      form.get('categoria').hasError('required') &&
+      form.get('categoria').touched
+    "
+    class="invalid-feedback"
+  >
+    A categoria é obrigatória.
+  </div>
+
+  <!-- <label for="numeroHospedes">Quantidade de hóspedes: </label>
+  <input
+    (change)="changeCategoria()"
+    (change)="calcularValorDiaria()"
+    formControlName="qtdHospedes"
+    type="number"
+    name="numeroHospedes"
+    id="numeroHospedes"
+    min="1"
+    max="6"
+  />
+  <div
+    *ngIf="
+      form.get('qtdHospedes').hasError('required') &&
+      form.get('qtdHospedes').touched
+    "
+    class="invalid-feedback"
+  >
+    A quantidade de hóspedes é obrigatória.
+  </div>
+  <div
+    *ngIf="
+      form.get('qtdHospedes').hasError('max') &&
+      form.get('qtdHospedes').touched
+    "
+    class="invalid-feedback"
+  >
+    A quantidade de hóspedes não pode ultrapassar 6.
+  </div>
+  <div
+    *ngIf="
+      form.get('qtdHospedes').hasError('min') &&
+      form.get('qtdHospedes').touched
+    "
+    class="invalid-feedback"
+  >
+    A quantidade de hóspedes mínima deve ser 1.
+  </div> -->
+
+  <label for="checkIn">Data e hora de check-in</label>
+  <input
+    (change)="calcularValorDiaria()"
+    formControlName="dataReserva"
+    type="datetime-local"
+    name="checkIn"
+    id="checkIn"
+  />
+  <div
+    *ngIf="
+      form.get('dataReserva').hasError('required') &&
+      form.get('dataReserva').touched
+    "
+    class="invalid-feedback"
+  >
+    A data de check-in é obrigatória
+  </div>
+
+  <label for="checkOut">Data e hora de check-out</label>
+  <input
+    (change)="calcularValorDiaria()"
+    formControlName="dataSaida"
+    type="datetime-local"
+    name="checkOut"
+    id="checkOut"
+  />
+  <div
+    *ngIf="
+      form.get('dataSaida').hasError('required') &&
+      form.get('dataSaida').touched
+    "
+    class="invalid-feedback"
+  >
+    A data de check-out é obrigatória
+  </div>
+
+  <div class="total">
+    <h4>Valor Total:</h4>
+    <p>
+      {{ valorTotalDescricao }} {{ valorTotal }}
+    </p>
+  </div>
+
+  <button type="submit">Confirmar</button>
+</form>
+    </div>
+  </div>
 </div>
