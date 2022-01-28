@@ -38,6 +38,19 @@ export class ReservasService {
     );
   }
 
+  check(r: Reserva) {
+    return this.httpClient.put(this.baseUrl + '/check/' + r.id, {
+      quarto: r.quarto.id,
+      cliente: r.cliente.id,
+      dataReserva: r.dataReserva,
+      dataSaida: r.dataSaida,
+      tempoEstadia: r.tempoEstadia
+    }).pipe(
+      tap(res => this.toastr.success('Check in realizado.')),
+      catchError(er => {this.handleError(er); return er; })
+    )
+  }
+
   create(reserva: Reserva) {
     return this.httpClient
       .post(this.baseUrl, {

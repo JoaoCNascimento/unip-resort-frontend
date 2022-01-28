@@ -228,7 +228,7 @@ export class DetalhesNovaReservaComponent implements OnInit {
       this.categoria = categoria;
     }
 
-    this.form.get("categoria").setValue(categoria.nome);
+    this.form.get("categoria").setValue(this.categoria.id);
     this.calcularValorDiaria();
   }
 

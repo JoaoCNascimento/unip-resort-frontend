@@ -168,8 +168,11 @@ export class AdministrarClientesComponent implements OnInit {
 
     let cliente: Cliente = Object.assign({}, this.form.value);
 
-    this.cs.update(cliente).subscribe(res => {
+    cliente.dataNasc = moment(cliente.dataNasc.toString()).format('DD/MM/yyyy');
 
+    this.cs.update(cliente).subscribe(res => {
+      this.getClientes();
+      this.hideModal();
     })
   }
 

@@ -106,7 +106,7 @@ export class AdministrarReservasComponent implements OnInit {
 
         _categorias = _categorias.filter(c => {return c !== undefined});
         this.categorias = _categorias;
-        this.changeCategoria(this.route.snapshot.params["id"] | this.categorias[0].id);
+        this.changeCategoria(this.categorias[0].id);
       });
     });
   }
@@ -185,6 +185,7 @@ export class AdministrarReservasComponent implements OnInit {
       this.reserva = res;
       this.cliente = this.reserva.cliente;
       this.cpf = this.cliente.cpf;
+      this.changeCategoria(this.reserva.quarto.categoria.id);
       this.configurateForm(true);
     });
   }
@@ -199,10 +200,11 @@ export class AdministrarReservasComponent implements OnInit {
 
       this.reserva.dataReserva = dataReserva[0].split('/').reverse().join('-') + ' ' + dataReserva[1];
       this.reserva.dataSaida = dataSaida[0].split('/').reverse().join('-') + ' ' + dataSaida[1];
-
+      
+      this.valorTotal = this.reserva.valor;
       this.form = this.fb.group({
         id: [this.reserva.id],
-        categoria: [this.reserva.quarto.categoria.nome, [Validators.required]],
+        categoria: [this.reserva.quarto.categoria.id, [Validators.required]],
         // qtdHospedes: [
         //   1,
         //   [Validators.min(1), Validators.max(6), Validators.required],
@@ -210,6 +212,9 @@ export class AdministrarReservasComponent implements OnInit {
         dataReserva: [this.reserva.dataReserva, [Validators.required, Validators.minLength(15)]],
         dataSaida: [this.reserva.dataSaida, [Validators.required, Validators.minLength(15)]],
       });
+
+      this.categoria = this.reserva.quarto.categoria;
+      this.categoria.imageUrl = "https://pim-unip-resort.s3.sa-east-1.amazonaws.com/" + this.categoria.imageUrl;
 
       return this.revealModal();
     }
@@ -276,7 +281,7 @@ export class AdministrarReservasComponent implements OnInit {
       this.categoria = categoria;
     }
 
-    this.form.get("categoria").setValue(categoria.nome);
+    this.form.get("categoria").setValue(categoria.id);
     this.calcularValorDiaria();
   }
 

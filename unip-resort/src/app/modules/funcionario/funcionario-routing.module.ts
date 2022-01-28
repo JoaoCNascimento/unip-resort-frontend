@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdministrarClientesComponent } from 'src/app/components/funcionario/administrar-clientes/administrar-clientes.component';
 import { AdministrarReservasComponent } from 'src/app/components/funcionario/administrar-reservas/administrar-reservas.component';
 import { CadastroComponent } from 'src/app/components/funcionario/cadastro/cadastro.component';
+import { CheckComponent } from 'src/app/components/funcionario/check/check.component';
 import { FuncionarioComponent } from 'src/app/components/funcionario/funcionario.component';
 import { DetalhesNovaReservaComponent } from 'src/app/components/funcionario/nova-reserva/detalhes-nova-reserva/detalhes-nova-reserva.component';
 import { NovaReservaComponent } from 'src/app/components/funcionario/nova-reserva/nova-reserva.component';
@@ -26,6 +27,12 @@ const routes: Routes = [
       },
       {
         path: 'administrar-clientes', component: AdministrarClientesComponent
+      },
+      {
+        path: 'check', component: CheckComponent
+      },
+      {
+        path: '', redirectTo: 'nova-reserva'
       }
     ]
   },

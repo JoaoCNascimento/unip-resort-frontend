@@ -1,0 +1,33 @@
+<div id="table-container">
+    <table>
+      <thead>
+        <th>#</th>
+        <th>Data de CheckIN</th>
+        <th>Data de CheckOut</th>
+        <th>Valor</th>
+        <th>Cliente</th>
+        <th>CPF</th>
+        <th>Status</th>
+        <th>Ações</th>
+      </thead>
+  
+      <tbody *ngIf="reservas">
+        <tr *ngFor="let reserva of reservas">
+          <td>{{ reserva.id }}</td>
+          <td>{{ reserva.dataReserva.split(" ")[0] }}</td>
+          <td>{{ reserva.dataSaida.split(" ")[0] }}</td>
+          <td>{{ reserva.valor | currency: "BRL" }}</td>
+          <td>{{ reserva.cliente.nome.split(" ")[0] }}</td>
+          <td>{{ reserva.cliente.cpf | cpf }}</td>
+          <td>{{ reserva.statusChecked ? "CheckIn Realizado" : "Aguardando Check In" }}</td>
+          <td>
+            <div (click)="changeStatusChecked(reserva)"  *ngIf="!reserva.statusChecked" class="btn-checkin">
+                <fa-icon [icon]="reserva.statusChecked ? faCheck : faTicket" class="fa fa-{{ reserva.statusChecked ? 'edit' : 'trash' }}"></fa-icon> {{ reserva.statusChecked ? '' : 'Check In' }}
+            </div>
+            <fa-icon class="fa fa-{{ reserva.statusChecked ? 'edit' : 'trash' }}" *ngIf="reserva.statusChecked" [icon]="faCheck"></fa-icon>
+        </td>
+        </tr>
+      </tbody>
+    </table>
+    <p *ngIf="reservas.length == 0">Não há reservas.</p>
+</div>

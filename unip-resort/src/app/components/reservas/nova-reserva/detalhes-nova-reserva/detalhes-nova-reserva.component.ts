@@ -118,7 +118,8 @@ export class DetalhesNovaReservaComponent implements OnInit {
 
         _categorias = _categorias.filter(c => {return c !== undefined});
         this.categorias = _categorias;
-        this.changeCategoria(this.route.snapshot.params["id"] | this.categorias[0].id);
+        let cat = this.route.snapshot.params["id"] ? this.route.snapshot.params["id"] : this.categorias[0].id;
+        this.changeCategoria(cat);
       });
     });
   }
@@ -166,7 +167,7 @@ export class DetalhesNovaReservaComponent implements OnInit {
     }
   }
 
-  changeCategoria(categoriaId?: Number) {
+  changeCategoria(categoriaId?) {
     let categoria;
 
     if (categoriaId) {
@@ -187,7 +188,7 @@ export class DetalhesNovaReservaComponent implements OnInit {
       this.categoria = categoria;
     }
 
-    this.form.get("categoria").setValue(this.categoria.nome);
+    this.form.get("categoria").setValue(this.categoria.id);
     this.calcularValorDiaria();
   }
 

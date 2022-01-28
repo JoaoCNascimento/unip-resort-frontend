@@ -25,9 +25,13 @@ export class CategoriaService {
       tap((res) => {
         // this.successMessage();
         res = res.map((c: Categoria) => {
-          c.imageUrl =
+          if(c.imageUrl) {
+            c.imageUrl =
             "https://pim-unip-resort.s3.sa-east-1.amazonaws.com/" + c.imageUrl;
-          return c;
+            return c;
+          }
+
+          c.imageUrl = null;
         });
         return res;
       }),
